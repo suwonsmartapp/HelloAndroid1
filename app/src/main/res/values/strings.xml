@@ -11,4 +11,6 @@
     <!-- 같은 태그 -->
     <string name="empty"></string>
     <string name="empty2" />
+    <string name="title_activity_relative_layout_exam">RelativeLayoutExamActivity</string>
+    <string name="title_activity_table_layout">TableLayoutActivity</string>
 </resources>
