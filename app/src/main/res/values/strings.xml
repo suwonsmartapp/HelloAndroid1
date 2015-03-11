@@ -1,7 +1,6 @@
 <resources>
     <!-- 첫 번째 화면 -->
     <string name="app_name">Hello</string>
-
     <string name="hello_world">안녕 안드로이드!</string>
     <string name="action_settings">Settings</string>
 
@@ -9,5 +8,7 @@
     <string name="title_activity_second">SecondActivity</string>
     <string name="test">테스트</string>
 
-
+    <!-- 같은 태그 -->
+    <string name="empty"></string>
+    <string name="empty2" />
 </resources>
