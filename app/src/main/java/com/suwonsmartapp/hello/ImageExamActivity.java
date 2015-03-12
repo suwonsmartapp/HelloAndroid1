@@ -51,7 +51,7 @@ public class ImageExamActivity extends ActionBarActivity {
         if (viewId == R.id.btn_img_down) {
             mImage2.setImageDrawable(mBitmap);
             mImage1.setImageDrawable(null);
-        } else if (viewId == R.id.btn_img_up){
+        } else if (viewId == R.id.btn_img_up) {
             mImage1.setImageDrawable(mBitmap);
             mImage2.setImageDrawable(null);
         }

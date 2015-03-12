@@ -1,3 +1,4 @@
+
 package com.suwonsmartapp.hello;
 
 import android.os.Bundle;
@@ -9,7 +10,6 @@ import android.widget.EditText;
 
 public class EditTextActivity extends ActionBarActivity {
 
-
     private static final String TAG = EditTextActivity.class.getSimpleName();
     private EditText mInputEditText;
     private EditText mOutputEditText;
@@ -19,17 +19,20 @@ public class EditTextActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_text);
 
-        mInputEditText = (EditText)findViewById(R.id.input);
-        mOutputEditText = (EditText)findViewById(R.id.output);
+        mInputEditText = (EditText) findViewById(R.id.input);
+        mOutputEditText = (EditText) findViewById(R.id.output);
 
+        // EditText에 입력이 될 때 마다 호출 되는 인터페이스 메소드
         mInputEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                    int after) {
                 Log.d(TAG, "beforeTextChanged");
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onTextChanged(CharSequence s, int start, int before, int
+                    count) {
                 Log.d(TAG, "onTextChanged");
             }
 
@@ -38,12 +41,29 @@ public class EditTextActivity extends ActionBarActivity {
                 Log.d(TAG, "afterTextChanged");
 
                 mOutputEditText.setText(s);
+
+
+//                String sss = "222";
+//                sss.getBytes().length;
             }
         });
 
+//        mInputEditText.setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                if (event.getAction() == KeyEvent.ACTION_UP
+//                        && keyCode == KeyEvent.KEYCODE_ENTER) {
+//                    textChange();
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
     }
 
-
+    /**
+     * mInputEditText 의 내용을 mOutputEditText 에 set
+     */
     private void textChange() {
         mOutputEditText.setText(mInputEditText.getText());
     }

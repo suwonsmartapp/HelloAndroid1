@@ -16,4 +16,5 @@
     <string name="title_activity_frame_layout">FrameLayoutActivity</string>
     <string name="title_activity_image_exam">ImageExamActivity</string>
     <string name="title_activity_edit_text">EditTextActivity</string>
+    <string name="title_activity_sms">SMSActivity</string>
 </resources>

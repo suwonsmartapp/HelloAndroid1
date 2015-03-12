@@ -20,9 +20,9 @@ public class FrameLayoutActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frame_layout);
 
-        mChangeButton = (Button)findViewById(R.id.changeBtn);
-        mImage1 = (ImageView)findViewById(R.id.image1);
-        mImage2 = (ImageView)findViewById(R.id.image2);
+        mChangeButton = (Button) findViewById(R.id.changeBtn);
+        mImage1 = (ImageView) findViewById(R.id.image1);
+        mImage2 = (ImageView) findViewById(R.id.image2);
 
         mChangeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +37,6 @@ public class FrameLayoutActivity extends ActionBarActivity {
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
