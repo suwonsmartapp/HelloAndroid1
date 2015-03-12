@@ -23,6 +23,7 @@ public class SMSActivity extends ActionBarActivity {
         setContentView(R.layout.activity_sms);
 
         mMessageEditText = (EditText) findViewById(R.id.messageEditText);
+
         mByteTextView = (TextView) findViewById(R.id.byteTextView);
         mSendBtn = (Button) findViewById(R.id.sendBtn);
 

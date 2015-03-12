@@ -16,22 +16,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <FrameLayout
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/image1"
-            android:src="@drawable/pic300_7"
+        <ScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/image2"
-            android:src="@drawable/dmyo_2jpg_"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"/>
-    </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:src="@drawable/pic300_7"
+                    android:scaleType="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/image2"
+                    android:src="@drawable/dmyo_2jpg_"
+                    android:scaleType="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+            </FrameLayout>
+        </ScrollView>
+    </HorizontalScrollView>
 
 </LinearLayout>

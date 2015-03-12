@@ -26,6 +26,11 @@
         <activity
             android:name=".FrameLayoutActivity"
             android:label="@string/title_activity_frame_layout" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ImageExamActivity"
@@ -38,11 +43,7 @@
         <activity
             android:name=".SMSActivity"
             android:label="@string/title_activity_sms" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

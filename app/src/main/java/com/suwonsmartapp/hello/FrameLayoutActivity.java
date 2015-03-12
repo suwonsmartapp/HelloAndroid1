@@ -28,11 +28,11 @@ public class FrameLayoutActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (mImage1.getVisibility() == View.VISIBLE) {
-                    mImage1.setVisibility(View.INVISIBLE);
+                    mImage1.setVisibility(View.GONE);
                     mImage2.setVisibility(View.VISIBLE);
                 } else {
                     mImage1.setVisibility(View.VISIBLE);
-                    mImage2.setVisibility(View.INVISIBLE);
+                    mImage2.setVisibility(View.GONE);
                 }
             }
         });
