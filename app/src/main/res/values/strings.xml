@@ -14,4 +14,5 @@
     <string name="title_activity_relative_layout_exam">RelativeLayoutExamActivity</string>
     <string name="title_activity_table_layout">TableLayoutActivity</string>
     <string name="title_activity_frame_layout">FrameLayoutActivity</string>
+    <string name="title_activity_image_exam">ImageExamActivity</string>
 </resources>
