@@ -30,6 +30,10 @@
         <activity
             android:name=".ImageExamActivity"
             android:label="@string/title_activity_image_exam" >
+        </activity>
+        <activity
+            android:name=".EditTextActivity"
+            android:label="@string/title_activity_edit_text" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -15,4 +15,5 @@
     <string name="title_activity_table_layout">TableLayoutActivity</string>
     <string name="title_activity_frame_layout">FrameLayoutActivity</string>
     <string name="title_activity_image_exam">ImageExamActivity</string>
+    <string name="title_activity_edit_text">EditTextActivity</string>
 </resources>
