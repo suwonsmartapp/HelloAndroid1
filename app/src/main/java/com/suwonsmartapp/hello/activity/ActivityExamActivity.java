@@ -1,6 +1,7 @@
 
 package com.suwonsmartapp.hello.activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -22,6 +23,7 @@ public class ActivityExamActivity extends ActionBarActivity {
 
     private Button mMoveBtn;
     private Button mDataMoveBtn;
+    private Button mDialogBtn;
 
     private EditText mDataEditText;
 
@@ -32,6 +34,7 @@ public class ActivityExamActivity extends ActionBarActivity {
 
         mMoveBtn = (Button) findViewById(R.id.moveBtn);
         mDataMoveBtn = (Button) findViewById(R.id.dataMoveBtn);
+        mDialogBtn = (Button) findViewById(R.id.dialogBtn);
         mDataEditText = (EditText) findViewById(R.id.dataEditText);
 
         // 화면 전환
@@ -50,6 +53,7 @@ public class ActivityExamActivity extends ActionBarActivity {
                 Intent intent = new Intent(getApplicationContext(), TargetActivity.class);
                 String value = mDataEditText.getText().toString();
                 intent.putExtra("key", value);
+                intent.putExtra("code", REQUEST_CODE_B);
                 startActivityForResult(intent, REQUEST_CODE_B);
             }
         });
@@ -60,6 +64,20 @@ public class ActivityExamActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), TargetActivity.class);
                 startActivityForResult(intent, REQUEST_CODE_A);
+            }
+        });
+
+        mDialogBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(ActivityExamActivity.this);
+                dialog.setMessage("이것은 dialog");
+                dialog.setTitle("타이틀");
+                dialog.setPositiveButton("확인", null);
+                dialog.setNegativeButton("취소", null);
+                dialog.setNeutralButton("중간버튼", null);
+                dialog.create();
+                dialog.show();
             }
         });
 
@@ -78,7 +96,6 @@ public class ActivityExamActivity extends ActionBarActivity {
                     .show();
         }
     }
-
 
     @Override
     protected void onResume() {

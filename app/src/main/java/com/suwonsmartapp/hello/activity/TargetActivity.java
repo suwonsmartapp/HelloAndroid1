@@ -62,10 +62,9 @@ public class TargetActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 String tel = mTelephoneNumberEditText.getText().toString();
-                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(tel)));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(tel)));
             }
         });
-
 
 
         Log.d(TAG, "onCreate");
