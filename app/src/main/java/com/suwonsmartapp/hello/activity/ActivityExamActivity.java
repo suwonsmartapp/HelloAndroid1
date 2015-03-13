@@ -15,6 +15,8 @@ import com.suwonsmartapp.hello.R;
 public class ActivityExamActivity extends ActionBarActivity {
 
     private static final String TAG = ActivityExamActivity.class.getSimpleName();
+
+    // StartActivityForResult 용 상수
     private static final int REQUEST_CODE_A = 0;
     private static final int REQUEST_CODE_B = 1;
 
@@ -30,18 +32,18 @@ public class ActivityExamActivity extends ActionBarActivity {
 
         mMoveBtn = (Button) findViewById(R.id.moveBtn);
         mDataMoveBtn = (Button) findViewById(R.id.dataMoveBtn);
-
         mDataEditText = (EditText) findViewById(R.id.dataEditText);
 
+        // 화면 전환
         mMoveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), TargetActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
         });
 
+        // Data와 함께 화면 전환
         mDataMoveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +54,7 @@ public class ActivityExamActivity extends ActionBarActivity {
             }
         });
 
+        // Result 값을 받도록 화면 전환
         findViewById(R.id.resultBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +74,7 @@ public class ActivityExamActivity extends ActionBarActivity {
             Toast.makeText(getApplicationContext(), data.getStringExtra("data"), Toast.LENGTH_SHORT)
                     .show();
         } else if (requestCode == REQUEST_CODE_B) {
-            Toast.makeText(getApplicationContext(), "REQUEST CODE B", Toast.LENGTH_SHORT)
+            Toast.makeText(getApplicationContext(), data.getStringExtra("data"), Toast.LENGTH_SHORT)
                     .show();
         }
     }

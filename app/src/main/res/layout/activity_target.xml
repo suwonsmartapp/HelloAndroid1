@@ -10,7 +10,6 @@
     tools:context="com.suwonsmartapp.hello.activity.TargetActivity">
 
     <Button
-
         android:id="@+id/moveBtn2"
         android:text="원래 Activity로 전환"
         android:layout_width="wrap_content"
@@ -21,6 +20,26 @@
         android:text="죽는 버튼"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/telEditText"
+            android:hint="전화번호 입력"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/callBtn"
+            android:text="전화걸기"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <TextView
         android:text="TargetActivity입니다"
