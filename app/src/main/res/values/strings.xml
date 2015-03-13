@@ -17,4 +17,6 @@
     <string name="title_activity_image_exam">ImageExamActivity</string>
     <string name="title_activity_edit_text">EditTextActivity</string>
     <string name="title_activity_sms">SMSActivity</string>
+    <string name="title_activity_activity_exam">ActivityExamActivity</string>
+    <string name="title_activity_target">TargetActivity</string>
 </resources>
