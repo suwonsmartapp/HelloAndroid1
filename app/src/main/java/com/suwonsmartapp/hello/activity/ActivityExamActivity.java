@@ -2,6 +2,7 @@
 package com.suwonsmartapp.hello.activity;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -73,6 +74,24 @@ public class ActivityExamActivity extends ActionBarActivity {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(ActivityExamActivity.this);
                 dialog.setMessage("이것은 dialog");
                 dialog.setTitle("타이틀");
+                dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "확인", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialog.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "취소", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialog.setNeutralButton("중간버튼", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "중간버튼", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 dialog.setPositiveButton("확인", null);
                 dialog.setNegativeButton("취소", null);
                 dialog.setNeutralButton("중간버튼", null);
