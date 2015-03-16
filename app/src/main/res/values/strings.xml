@@ -19,4 +19,5 @@
     <string name="title_activity_sms">SMSActivity</string>
     <string name="title_activity_activity_exam">ActivityExamActivity</string>
     <string name="title_activity_target">TargetActivity</string>
+    <string name="title_activity_event">EventActivity</string>
 </resources>

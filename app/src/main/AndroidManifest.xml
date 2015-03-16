@@ -41,16 +41,21 @@
         </activity>
         <activity
             android:name=".activity.ActivityExamActivity"
-            android:label="@string/title_activity_activity_exam" android:launchMode="singleTop">
+            android:label="@string/title_activity_activity_exam"
+            android:launchMode="singleTop" >
+        </activity>
+        <activity
+            android:name=".activity.TargetActivity"
+            android:label="@string/title_activity_target" >
+        </activity>
+        <activity
+            android:name=".event.EventActivity"
+            android:label="@string/title_activity_event" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".activity.TargetActivity"
-            android:label="@string/title_activity_target" >
         </activity>
     </application>
 
