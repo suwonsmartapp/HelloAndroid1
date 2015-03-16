@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.suwonsmartapp.hello.R;
 
-public class EventActivity extends ActionBarActivity {
+public class TouchEventActivity extends ActionBarActivity {
 
     TextView mTextView;
 

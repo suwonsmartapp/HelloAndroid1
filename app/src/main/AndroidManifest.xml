@@ -49,13 +49,22 @@
             android:label="@string/title_activity_target" >
         </activity>
         <activity
-            android:name=".event.EventActivity"
+            android:name=".event.TouchEventActivity"
             android:label="@string/title_activity_event" >
+
+        </activity>
+        <activity
+            android:name=".challenge.challenge04.MainActivity"
+            android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".challenge.challenge04.SubActivity"
+            android:label="@string/title_activity_sub" >
         </activity>
     </application>
 
