@@ -24,6 +24,7 @@
                 android:layout_marginRight="30dp" />
 
             <EditText
+                android:id="@+id/textView_name"
                 android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -39,6 +40,7 @@
                 android:layout_marginRight="30dp" />
 
             <EditText
+                android:id="@+id/textView_age"
                 android:maxLength="3"
                 android:inputType="numberSigned"
                 android:layout_width="match_parent"
@@ -59,6 +61,7 @@
         <TableRow>
 
             <Button
+                android:id="@+id/btn_birthday"
                 android:layout_span="2"
                 android:layout_gravity="center_horizontal"
                 android:text="1985년 11월 01일"
@@ -69,6 +72,7 @@
     </TableLayout>
 
     <Button
+        android:id="@+id/btn_save"
         android:text="저  장"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
