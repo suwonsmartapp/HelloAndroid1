@@ -23,4 +23,5 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_sub">SubActivity</string>
     <string name="title_activity_mission05_main">Mission05MainActivity</string>
+    <string name="title_activity_mission06_main">Mission06MainActivity</string>
 </resources>
