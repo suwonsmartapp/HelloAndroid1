@@ -7,7 +7,9 @@ import android.view.MenuItem;
 
 import com.suwonsmartapp.hello.R;
 
-
+/**
+ * page 160
+ */
 public class RelativeLayoutExamActivity extends ActionBarActivity {
 
     @Override

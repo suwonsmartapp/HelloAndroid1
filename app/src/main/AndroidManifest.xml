@@ -31,7 +31,7 @@
             android:label="@string/title_activity_frame_layout" >
         </activity>
         <activity
-            android:name=".activity.ImageExamActivity"
+            android:name=".challenge.challenge01.ImageExamActivity"
             android:label="@string/title_activity_image_exam" >
         </activity>
         <activity
@@ -39,7 +39,7 @@
             android:label="@string/title_activity_edit_text" >
         </activity>
         <activity
-            android:name=".activity.SMSActivity"
+            android:name=".challenge.challenge02.SMSActivity"
             android:label="@string/title_activity_sms" >
         </activity>
         <activity

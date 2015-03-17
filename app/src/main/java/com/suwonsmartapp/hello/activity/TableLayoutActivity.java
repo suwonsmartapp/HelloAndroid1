@@ -7,7 +7,9 @@ import android.view.MenuItem;
 
 import com.suwonsmartapp.hello.R;
 
-
+/**
+ * page 168
+ */
 public class TableLayoutActivity extends ActionBarActivity {
 
     @Override

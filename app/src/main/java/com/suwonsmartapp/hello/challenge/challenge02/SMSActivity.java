@@ -1,5 +1,5 @@
 
-package com.suwonsmartapp.hello.activity;
+package com.suwonsmartapp.hello.challenge.challenge02;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;

@@ -1,5 +1,5 @@
 
-package com.suwonsmartapp.hello.activity;
+package com.suwonsmartapp.hello.challenge.challenge01;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import android.widget.ImageView;
 
 import com.suwonsmartapp.hello.R;
 
+/**
+ * page 271
+ */
 public class ImageExamActivity extends ActionBarActivity {
 
     private ImageView mImage1;

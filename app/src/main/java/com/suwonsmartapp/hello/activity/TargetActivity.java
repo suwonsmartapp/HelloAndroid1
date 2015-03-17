@@ -13,6 +13,11 @@ import android.widget.Toast;
 
 import com.suwonsmartapp.hello.R;
 
+/**
+ * ActivityExamActivity 로 부터 호출 되는 Activity
+ *
+ * page 210
+ */
 public class TargetActivity extends ActionBarActivity {
 
     private static final String TAG = TargetActivity.class.getSimpleName();

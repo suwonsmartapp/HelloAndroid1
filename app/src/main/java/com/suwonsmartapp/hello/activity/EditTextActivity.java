@@ -10,6 +10,9 @@ import android.widget.EditText;
 
 import com.suwonsmartapp.hello.R;
 
+/**
+ * page 185
+ */
 public class EditTextActivity extends ActionBarActivity {
 
     private static final String TAG = EditTextActivity.class.getSimpleName();

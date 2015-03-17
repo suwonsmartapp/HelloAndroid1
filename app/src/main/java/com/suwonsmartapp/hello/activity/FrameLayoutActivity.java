@@ -11,6 +11,9 @@ import android.widget.ImageView;
 
 import com.suwonsmartapp.hello.R;
 
+/**
+ * page 175
+ */
 public class FrameLayoutActivity extends ActionBarActivity {
 
     Button mChangeButton;

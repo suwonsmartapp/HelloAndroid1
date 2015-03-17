@@ -50,8 +50,6 @@
 
         <ImageView
             android:id="@+id/img_2"
-            android:src="@drawable/dmyo_2jpg_"
-            android:scaleType="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
