@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".SecondActivity"
+            android:name=".activity.SecondActivity"
             android:label="@string/app_name" >
         </activity>
         <!-- <activity -->
@@ -16,27 +16,27 @@
         <!-- android:label="@string/title_activity_second" > -->
         <!-- </activity> -->
         <activity
-            android:name=".RelativeLayoutExamActivity"
+            android:name=".activity.RelativeLayoutExamActivity"
             android:label="@string/title_activity_relative_layout_exam" >
         </activity>
         <activity
-            android:name=".TableLayoutActivity"
+            android:name=".activity.TableLayoutActivity"
             android:label="@string/title_activity_table_layout" >
         </activity>
         <activity
-            android:name=".FrameLayoutActivity"
+            android:name=".activity.FrameLayoutActivity"
             android:label="@string/title_activity_frame_layout" >
         </activity>
         <activity
-            android:name=".ImageExamActivity"
+            android:name=".activity.ImageExamActivity"
             android:label="@string/title_activity_image_exam" >
         </activity>
         <activity
-            android:name=".EditTextActivity"
+            android:name=".activity.EditTextActivity"
             android:label="@string/title_activity_edit_text" >
         </activity>
         <activity
-            android:name=".SMSActivity"
+            android:name=".activity.SMSActivity"
             android:label="@string/title_activity_sms" >
         </activity>
         <activity
@@ -51,20 +51,23 @@
         <activity
             android:name=".event.TouchEventActivity"
             android:label="@string/title_activity_event" >
-
         </activity>
         <activity
             android:name=".challenge.challenge04.MainActivity"
             android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name=".challenge.challenge04.SubActivity"
+            android:label="@string/title_activity_sub" >
+        </activity>
+        <activity
+            android:name=".challenge.challenge05.Mission05MainActivity"
+            android:label="@string/title_activity_mission05_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".challenge.challenge04.SubActivity"
-            android:label="@string/title_activity_sub" >
         </activity>
     </application>
 
