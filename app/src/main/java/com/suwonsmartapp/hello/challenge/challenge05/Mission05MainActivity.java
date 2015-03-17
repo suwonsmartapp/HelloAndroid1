@@ -1,23 +1,24 @@
-package com.suwonsmartapp.hello;
+package com.suwonsmartapp.hello.challenge.challenge05;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.suwonsmartapp.hello.R;
 
-public class RelativeLayoutExamActivity extends ActionBarActivity {
+public class Mission05MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_relative_layout_exam);
+        setContentView(R.layout.activity_mission05_main);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_relative_layout_exam, menu);
+        getMenuInflater().inflate(R.menu.menu_mission05_main, menu);
         return true;
     }
 

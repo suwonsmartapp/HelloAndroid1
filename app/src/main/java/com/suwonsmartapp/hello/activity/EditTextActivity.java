@@ -1,5 +1,5 @@
 
-package com.suwonsmartapp.hello;
+package com.suwonsmartapp.hello.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -7,6 +7,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
+
+import com.suwonsmartapp.hello.R;
 
 public class EditTextActivity extends ActionBarActivity {
 

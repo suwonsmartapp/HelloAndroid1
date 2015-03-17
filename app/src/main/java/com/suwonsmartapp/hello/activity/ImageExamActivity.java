@@ -1,5 +1,5 @@
 
-package com.suwonsmartapp.hello;
+package com.suwonsmartapp.hello.activity;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.suwonsmartapp.hello.R;
 
 public class ImageExamActivity extends ActionBarActivity {
 
