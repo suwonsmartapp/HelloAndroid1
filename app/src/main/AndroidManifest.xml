@@ -70,6 +70,11 @@
         <activity
             android:name=".challenge.challenge06.Mission06MainActivity"
             android:label="@string/title_activity_mission06_main" >
+        </activity>
+        <activity
+            android:name=".listview.ListViewExam01Activity"
+            android:label="@string/title_activity_list_view_exam01"
+            android:theme="@style/Base.Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
