@@ -37,27 +37,9 @@ public class ListViewExam01Activity extends ActionBarActivity {
         mNameList.add("배꽃그리고솔");
         mNameList.add("신남교");
         mNameList.add("현기웅");
-        mNameList.add("오준석");
-        mNameList.add("유준택");
-        mNameList.add("손상문");
-        mNameList.add("배꽃그리고솔");
-        mNameList.add("신남교");
-        mNameList.add("현기웅");
-        mNameList.add("오준석");
-        mNameList.add("유준택");
-        mNameList.add("손상문");
-        mNameList.add("배꽃그리고솔");
-        mNameList.add("신남교");
-        mNameList.add("현기웅");
-        mNameList.add("오준석");
-        mNameList.add("유준택");
-        mNameList.add("손상문");
-        mNameList.add("배꽃그리고솔");
-        mNameList.add("신남교");
-        mNameList.add("현기웅");
 
         // Adapter 준비
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),
                 android.R.layout.simple_list_item_1, mNameList);
 
         // View에 붙이기
@@ -70,8 +52,7 @@ public class ListViewExam01Activity extends ActionBarActivity {
                 Toast.makeText(
                         ListViewExam01Activity.this,
                         "position : " + position + ", id : " + id + ", data->text : "
-                                + mNameList.get(position) + ", adapter->text : "
-                                + adapter.getItem(position), Toast.LENGTH_SHORT).show();
+                                + mNameList.get(position), Toast.LENGTH_SHORT).show();
             }
         });
 
