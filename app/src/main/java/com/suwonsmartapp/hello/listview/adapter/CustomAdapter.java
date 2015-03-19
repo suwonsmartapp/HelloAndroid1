@@ -1,8 +1,7 @@
 
-package com.suwonsmartapp.hello.listview;
+package com.suwonsmartapp.hello.listview.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,23 +13,26 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.suwonsmartapp.hello.R;
+import com.suwonsmartapp.hello.listview.data.Person;
 
 import java.util.List;
 
 /**
- * Created by junsuk on 15. 3. 19..
+ * CustomAdapter
  */
-public class CustomAdapter<String> extends ArrayAdapter<String> {
+public class CustomAdapter extends ArrayAdapter<Person> {
 
     // ViewHolder 패턴
     static class ViewHolder {
-        TextView labelText;
+        TextView name;
+        TextView skill;
+        TextView birthday;
     }
 
     // Layout을 가져오기 위한 객체
     private LayoutInflater inflater;
 
-    public CustomAdapter(Context context, int resource, List<String> objects) {
+    public CustomAdapter(Context context, int resource, List<Person> objects) {
         super(context, resource, objects);
     }
 
@@ -45,9 +47,13 @@ public class CustomAdapter<String> extends ArrayAdapter<String> {
             // View 를 처음 로딩할 때, Data 를 처음 셋팅할 때
             inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.listview_item, null);
-            TextView label = (TextView)view.findViewById(R.id.list_item_tv);
+            TextView name = (TextView)view.findViewById(R.id.list_item_tv);
+            TextView birthday = (TextView)view.findViewById(R.id.list_item_tv2);
+            TextView skill = (TextView)view.findViewById(R.id.list_item_tv3);
             holder = new ViewHolder();
-            holder.labelText = label;
+            holder.name = name;
+            holder.birthday = birthday;
+            holder.skill = skill;
             view.setTag(holder);
         } else {
             // View, Data 재사용
@@ -55,17 +61,27 @@ public class CustomAdapter<String> extends ArrayAdapter<String> {
         }
         
         // position 위치의 데이터를 취득
-        String name = getItem(position);
-        if (!TextUtils.isEmpty(name.toString())) {
-            holder.labelText.setText(name.toString());
+        Person person = getItem(position);
+        String name = person.getName();
+        String birthday = person.getBirthday();
+        String skill = person.getSkill();
+
+        if (!TextUtils.isEmpty(name)) {
+            holder.name.setText(name);
+        }
+        if (!TextUtils.isEmpty(birthday)) {
+            holder.birthday.setText(birthday);
+        }
+        if (!TextUtils.isEmpty(skill)) {
+            holder.skill.setText(skill);
         }
 
         // 홀수, 짝수 줄 배경색 변경
-        if (position % 2 == 0) {
-            holder.labelText.setBackgroundColor(Color.parseColor("#aa0000"));
-        } else {
-            holder.labelText.setBackgroundColor(Color.parseColor("#880000"));
-        }
+        // if (position % 2 == 0) {
+        // holder.name.setBackgroundColor(Color.parseColor("#aa0000"));
+        // } else {
+        // holder.labelText.setBackgroundColor(Color.parseColor("#880000"));
+        // }
 
         // 애니메이션 적용
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.translation);

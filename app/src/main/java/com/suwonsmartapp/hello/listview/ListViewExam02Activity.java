@@ -9,6 +9,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.suwonsmartapp.hello.R;
+import com.suwonsmartapp.hello.listview.adapter.CustomAdapter;
+import com.suwonsmartapp.hello.listview.data.Person;
 
 import java.util.ArrayList;
 
@@ -17,7 +19,7 @@ import java.util.ArrayList;
  */
 public class ListViewExam02Activity extends ActionBarActivity {
 
-    private ArrayList<String> mNameList;
+    private ArrayList<Person> mNameList;
 
     private ListView mListView;
 
@@ -30,37 +32,26 @@ public class ListViewExam02Activity extends ActionBarActivity {
 
         // Data 준비
         mNameList = new ArrayList<>();
-        mNameList.add("오준석");
-        mNameList.add("유준택");
-        mNameList.add("손상문");
-        mNameList.add("배꽃그리고솔");
-        mNameList.add("신남교");
-        mNameList.add("현기웅");
-        mNameList.add("오준석");
-        mNameList.add("유준택");
-        mNameList.add("손상문");
-        mNameList.add("배꽃그리고솔");
-        mNameList.add("신남교");
-        mNameList.add("현기웅");
-        mNameList.add("오준석");
-        mNameList.add("유준택");
-        mNameList.add("손상문");
-        mNameList.add("배꽃그리고솔");
-        mNameList.add("신남교");
-        mNameList.add("현기웅");
-        mNameList.add("오준석");
-        mNameList.add("유준택");
-        mNameList.add("손상문");
-        mNameList.add("배꽃그리고솔");
-        mNameList.add("신남교");
-        mNameList.add("현기웅");
+        mNameList.add(new Person("1219", "오준석", "Android"));
+        mNameList.add(new Person("1015", "유준택", "fortran"));
+        mNameList.add(new Person("1022", "손상문", "web"));
+        mNameList.add(new Person("0529", "배꽃그리고솔", "Java"));
+        mNameList.add(new Person("0405", "신남교", "부동산"));
+        mNameList.add(new Person("1015", "현기웅", "web"));
+        mNameList.add(new Person("1219", "오준석", "Android"));
+        mNameList.add(new Person("1015", "유준택", "fortran"));
+        mNameList.add(new Person("1022", "손상문", "web"));
+        mNameList.add(new Person("0529", "배꽃그리고솔", "Java"));
+        mNameList.add(new Person("0405", "신남교", "부동산"));
+        mNameList.add(new Person("1015", "현기웅", "web"));
+        mNameList.add(new Person("1219", "오준석", "Android"));
+        mNameList.add(new Person("1015", "유준택", "fortran"));
+        mNameList.add(new Person("1022", "손상문", "web"));
+        mNameList.add(new Person("0529", "배꽃그리고솔", "Java"));
+        mNameList.add(new Person("0405", "신남교", "부동산"));
+        mNameList.add(new Person("1015", "현기웅", "web"));
 
-        // Adapter 준비
-        // final ArrayAdapter<String> adapter = new
-        // ArrayAdapter<>(getApplicationContext(),
-        // android.R.layout.simple_list_item_1, mNameList);
-
-        final CustomAdapter<String> adapter = new CustomAdapter<>(getApplicationContext(),
+        CustomAdapter adapter = new CustomAdapter(getApplicationContext(),
                 0, mNameList);
 
         // View에 붙이기
@@ -73,8 +64,7 @@ public class ListViewExam02Activity extends ActionBarActivity {
                 Toast.makeText(
                         ListViewExam02Activity.this,
                         "position : " + position + ", id : " + id + ", data->text : "
-                                + mNameList.get(position) + ", adapter->text : "
-                                + adapter.getItem(position), Toast.LENGTH_SHORT).show();
+                                + mNameList.get(position), Toast.LENGTH_SHORT).show();
             }
         });
 
