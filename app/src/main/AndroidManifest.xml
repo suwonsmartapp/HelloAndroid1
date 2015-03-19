@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.suwonsmartapp.hello" >
+    package="com.suwonsmartapp.hello">
 
     <!-- 도전.06 웹브라우저 화면 구성 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -9,72 +9,61 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".activity.SecondActivity"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name"></activity>
         <!-- <activity -->
         <!-- android:name=".SecondActivity" -->
         <!-- android:label="@string/title_activity_second" > -->
         <!-- </activity> -->
         <activity
             android:name=".activity.RelativeLayoutExamActivity"
-            android:label="@string/title_activity_relative_layout_exam" >
-        </activity>
+            android:label="@string/title_activity_relative_layout_exam"></activity>
         <activity
             android:name=".activity.TableLayoutActivity"
-            android:label="@string/title_activity_table_layout" >
-        </activity>
+            android:label="@string/title_activity_table_layout"></activity>
         <activity
             android:name=".activity.FrameLayoutActivity"
-            android:label="@string/title_activity_frame_layout" >
-        </activity>
+            android:label="@string/title_activity_frame_layout"></activity>
         <activity
             android:name=".challenge.challenge01.ImageExamActivity"
-            android:label="@string/title_activity_image_exam" >
-        </activity>
+            android:label="@string/title_activity_image_exam"></activity>
         <activity
             android:name=".activity.EditTextActivity"
-            android:label="@string/title_activity_edit_text" >
-        </activity>
+            android:label="@string/title_activity_edit_text"></activity>
         <activity
             android:name=".challenge.challenge02.SMSActivity"
-            android:label="@string/title_activity_sms" >
-        </activity>
+            android:label="@string/title_activity_sms"></activity>
         <activity
             android:name=".activity.ActivityExamActivity"
             android:label="@string/title_activity_activity_exam"
-            android:launchMode="singleTop" >
-        </activity>
+            android:launchMode="singleTop"></activity>
         <activity
             android:name=".activity.TargetActivity"
-            android:label="@string/title_activity_target" >
-        </activity>
+            android:label="@string/title_activity_target"></activity>
         <activity
             android:name=".event.TouchEventActivity"
-            android:label="@string/title_activity_event" >
-        </activity>
+            android:label="@string/title_activity_event"></activity>
         <activity
             android:name=".challenge.challenge04.MainActivity"
-            android:label="@string/title_activity_main" >
-        </activity>
+            android:label="@string/title_activity_main"></activity>
         <activity
             android:name=".challenge.challenge04.SubActivity"
-            android:label="@string/title_activity_sub" >
-        </activity>
+            android:label="@string/title_activity_sub"></activity>
         <activity
             android:name=".challenge.challenge05.Mission05MainActivity"
-            android:label="@string/title_activity_mission05_main" >
-        </activity>
+            android:label="@string/title_activity_mission05_main"></activity>
         <activity
             android:name=".challenge.challenge06.Mission06MainActivity"
-            android:label="@string/title_activity_mission06_main" >
-        </activity>
+            android:label="@string/title_activity_mission06_main"></activity>
         <activity
             android:name=".listview.ListViewExam01Activity"
             android:label="@string/title_activity_list_view_exam01"
-            android:theme="@style/Base.Theme.AppCompat">
+            android:theme="@style/Base.Theme.AppCompat"></activity>
+        <activity
+            android:name=".listview.ListViewExam02Activity"
+            android:label="ListViewExam02Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
