@@ -16,7 +16,7 @@ import android.widget.ListView;
  */
 public class MainActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
-    private static final String[] ITEMS = {
+    public static final String[] ITEMS = {
             "Activity",
             "Challenge",
             "Event",

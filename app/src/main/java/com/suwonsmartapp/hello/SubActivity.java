@@ -31,7 +31,7 @@ import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 public class SubActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     private static final String[] ACTIVITY_ITEMS = {
-            "Activity",
+            "Activity 예제",
             "EditTextActivity",
             "FirstActivity",
             "FrameLayout",
@@ -123,5 +123,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         startActivity(new Intent(getApplicationContext(), getItems().second[position]));
+
+        // Class.forName 으로 정보 가져오는 방법
+//        Class c = null;
+//        try {
+//            c = Class.forName("com.suwonsmartapp.hello.activity.ActivityExamActivity");
+//            startActivity(new Intent(getApplicationContext(), c));
+//        } catch (ClassNotFoundException e) {
+//            Toast.makeText(getApplicationContext(), "없다", Toast.LENGTH_SHORT).show();
+//        }
     }
 }
