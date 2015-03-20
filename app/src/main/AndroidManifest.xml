@@ -78,6 +78,9 @@
             android:name=".SubActivity"
             android:label="SubActivity"
             android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name=".listview.SpinnerActivity"
+            android:label="@string/title_activity_spinner" />
     </application>
 
 </manifest>

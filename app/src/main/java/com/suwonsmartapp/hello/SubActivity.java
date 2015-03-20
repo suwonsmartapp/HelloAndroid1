@@ -24,6 +24,7 @@ import com.suwonsmartapp.hello.challenge.challenge06.Mission06MainActivity;
 import com.suwonsmartapp.hello.event.TouchEventActivity;
 import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
+import com.suwonsmartapp.hello.listview.SpinnerActivity;
 
 /**
  * Created by junsuk on 15. 3. 19..
@@ -75,12 +76,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
 
     private static final String[] LISTVIEW_ITEMS = {
             "ArrayAdapter",
-            "CustomAdapter"
+            "CustomAdapter",
+            "SpinnerActivity"
     };
 
     private static final Class[] LISTVIEW_CLASSES = {
             ListViewExam01Activity.class,
-            ListViewExam02Activity.class
+            ListViewExam02Activity.class,
+            SpinnerActivity.class
     };
 
     private ListView mListView;
