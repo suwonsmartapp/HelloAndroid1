@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class CalendarActivity extends ActionBarActivity implements View.OnClickListener {
+public class CalendarActivity extends ActionBarActivity implements View.OnClickListener,
+        AdapterView.OnItemClickListener {
 
     private static final String TAG = CalendarActivity.class.getSimpleName();
 
@@ -30,6 +31,8 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
     private GridView mGridView;
 
     private TextView mDisplayMonthTextView;
+
+    private CalendarAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
         // 버튼 이벤트
         findViewById(R.id.btn_prev_month).setOnClickListener(this);
         findViewById(R.id.btn_next_month).setOnClickListener(this);
+        mGridView.setOnItemClickListener(this);
     }
 
     /**
@@ -107,13 +111,17 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
         }
 
         // 어댑터
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),
-                android.R.layout.simple_list_item_1, mItems);
+        mAdapter = new CalendarAdapter(getApplicationContext(), mItems);
 
         // GridView에 어댑터 설정
-        mGridView.setAdapter(adapter);
+        mGridView.setAdapter(mAdapter);
 
         // TextView 변경
         mDisplayMonthTextView.setText(mYear + "년 " + mMonth + "월");
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        mAdapter.setSelectedPosition(position);
     }
 }
