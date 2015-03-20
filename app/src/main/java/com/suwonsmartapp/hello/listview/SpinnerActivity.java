@@ -38,6 +38,8 @@ public class SpinnerActivity extends ActionBarActivity implements
 
         // 4. 이벤트 리스너 연결
         mSpinner.setOnItemSelectedListener(this);
+
+
     }
 
     @Override

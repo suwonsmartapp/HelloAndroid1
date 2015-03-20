@@ -16,6 +16,8 @@
 
     <Spinner
         android:id="@+id/spinner"
+        android:spinnerMode="dropdown"
+        android:popupBackground="#aaff0000"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

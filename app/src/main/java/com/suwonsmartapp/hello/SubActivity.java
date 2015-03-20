@@ -22,6 +22,7 @@ import com.suwonsmartapp.hello.challenge.challenge02.SMSActivity;
 import com.suwonsmartapp.hello.challenge.challenge05.Mission05MainActivity;
 import com.suwonsmartapp.hello.challenge.challenge06.Mission06MainActivity;
 import com.suwonsmartapp.hello.event.TouchEventActivity;
+import com.suwonsmartapp.hello.listview.GridActivity;
 import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
@@ -77,13 +78,15 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
     private static final String[] LISTVIEW_ITEMS = {
             "ArrayAdapter",
             "CustomAdapter",
-            "SpinnerActivity"
+            "SpinnerActivity",
+            "GridActivity"
     };
 
     private static final Class[] LISTVIEW_CLASSES = {
             ListViewExam01Activity.class,
             ListViewExam02Activity.class,
-            SpinnerActivity.class
+            SpinnerActivity.class,
+            GridActivity.class
     };
 
     private ListView mListView;
