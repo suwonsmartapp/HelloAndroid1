@@ -1,15 +1,6 @@
 
 package com.suwonsmartapp.hello;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.util.Pair;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
 import com.suwonsmartapp.hello.activity.ActivityExamActivity;
 import com.suwonsmartapp.hello.activity.EditTextActivity;
 import com.suwonsmartapp.hello.activity.FirstActivity;
@@ -17,6 +8,7 @@ import com.suwonsmartapp.hello.activity.FrameLayoutActivity;
 import com.suwonsmartapp.hello.activity.RelativeLayoutExamActivity;
 import com.suwonsmartapp.hello.activity.SecondActivity;
 import com.suwonsmartapp.hello.activity.TableLayoutActivity;
+import com.suwonsmartapp.hello.challenge.CalendarActivity;
 import com.suwonsmartapp.hello.challenge.challenge01.ImageExamActivity;
 import com.suwonsmartapp.hello.challenge.challenge02.SMSActivity;
 import com.suwonsmartapp.hello.challenge.challenge05.Mission05MainActivity;
@@ -26,6 +18,15 @@ import com.suwonsmartapp.hello.listview.GridActivity;
 import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Pair;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 /**
  * Created by junsuk on 15. 3. 19..
@@ -56,7 +57,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "Challenge02",
             "Challenge04",
             "Challenge05",
-            "Challenge06"
+            "Challenge06",
+            "CalendarActivity"
     };
 
     private static final Class[] CHALLENGE_CLASSES = {
@@ -64,7 +66,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             SMSActivity.class,
             MainActivity.class,
             Mission05MainActivity.class,
-            Mission06MainActivity.class
+            Mission06MainActivity.class,
+            CalendarActivity.class
     };
 
     private static final String[] EVENT_ITEMS = {
@@ -131,12 +134,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
         startActivity(new Intent(getApplicationContext(), getItems().second[position]));
 
         // Class.forName 으로 정보 가져오는 방법
-//        Class c = null;
-//        try {
-//            c = Class.forName("com.suwonsmartapp.hello.activity.ActivityExamActivity");
-//            startActivity(new Intent(getApplicationContext(), c));
-//        } catch (ClassNotFoundException e) {
-//            Toast.makeText(getApplicationContext(), "없다", Toast.LENGTH_SHORT).show();
-//        }
+        // Class c = null;
+        // try {
+        // c =
+        // Class.forName("com.suwonsmartapp.hello.activity.ActivityExamActivity");
+        // startActivity(new Intent(getApplicationContext(), c));
+        // } catch (ClassNotFoundException e) {
+        // Toast.makeText(getApplicationContext(), "없다",
+        // Toast.LENGTH_SHORT).show();
+        // }
     }
 }
