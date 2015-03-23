@@ -1,15 +1,18 @@
 
 package com.suwonsmartapp.hello.challenge;
 
+import com.suwonsmartapp.hello.R;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
-
-import com.suwonsmartapp.hello.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -140,5 +143,28 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
         mAdapter.setSelectedPosition(position);
         String schedule = mScheduleMap.get(mAdapter.getItem(position));
         mScheduleEditText.setText(schedule);
+
+        // 일정 입력 다이얼로그 보이기
+        showScheduleInputDialog();
+    }
+
+    private void showScheduleInputDialog() {
+        // Custom Dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(CalendarActivity.this);
+        // Get the layout inflater
+        LayoutInflater inflater = getLayoutInflater();
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setView(inflater.inflate(R.layout.dialog_schedule_input, null))
+                // Add action buttons
+                .setPositiveButton("저장", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // 저장 처리
+                    }
+                })
+                .setNegativeButton("닫기", null);
+        builder.show();
     }
 }
