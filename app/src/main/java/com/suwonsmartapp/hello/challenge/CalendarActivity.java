@@ -1,8 +1,6 @@
 
 package com.suwonsmartapp.hello.challenge;
 
-import com.suwonsmartapp.hello.R;
-
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -10,6 +8,8 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
+
+import com.suwonsmartapp.hello.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -132,7 +132,7 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
         mGridView.setAdapter(mAdapter);
 
         // TextView 변경
-        mDisplayMonthTextView.setText(mYear + "년 " + mMonth + "월");
+        mDisplayMonthTextView.setText(year + "년 " + month + "월");
     }
 
     @Override
