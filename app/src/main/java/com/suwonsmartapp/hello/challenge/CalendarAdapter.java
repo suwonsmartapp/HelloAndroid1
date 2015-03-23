@@ -5,13 +5,13 @@ import com.suwonsmartapp.hello.R;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -20,13 +20,13 @@ import java.util.List;
 public class CalendarAdapter extends BaseAdapter {
 
     private Context mContext;
-    private List<String> mList;
+    private List<Calendar> mList;
 
     private int mSelectedPosition = -1;
     // Layout을 가져오기 위한 객체
     private LayoutInflater inflater;
 
-    public CalendarAdapter(Context context, List<String> list) {
+    public CalendarAdapter(Context context, List<Calendar> list) {
         mContext = context;
         mList = list;
     }
@@ -76,10 +76,12 @@ public class CalendarAdapter extends BaseAdapter {
         }
 
         // position 위치의 데이터를 취득
-        String date = (String) getItem(position);
-
-        if (!TextUtils.isEmpty(date)) {
-            holder.date.setText(date);
+        Calendar date = (Calendar) getItem(position);
+        if (date == null) {
+            holder.date.setText("");
+        } else {
+            String strDate = String.valueOf(date.get(Calendar.DAY_OF_MONTH));
+            holder.date.setText(strDate);
         }
 
         // 글자색

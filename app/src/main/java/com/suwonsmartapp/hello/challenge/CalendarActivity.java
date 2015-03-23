@@ -5,15 +5,16 @@ import com.suwonsmartapp.hello.R;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 
 public class CalendarActivity extends ActionBarActivity implements View.OnClickListener,
         AdapterView.OnItemClickListener {
@@ -24,15 +25,19 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
 
     private int mYear;
     private int mMonth;
-    private int mDay;
 
-    private ArrayList<String> mItems;
+    // 달력에 표시될 데이터
+    private ArrayList<Calendar> mItems;
+
+    // 일정 저장
+    private HashMap<Calendar, String> mScheduleMap;
 
     private GridView mGridView;
 
     private TextView mDisplayMonthTextView;
 
     private CalendarAdapter mAdapter;
+    private EditText mScheduleEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,7 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
 
         mGridView = (GridView) findViewById(R.id.gridview);
         mDisplayMonthTextView = (TextView) findViewById(R.id.tv_month);
+        mScheduleEditText = (EditText) findViewById(R.id.edittext_schedule);
 
         // 오늘 날짜
         recalculate();
@@ -52,6 +58,10 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
         findViewById(R.id.btn_prev_month).setOnClickListener(this);
         findViewById(R.id.btn_next_month).setOnClickListener(this);
         mGridView.setOnItemClickListener(this);
+
+        // 일정
+        mScheduleMap = new HashMap<>();
+        findViewById(R.id.btn_save_schedule).setOnClickListener(this);
     }
 
     /**
@@ -63,7 +73,6 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
         }
         mYear = mCalendar.get(Calendar.YEAR);
         mMonth = mCalendar.get(Calendar.MONTH) + 1;
-        mDay = mCalendar.get(Calendar.DAY_OF_MONTH);
     }
 
     @Override
@@ -71,15 +80,21 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.btn_prev_month:
                 mCalendar.add(Calendar.MONTH, -1);
+                recalculate();
+                loadCalendar(mYear, mMonth);
+                mScheduleEditText.setText("");
                 break;
             case R.id.btn_next_month:
                 mCalendar.add(Calendar.MONTH, 1);
+                recalculate();
+                loadCalendar(mYear, mMonth);
+                mScheduleEditText.setText("");
+                break;
+            case R.id.btn_save_schedule:
+                mScheduleMap.put((Calendar) mAdapter.getItem(mAdapter.getSelectedPosition()),
+                        mScheduleEditText.getText().toString());
                 break;
         }
-        Log.d(TAG, mCalendar.toString());
-
-        recalculate();
-        loadCalendar(mYear, mMonth);
     }
 
     /**
@@ -103,11 +118,11 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
         mItems = new ArrayList<>();
         // 공백
         for (int i = 1; i < dayOfWeek; i++) {
-            mItems.add("");
+            mItems.add(null);
         }
         // 날짜
         for (int i = 1; i <= lastDay; i++) {
-            mItems.add(String.valueOf(i));
+            mItems.add(new GregorianCalendar(year, month, i));
         }
 
         // 어댑터
@@ -123,5 +138,7 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         mAdapter.setSelectedPosition(position);
+        String schedule = mScheduleMap.get(mAdapter.getItem(position));
+        mScheduleEditText.setText(schedule);
     }
 }

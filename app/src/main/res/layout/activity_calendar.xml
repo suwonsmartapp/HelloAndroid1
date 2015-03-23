@@ -40,11 +40,35 @@
     <GridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:background="@android:color/darker_gray"
         android:horizontalSpacing="1dp"
         android:numColumns="7"
         android:stretchMode="columnWidth"
         android:verticalSpacing="1dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="일정" />
+
+        <EditText
+            android:id="@+id/edittext_schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_save_schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저 장" />
+    </LinearLayout>
 
 </LinearLayout>
