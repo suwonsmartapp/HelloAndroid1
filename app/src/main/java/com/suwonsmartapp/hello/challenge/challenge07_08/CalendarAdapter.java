@@ -1,5 +1,5 @@
 
-package com.suwonsmartapp.hello.challenge;
+package com.suwonsmartapp.hello.challenge.challenge07_08;
 
 import com.suwonsmartapp.hello.R;
 
@@ -23,8 +23,6 @@ public class CalendarAdapter extends BaseAdapter {
     private List<Calendar> mList;
 
     private int mSelectedPosition = -1;
-    // Layout을 가져오기 위한 객체
-    private LayoutInflater inflater;
 
     public CalendarAdapter(Context context, List<Calendar> list) {
         mContext = context;
@@ -62,7 +60,7 @@ public class CalendarAdapter extends BaseAdapter {
 
         if (convertView == null) {
             // View 를 처음 로딩할 때, Data 를 처음 셋팅할 때
-            inflater = (LayoutInflater) mContext.getSystemService(
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.calendar_item, null);
             TextView date = (TextView) convertView.findViewById(R.id.calendar_item_date);
@@ -75,12 +73,14 @@ public class CalendarAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
+        if (position == 31) {
+        }
         // position 위치의 데이터를 취득
-        Calendar date = (Calendar) getItem(position);
-        if (date == null) {
+        Calendar calendar = (Calendar) getItem(position);
+        if (calendar == null) {
             holder.date.setText("");
         } else {
-            String strDate = String.valueOf(date.get(Calendar.DAY_OF_MONTH));
+            String strDate = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
             holder.date.setText(strDate);
         }
 

@@ -87,7 +87,7 @@
             android:label="@string/title_activity_grid"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
-            android:name=".challenge.CalendarActivity"
+            android:name=".challenge.challenge07_08.CalendarActivity"
             android:label="@string/title_activity_calendar" />
     </application>
 

@@ -1,15 +1,16 @@
 
 package com.suwonsmartapp.hello.challenge.challenge05;
 
+import com.suwonsmartapp.hello.R;
+
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.suwonsmartapp.hello.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,6 +24,21 @@ public class Mission05MainActivity extends ActionBarActivity {
     private Button mBirthdayBtn;
 
     private int year, month, day, hour, minute;
+    private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                int dayOfMonth) {
+            // String msg = String.format("%d 년 %d 월 %d 일", year, monthOfYear +
+            // 1, dayOfMonth);
+            SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
+            GregorianCalendar tmpCalendar = new GregorianCalendar();
+            tmpCalendar.set(year, monthOfYear, dayOfMonth);
+
+            mBirthdayBtn.setText(sf.format(tmpCalendar.getTime()));
+            Toast.makeText(getApplicationContext(), sf.format(tmpCalendar.getTime()),
+                    Toast.LENGTH_SHORT).show();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,45 +57,28 @@ public class Mission05MainActivity extends ActionBarActivity {
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         minute = calendar.get(Calendar.MINUTE);
         mBirthdayBtn.setText(year + "년 " + (month + 1) + "월 " + day + "일");
+        mBirthdayBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(Mission05MainActivity.this, dateSetListener, year, month, day)
+                        .show();
+            }
+        });
     }
 
-    private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                int dayOfMonth) {
-            // String msg = String.format("%d 년 %d 월 %d 일", year, monthOfYear +
-            // 1, dayOfMonth);
-            SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
-            GregorianCalendar tmpCalendar = new GregorianCalendar();
-            tmpCalendar.set(year, monthOfYear, dayOfMonth);
-
-            mBirthdayBtn.setText(sf.format(tmpCalendar.getTime()));
-            Toast.makeText(getApplicationContext(), sf.format(tmpCalendar.getTime()),
-                    Toast.LENGTH_SHORT).show();
-        }
-    };
-
     // TimePickerDialog 참고
-    /*private TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
-
-        @Override
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            String am_pm = "";
-
-            Calendar datetime = Calendar.getInstance();
-            datetime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-            datetime.set(Calendar.MINUTE, minute);
-
-            if (datetime.get(Calendar.AM_PM) == Calendar.AM)
-                am_pm = "AM";
-            else if (datetime.get(Calendar.AM_PM) == Calendar.PM)
-                am_pm = "PM";
-
-            String strHrsToShow = (datetime.get(Calendar.HOUR) == 0) ? "12" : datetime
-                    .get(Calendar.HOUR) + "";
-
-            strHrsToShow += " 시 " + datetime.get(Calendar.MINUTE) + " 분 " + am_pm;
-        }
-    };*/
+    /*
+     * private TimePickerDialog.OnTimeSetListener timeSetListener = new
+     * TimePickerDialog.OnTimeSetListener() {
+     * @Override public void onTimeSet(TimePicker view, int hourOfDay, int
+     * minute) { String am_pm = ""; Calendar datetime = Calendar.getInstance();
+     * datetime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+     * datetime.set(Calendar.MINUTE, minute); if (datetime.get(Calendar.AM_PM)
+     * == Calendar.AM) am_pm = "AM"; else if (datetime.get(Calendar.AM_PM) ==
+     * Calendar.PM) am_pm = "PM"; String strHrsToShow =
+     * (datetime.get(Calendar.HOUR) == 0) ? "12" : datetime .get(Calendar.HOUR)
+     * + ""; strHrsToShow += " 시 " + datetime.get(Calendar.MINUTE) + " 분 " +
+     * am_pm; } };
+     */
 
 }
