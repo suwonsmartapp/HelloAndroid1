@@ -58,7 +58,7 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "Challenge04",
             "Challenge05",
             "Challenge06",
-            "CalendarActivity"
+            "Challenge07~08"
     };
 
     private static final Class[] CHALLENGE_CLASSES = {

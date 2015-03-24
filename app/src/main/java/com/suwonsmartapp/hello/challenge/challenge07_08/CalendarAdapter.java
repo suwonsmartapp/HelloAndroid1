@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -24,9 +26,24 @@ public class CalendarAdapter extends BaseAdapter {
 
     private int mSelectedPosition = -1;
 
+    private Calendar mCalendar;
+
+    private int mYear;
+    private int mMonth;
+
     public CalendarAdapter(Context context, List<Calendar> list) {
         mContext = context;
         mList = list;
+
+        // 오늘 날자 계산
+        recalculate();
+
+        // 달력 로드
+        loadCalendar(mYear, mMonth);
+    }
+
+    public CalendarAdapter(Context context) {
+        this(context, new ArrayList<Calendar>());
     }
 
     public int getSelectedPosition() {
@@ -36,6 +53,70 @@ public class CalendarAdapter extends BaseAdapter {
     public void setSelectedPosition(int selectedPosition) {
         mSelectedPosition = selectedPosition;
         notifyDataSetChanged();
+    }
+
+    public int getYear() {
+        return mYear;
+    }
+
+    public void setYear(int year) {
+        this.mYear = year;
+    }
+
+    public int getMonth() {
+        return mMonth + 1;
+    }
+
+    public void setMonth(int month) {
+        this.mMonth = month - 1;
+    }
+
+    /**
+     * 전역변수들 다시 계산
+     */
+    private void recalculate() {
+        if (mCalendar == null) {
+            mCalendar = GregorianCalendar.getInstance();
+        }
+        mYear = mCalendar.get(Calendar.YEAR);
+        mMonth = mCalendar.get(Calendar.MONTH);
+    }
+
+    private void loadCalendar(int year, int month) {
+        // year년 month월로 캘린더 설정
+        mCalendar.set(Calendar.YEAR, year);
+        mCalendar.set(Calendar.DAY_OF_MONTH, month);
+
+        // 이번달 1일이 몇 번째에 있는지 1 ~ 7
+        mCalendar.set(Calendar.DAY_OF_MONTH, 1);
+        int dayOfWeek = mCalendar.get(Calendar.DAY_OF_WEEK);
+
+        // 이번달 마지막 날
+        int lastDay = mCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        mList = new ArrayList<>();
+        // 공백
+        for (int i = 1; i < dayOfWeek; i++) {
+            mList.add(null);
+        }
+        // 날짜
+        for (int i = 1; i <= lastDay; i++) {
+            mList.add(new GregorianCalendar(year, month, i));
+        }
+
+        notifyDataSetChanged();
+    }
+
+    public void setNextMonth() {
+        mCalendar.add(Calendar.MONTH, 1);
+        recalculate();
+        loadCalendar(mYear, mMonth);
+    }
+
+    public void setPrevMonth() {
+        mCalendar.add(Calendar.MONTH, -1);
+        recalculate();
+        loadCalendar(mYear, mMonth);
     }
 
     @Override
@@ -73,8 +154,6 @@ public class CalendarAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        if (position == 31) {
-        }
         // position 위치의 데이터를 취득
         Calendar calendar = (Calendar) getItem(position);
         if (calendar == null) {

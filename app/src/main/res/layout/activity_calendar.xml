@@ -37,16 +37,11 @@
 
     </LinearLayout>
 
-    <GridView
+    <com.suwonsmartapp.hello.challenge.challenge07_08.CalendarView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@android:color/darker_gray"
-        android:horizontalSpacing="1dp"
-        android:numColumns="7"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="1dp" />
+        android:layout_weight="1" />
 
     <ListView
         android:id="@+id/lv_schedule"

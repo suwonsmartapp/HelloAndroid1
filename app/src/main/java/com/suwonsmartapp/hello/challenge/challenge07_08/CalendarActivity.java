@@ -15,13 +15,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public class CalendarActivity extends ActionBarActivity implements View.OnClickListener,
@@ -29,18 +27,10 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
 
     private static final String TAG = CalendarActivity.class.getSimpleName();
 
-    private Calendar mCalendar;
-
-    private int mYear;
-    private int mMonth;
-
-    // 달력에 표시될 데이터
-    private ArrayList<Calendar> mItems;
-
-    // 일정 저장
+    // 달력과 일정을 연결하는 Map
     private HashMap<Calendar, ArrayList<String>> mScheduleMap;
 
-    private GridView mGridView;
+    private CalendarView mCalendarView;
     private ListView mScheduleListView;
     private TextView mDisplayMonthTextView;
 
@@ -55,88 +45,44 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        mGridView = (GridView) findViewById(R.id.gridview);
+        mCalendarView = (CalendarView) findViewById(R.id.gridview);
         mDisplayMonthTextView = (TextView) findViewById(R.id.tv_month);
         mScheduleListView = (ListView) findViewById(R.id.lv_schedule);
 
         // 오늘 날짜
-        recalculate();
+        mCalendarAdapter = new CalendarAdapter(getApplicationContext());
+        mCalendarView.setAdapter(mCalendarAdapter);
+        mCalendarView.setOnItemClickListener(this);
 
-        // 캘린더 로드
-        loadCalendar(mYear, mMonth);
+        // TextView 변경
+        setText();
 
         // 버튼 이벤트
         findViewById(R.id.btn_prev_month).setOnClickListener(this);
         findViewById(R.id.btn_next_month).setOnClickListener(this);
-        mGridView.setOnItemClickListener(this);
 
-        // 일정
+        // Map 초기화
         mScheduleMap = new HashMap<>();
     }
 
-    /**
-     * 전역변수들 다시 계산
-     */
-    private void recalculate() {
-        if (mCalendar == null) {
-            mCalendar = GregorianCalendar.getInstance();
-        }
-        mYear = mCalendar.get(Calendar.YEAR);
-        mMonth = mCalendar.get(Calendar.MONTH);
+    private void setText() {
+        mDisplayMonthTextView.setText(mCalendarAdapter.getYear() + "년 "
+                + mCalendarAdapter.getMonth() + "월");
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_prev_month:
-                mCalendar.add(Calendar.MONTH, -1);
-                recalculate();
-                loadCalendar(mYear, mMonth);
+                mCalendarAdapter.setPrevMonth();
+                mCalendarAdapter.notifyDataSetChanged();
                 break;
             case R.id.btn_next_month:
-                mCalendar.add(Calendar.MONTH, 1);
-                recalculate();
-                loadCalendar(mYear, mMonth);
+                mCalendarAdapter.setNextMonth();
+                mCalendarAdapter.notifyDataSetChanged();
                 break;
         }
-    }
-
-    /**
-     * 캘린더를 화면에 표시
-     * 
-     * @param year 년
-     * @param month 월 0~11
-     */
-    private void loadCalendar(int year, int month) {
-        // year년 month월로 캘린더 설정
-        mCalendar.set(Calendar.YEAR, year);
-        mCalendar.set(Calendar.DAY_OF_MONTH, month);
-
-        // 이번달 1일이 몇 번째에 있는지 1 ~ 7
-        mCalendar.set(Calendar.DAY_OF_MONTH, 1);
-        int dayOfWeek = mCalendar.get(Calendar.DAY_OF_WEEK);
-
-        // 이번달 마지막 날
-        int lastDay = mCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-        mItems = new ArrayList<>();
-        // 공백
-        for (int i = 1; i < dayOfWeek; i++) {
-            mItems.add(null);
-        }
-        // 날짜
-        for (int i = 1; i <= lastDay; i++) {
-            mItems.add(new GregorianCalendar(year, month, i));
-        }
-
-        // 어댑터
-        mCalendarAdapter = new CalendarAdapter(getApplicationContext(), mItems);
-
-        // GridView에 어댑터 설정
-        mGridView.setAdapter(mCalendarAdapter);
-
-        // TextView 변경
-        mDisplayMonthTextView.setText(year + "년 " + (month + 1) + "월");
+        setText();
     }
 
     @Override
