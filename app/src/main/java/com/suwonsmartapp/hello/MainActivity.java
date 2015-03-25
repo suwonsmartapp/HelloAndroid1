@@ -20,7 +20,8 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
             "Activity",
             "Challenge",
             "Event",
-            "ListView"
+            "ListView",
+            "Thread"
     };
 
     private ListView mListView;

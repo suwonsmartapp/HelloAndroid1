@@ -29,4 +29,5 @@
     <string name="title_activity_grid">GridActivity</string>
     <string name="title_activity_calendar">CalendarActivity</string>
     <string name="nextMonth">Next Month</string>
+    <string name="title_activity_thread">ThreadActivity</string>
 </resources>

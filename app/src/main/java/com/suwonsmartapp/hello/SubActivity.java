@@ -18,6 +18,7 @@ import com.suwonsmartapp.hello.listview.GridActivity;
 import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
+import com.suwonsmartapp.hello.thread.ThreadActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -101,11 +102,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
 
         mListView = (ListView) findViewById(R.id.listView);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),
-                android.R.layout.simple_list_item_1, getItems().first);
+        if (getItems() != null) {
 
-        mListView.setAdapter(adapter);
-        mListView.setOnItemClickListener(this);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),
+                    android.R.layout.simple_list_item_1, getItems().first);
+
+            mListView.setAdapter(adapter);
+            mListView.setOnItemClickListener(this);
+        }
     }
 
     private Pair<String[], Class[]> getItems() {
@@ -124,6 +128,9 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
                 break;
             case "ListView":
                 result = new Pair(LISTVIEW_ITEMS, LISTVIEW_CLASSES);
+                break;
+            case "Thread":
+                startActivity(new Intent(getApplicationContext(), ThreadActivity.class));
                 break;
         }
         return result;

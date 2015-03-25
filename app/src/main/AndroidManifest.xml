@@ -89,6 +89,9 @@
         <activity
             android:name=".challenge.challenge07_08.CalendarActivity"
             android:label="@string/title_activity_calendar" />
+        <activity
+            android:name=".thread.ThreadActivity"
+            android:label="@string/title_activity_thread"></activity>
     </application>
 
 </manifest>
