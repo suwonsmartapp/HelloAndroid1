@@ -20,6 +20,9 @@ public class AsyncTaskActivity extends ActionBarActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thread);
 
+        mProgressTextView = (TextView) findViewById(R.id.tv_progress);
+        mProgressBar = (ProgressBar) findViewById(R.id.progress);
+
         findViewById(R.id.btn_thread).setOnClickListener(this);
     }
 
