@@ -94,7 +94,10 @@
             android:label="@string/title_activity_thread" />
         <activity
             android:name=".thread.AsyncTaskActivity"
-            android:label="@string/title_activity_async_task"></activity>
+            android:label="@string/title_activity_async_task" />
+        <activity
+            android:name=".thread.LoginActivity"
+            android:label="@string/title_activity_login"></activity>
     </application>
 
 </manifest>
