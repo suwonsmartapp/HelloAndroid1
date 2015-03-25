@@ -30,4 +30,5 @@
     <string name="title_activity_calendar">CalendarActivity</string>
     <string name="nextMonth">Next Month</string>
     <string name="title_activity_thread">ThreadActivity</string>
+    <string name="title_activity_async_task">AsyncTaskActivity</string>
 </resources>

@@ -91,7 +91,10 @@
             android:label="@string/title_activity_calendar" />
         <activity
             android:name=".thread.ThreadActivity"
-            android:label="@string/title_activity_thread"></activity>
+            android:label="@string/title_activity_thread" />
+        <activity
+            android:name=".thread.AsyncTaskActivity"
+            android:label="@string/title_activity_async_task"></activity>
     </application>
 
 </manifest>

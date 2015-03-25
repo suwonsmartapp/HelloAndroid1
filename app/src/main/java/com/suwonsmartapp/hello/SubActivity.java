@@ -18,6 +18,7 @@ import com.suwonsmartapp.hello.listview.GridActivity;
 import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
+import com.suwonsmartapp.hello.thread.AsyncTaskActivity;
 import com.suwonsmartapp.hello.thread.ThreadActivity;
 
 import android.content.Intent;
@@ -93,6 +94,16 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             GridActivity.class
     };
 
+    private static final String[] THREAD_ITEMS = {
+            "Thread, Handler",
+            "AsyncTask"
+    };
+
+    private static final Class[] THREAD_CLASSES = {
+            ThreadActivity.class,
+            AsyncTaskActivity.class
+    };
+
     private ListView mListView;
 
     @Override
@@ -130,7 +141,7 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
                 result = new Pair(LISTVIEW_ITEMS, LISTVIEW_CLASSES);
                 break;
             case "Thread":
-                startActivity(new Intent(getApplicationContext(), ThreadActivity.class));
+                result = new Pair(THREAD_ITEMS, THREAD_CLASSES);
                 break;
         }
         return result;
