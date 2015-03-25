@@ -10,7 +10,6 @@ import android.widget.GridView;
  * Created by junsuk on 15. 3. 24.. 달력 표시용 View
  */
 public class CalendarView extends GridView {
-
     public CalendarView(Context context) {
         this(context, null);
     }

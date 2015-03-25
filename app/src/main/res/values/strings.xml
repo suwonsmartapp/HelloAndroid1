@@ -28,4 +28,5 @@
     <string name="title_activity_spinner">SpinnerActivity</string>
     <string name="title_activity_grid">GridActivity</string>
     <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="nextMonth">Next Month</string>
 </resources>
