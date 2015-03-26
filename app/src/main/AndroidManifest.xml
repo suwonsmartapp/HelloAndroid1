@@ -100,7 +100,12 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".thread.TimerActivity"
-            android:label="@string/title_activity_timer"></activity>
+            android:label="@string/title_activity_timer" />
+        <activity
+            android:name=".service.KitchenTimerActivity"
+            android:label="@string/title_activity_timer_service" />
+
+        <service android:name=".service.KitchenTimerService" />
     </application>
 
 </manifest>

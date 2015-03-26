@@ -20,7 +20,9 @@ public class TimerActivity extends ActionBarActivity {
     private Button mPauseButton;
     private TextView mTimerValue;
     private long mStartTime = 0L;
+
     private Handler mCustomHandler = new Handler();
+
     protected Runnable mUpdateTimerThread = new Runnable() {
 
         @Override
@@ -36,7 +38,7 @@ public class TimerActivity extends ActionBarActivity {
             mTimerValue.setText(String.format("%02d", mins) + ":"
                     + String.format("%02d", secs) + ":"
                     + String.format("%03d", milliseconds));
-            mCustomHandler.postDelayed(this, 0);
+            mCustomHandler.post(this);
 
         }
     };
@@ -56,7 +58,7 @@ public class TimerActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 mStartTime = SystemClock.uptimeMillis();
-                mCustomHandler.postDelayed(mUpdateTimerThread, 0);
+                mCustomHandler.post(mUpdateTimerThread);
             }
         });
 
