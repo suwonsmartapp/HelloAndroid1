@@ -21,6 +21,7 @@ import com.suwonsmartapp.hello.listview.SpinnerActivity;
 import com.suwonsmartapp.hello.thread.AsyncTaskActivity;
 import com.suwonsmartapp.hello.thread.LoginActivity;
 import com.suwonsmartapp.hello.thread.ThreadActivity;
+import com.suwonsmartapp.hello.thread.TimerActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -98,13 +99,15 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
     private static final String[] THREAD_ITEMS = {
             "Thread, Handler",
             "AsyncTask",
-            "Login"
+            "Login",
+            "Timer"
     };
 
     private static final Class[] THREAD_CLASSES = {
             ThreadActivity.class,
             AsyncTaskActivity.class,
-            LoginActivity.class
+            LoginActivity.class,
+            TimerActivity.class
     };
 
     private ListView mListView;

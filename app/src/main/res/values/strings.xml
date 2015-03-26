@@ -32,4 +32,8 @@
     <string name="title_activity_thread">ThreadActivity</string>
     <string name="title_activity_async_task">AsyncTaskActivity</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_timer">TimerActivity</string>
+    <string name="timerVal">00:00:000</string>
+    <string name="pauseButtonLabel">Pause</string>
+    <string name="startButtonLabel">Start</string>
 </resources>

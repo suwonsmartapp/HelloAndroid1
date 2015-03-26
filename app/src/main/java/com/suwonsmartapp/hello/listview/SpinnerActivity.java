@@ -1,6 +1,8 @@
 
 package com.suwonsmartapp.hello.listview;
 
+import com.suwonsmartapp.hello.R;
+
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -9,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.suwonsmartapp.hello.R;
+import java.util.ArrayList;
 
 public class SpinnerActivity extends ActionBarActivity implements
         AdapterView.OnItemSelectedListener {
@@ -19,6 +21,8 @@ public class SpinnerActivity extends ActionBarActivity implements
             "Black", "Blue", "Red", "White", "Orange", "Yellow"
     };
 
+    private ArrayList<String> mColor;
+
     private Spinner mSpinner;
 
     @Override
@@ -26,11 +30,22 @@ public class SpinnerActivity extends ActionBarActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spinner);
 
+        mColor = new ArrayList<>();
+        mColor.add("Black");
+        mColor.add("Blue");
+        mColor.add("Red");
+        mColor.add("White");
+        mColor.add("Orange");
+        mColor.add("Yellow");
+
         mSpinner = (Spinner) findViewById(R.id.spinner);
 
         // 2. Adapter에 데이터 연결
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                getApplicationContext(), android.R.layout.simple_spinner_item, COLORS);
+                getApplicationContext(),
+                android.R.layout.simple_spinner_item,
+                COLORS);
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // 3. Spinner에 Adapter 설정
