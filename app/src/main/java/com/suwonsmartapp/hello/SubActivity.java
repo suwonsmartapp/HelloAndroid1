@@ -8,6 +8,7 @@ import com.suwonsmartapp.hello.activity.FrameLayoutActivity;
 import com.suwonsmartapp.hello.activity.RelativeLayoutExamActivity;
 import com.suwonsmartapp.hello.activity.SecondActivity;
 import com.suwonsmartapp.hello.activity.TableLayoutActivity;
+import com.suwonsmartapp.hello.broadcast.BroadcastActivity;
 import com.suwonsmartapp.hello.challenge.challenge01.ImageExamActivity;
 import com.suwonsmartapp.hello.challenge.challenge02.SMSActivity;
 import com.suwonsmartapp.hello.challenge.challenge05.Mission05MainActivity;
@@ -102,7 +103,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "AsyncTask",
             "Login",
             "Timer",
-            "KitchenTimer"
+            "KitchenTimer",
+            "BroadcastReceiver"
     };
 
     private static final Class[] THREAD_CLASSES = {
@@ -110,7 +112,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             AsyncTaskActivity.class,
             LoginActivity.class,
             TimerActivity.class,
-            KitchenTimerActivity.class
+            KitchenTimerActivity.class,
+            BroadcastActivity.class
     };
 
     private ListView mListView;

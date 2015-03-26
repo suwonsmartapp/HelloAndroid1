@@ -106,6 +106,21 @@
             android:label="@string/title_activity_timer_service" />
 
         <service android:name=".service.KitchenTimerService" />
+
+        <activity
+            android:name=".broadcast.BroadcastActivity"
+            android:label="@string/title_activity_broadcast"></activity>
+
+        <!-- 글로벌 리시버 (다른 앱에서 쏜 broadcast 도 받는다) -->
+        <receiver
+            android:name=".broadcast.MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED" />
+                <action android:name="android.intent.action.BATTERY_LOW" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
