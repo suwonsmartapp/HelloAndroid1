@@ -109,7 +109,7 @@
 
         <activity
             android:name=".broadcast.BroadcastActivity"
-            android:label="@string/title_activity_broadcast"></activity>
+            android:label="@string/title_activity_broadcast" />
 
         <!-- 글로벌 리시버 (다른 앱에서 쏜 broadcast 도 받는다) -->
         <receiver
@@ -121,6 +121,10 @@
                 <action android:name="android.intent.action.BATTERY_LOW" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".parsing.ParsingActivity"
+            android:label="@string/title_activity_parsing"></activity>
     </application>
 
 </manifest>

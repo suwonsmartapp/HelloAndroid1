@@ -38,4 +38,5 @@
     <string name="startButtonLabel">Start</string>
     <string name="title_activity_timer_service">TimerServiceActivity</string>
     <string name="title_activity_broadcast">BroadcastActivity</string>
+    <string name="title_activity_parsing">ParsingActivity</string>
 </resources>

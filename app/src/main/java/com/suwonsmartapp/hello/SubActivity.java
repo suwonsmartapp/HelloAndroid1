@@ -19,6 +19,7 @@ import com.suwonsmartapp.hello.listview.GridActivity;
 import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
+import com.suwonsmartapp.hello.parsing.ParsingActivity;
 import com.suwonsmartapp.hello.service.KitchenTimerActivity;
 import com.suwonsmartapp.hello.thread.AsyncTaskActivity;
 import com.suwonsmartapp.hello.thread.LoginActivity;
@@ -104,7 +105,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "Login",
             "Timer",
             "KitchenTimer",
-            "BroadcastReceiver"
+            "BroadcastReceiver",
+            "Parsing"
     };
 
     private static final Class[] THREAD_CLASSES = {
@@ -113,7 +115,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             LoginActivity.class,
             TimerActivity.class,
             KitchenTimerActivity.class,
-            BroadcastActivity.class
+            BroadcastActivity.class,
+            ParsingActivity.class
     };
 
     private ListView mListView;
