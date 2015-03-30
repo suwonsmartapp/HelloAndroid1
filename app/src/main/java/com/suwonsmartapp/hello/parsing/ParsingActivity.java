@@ -15,7 +15,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,7 +24,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.URI;
@@ -148,12 +146,15 @@ public class ParsingActivity extends ActionBarActivity implements AdapterView.On
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getApplicationContext(), "url : " + mRecipeInfoList.get(position).getUrl(),
-                Toast.LENGTH_SHORT).show();
+        // Toast.makeText(getApplicationContext(), "url : " +
+        // mRecipeInfoList.get(position).getUrl(),
+        // Toast.LENGTH_SHORT).show();
 
+        // url
         String url = mRecipeInfoList.get(position).getUrl();
 
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
+        intent.putExtra("url", url); // url 을 intent 싫어서 activity를 호출
         startActivity(intent);
     }
 }
