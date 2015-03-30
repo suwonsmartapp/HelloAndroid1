@@ -127,7 +127,11 @@
             android:label="@string/title_activity_parsing" />
         <activity
             android:name=".parsing_json.WebViewActivity"
-            android:label="@string/title_activity_web_view"></activity>
+            android:label="@string/title_activity_web_view" />
+
+        <activity
+            android:name=".parsing_xml.ParsingActivity"
+            android:label="@string/title_activity_parsing" />
     </application>
 
 </manifest>

@@ -106,7 +106,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "Timer",
             "KitchenTimer",
             "BroadcastReceiver",
-            "Parsing"
+            "Json Parsing",
+            "Html Parsing"
     };
 
     private static final Class[] THREAD_CLASSES = {
@@ -116,7 +117,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             TimerActivity.class,
             KitchenTimerActivity.class,
             BroadcastActivity.class,
-            ParsingActivity.class
+            ParsingActivity.class,
+            com.suwonsmartapp.hello.parsing_xml.ParsingActivity.class
     };
 
     private ListView mListView;
