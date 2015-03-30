@@ -20,8 +20,10 @@ import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.URI;
@@ -31,7 +33,7 @@ import java.util.ArrayList;
 /**
  * API 정보 https://webservice.rakuten.co.jp/app/create
  */
-public class ParsingActivity extends ActionBarActivity {
+public class ParsingActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     private static final String TAG = ParsingActivity.class.getSimpleName();
     private RecipeAdapter mAdapter;
@@ -54,6 +56,7 @@ public class ParsingActivity extends ActionBarActivity {
         mProgressBar = (ProgressBar) findViewById(R.id.progress);
 
         mListView = (ListView) findViewById(R.id.lv_recipe);
+        mListView.setOnItemClickListener(this);
 
         mRecipeInfoList = new ArrayList<>();
 
@@ -141,4 +144,9 @@ public class ParsingActivity extends ActionBarActivity {
         }
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(getApplicationContext(), "url : " + mRecipeInfoList.get(position).getUrl(),
+                Toast.LENGTH_SHORT).show();
+    }
 }
