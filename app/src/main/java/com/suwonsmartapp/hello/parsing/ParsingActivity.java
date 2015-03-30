@@ -20,7 +20,6 @@ import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -35,7 +34,7 @@ import java.util.ArrayList;
 public class ParsingActivity extends ActionBarActivity {
 
     private static final String TAG = ParsingActivity.class.getSimpleName();
-    ArrayAdapter<RecipeInfo> mAdapter;
+    private RecipeAdapter mAdapter;
     private ArrayList<RecipeInfo> mRecipeInfoList;
     private ListView mListView;
     private Handler mHandler = new Handler() {
@@ -130,9 +129,7 @@ public class ParsingActivity extends ActionBarActivity {
             }
 
             // 3. 파싱한 데이터를 어댑터에 설정
-            mAdapter = new ArrayAdapter<RecipeInfo>(
-                    ParsingActivity.this, android.R.layout.simple_list_item_1,
-                    mRecipeInfoList);
+            mAdapter = new RecipeAdapter(ParsingActivity.this, mRecipeInfoList);
 
             // 4. 어댑터를 리스트 뷰에 설정 (UI 갱신)
             mHandler.sendEmptyMessage(0);
