@@ -1,5 +1,5 @@
 
-package com.suwonsmartapp.hello.parsing;
+package com.suwonsmartapp.hello.parsing_json;
 
 import com.suwonsmartapp.hello.R;
 
@@ -18,6 +18,7 @@ public class WebViewActivity extends ActionBarActivity {
         setContentView(R.layout.activity_web_view);
 
         mWebView = (WebView) findViewById(R.id.webview_recipe);
+        mWebView.getSettings().setJavaScriptEnabled(true);
 
         // url 값 받아오기
         Intent intent = getIntent();

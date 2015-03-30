@@ -1,5 +1,5 @@
 
-package com.suwonsmartapp.hello.parsing;
+package com.suwonsmartapp.hello.parsing_json;
 
 import android.content.Context;
 import android.text.TextUtils;

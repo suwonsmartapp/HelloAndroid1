@@ -123,10 +123,10 @@
         </receiver>
 
         <activity
-            android:name=".parsing.ParsingActivity"
+            android:name=".parsing_json.ParsingActivity"
             android:label="@string/title_activity_parsing" />
         <activity
-            android:name=".parsing.WebViewActivity"
+            android:name=".parsing_json.WebViewActivity"
             android:label="@string/title_activity_web_view"></activity>
     </application>
 

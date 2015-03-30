@@ -19,7 +19,7 @@ import com.suwonsmartapp.hello.listview.GridActivity;
 import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
-import com.suwonsmartapp.hello.parsing.ParsingActivity;
+import com.suwonsmartapp.hello.parsing_json.ParsingActivity;
 import com.suwonsmartapp.hello.service.KitchenTimerActivity;
 import com.suwonsmartapp.hello.thread.AsyncTaskActivity;
 import com.suwonsmartapp.hello.thread.LoginActivity;

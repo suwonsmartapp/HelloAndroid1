@@ -1,5 +1,5 @@
 
-package com.suwonsmartapp.hello.parsing;
+package com.suwonsmartapp.hello.parsing_json;
 
 /**
  * Created by junsuk on 15. 3. 27..
