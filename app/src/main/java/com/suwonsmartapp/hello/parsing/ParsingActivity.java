@@ -14,6 +14,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -148,5 +150,10 @@ public class ParsingActivity extends ActionBarActivity implements AdapterView.On
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(getApplicationContext(), "url : " + mRecipeInfoList.get(position).getUrl(),
                 Toast.LENGTH_SHORT).show();
+
+        String url = mRecipeInfoList.get(position).getUrl();
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
     }
 }
