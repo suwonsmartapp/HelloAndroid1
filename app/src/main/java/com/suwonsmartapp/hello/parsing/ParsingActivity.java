@@ -19,8 +19,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import java.io.IOException;
 import java.net.URI;
@@ -43,14 +45,21 @@ public class ParsingActivity extends ActionBarActivity {
         }
     };
 
+    private ProgressBar mProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parsing);
 
+        mProgressBar = (ProgressBar) findViewById(R.id.progress);
+
         mListView = (ListView) findViewById(R.id.lv_recipe);
 
         mRecipeInfoList = new ArrayList<>();
+
+        // 0. ProgressDialog 띄우기
+        mProgressBar.setVisibility(View.VISIBLE);
 
         // 1. web에 데이터 요청. 무조건 Thread사용해야 함
         Thread thread = new Thread() {
@@ -71,6 +80,14 @@ public class ParsingActivity extends ActionBarActivity {
 
                     // 2. 요청 받은 내용을 파싱
                     jsonParsing(responseString);
+
+                    // final. ProgressDialog 를 dismiss()
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mProgressBar.setVisibility(View.GONE);
+                        }
+                    });
 
                 } catch (URISyntaxException e) {
                     Log.e(TAG, e.getLocalizedMessage());
