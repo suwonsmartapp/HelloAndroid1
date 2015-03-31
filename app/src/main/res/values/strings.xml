@@ -40,4 +40,5 @@
     <string name="title_activity_broadcast">BroadcastActivity</string>
     <string name="title_activity_parsing">ParsingActivity</string>
     <string name="title_activity_web_view">WebViewActivity</string>
+    <string name="title_activity_bitmap">BitmapActivity</string>
 </resources>

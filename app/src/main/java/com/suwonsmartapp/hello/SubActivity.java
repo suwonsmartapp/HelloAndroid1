@@ -17,6 +17,7 @@ import com.suwonsmartapp.hello.activity.FrameLayoutActivity;
 import com.suwonsmartapp.hello.activity.RelativeLayoutExamActivity;
 import com.suwonsmartapp.hello.activity.SecondActivity;
 import com.suwonsmartapp.hello.activity.TableLayoutActivity;
+import com.suwonsmartapp.hello.bitmap.BitmapActivity;
 import com.suwonsmartapp.hello.broadcast.BroadcastActivity;
 import com.suwonsmartapp.hello.challenge.challenge01.ImageExamActivity;
 import com.suwonsmartapp.hello.challenge.challenge02.SMSActivity;
@@ -108,7 +109,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "BroadcastReceiver",
             "Json Parsing",
             "Html Parsing",
-            "Google Map"
+            "Google Map",
+            "Bitmap"
     };
 
     private static final Class[] THREAD_CLASSES = {
@@ -120,7 +122,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             BroadcastActivity.class,
             ParsingActivity.class,
             com.suwonsmartapp.hello.parsing_xml.ParsingActivity.class,
-            com.suwonsmartapp.hello.map.MainActivity.class
+            com.suwonsmartapp.hello.map.MainActivity.class,
+            BitmapActivity.class
     };
 
     private ListView mListView;
