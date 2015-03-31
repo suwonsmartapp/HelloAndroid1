@@ -5,6 +5,19 @@
     <!-- 도전.06 웹브라우저 화면 구성 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- 구글 맵을 위해 추가 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- The following two permissions are not required to use
+         Google Maps Android API v2, but are recommended. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- Open GL 버전2 지원여부 (Google Map) -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -132,6 +145,19 @@
         <activity
             android:name=".parsing_xml.ParsingActivity"
             android:label="@string/title_activity_parsing" />
+
+        <activity
+            android:name=".map.MainActivity"
+            android:label="@string/title_activity_parsing" />
+
+        <!-- Google Map 사용을 위해 -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA4KvVl4vfpkj0-6_hf4csqANy4ubHZFXo" />
+
     </application>
 
 </manifest>

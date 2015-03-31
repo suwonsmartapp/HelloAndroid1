@@ -1,6 +1,15 @@
 
 package com.suwonsmartapp.hello;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Pair;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
 import com.suwonsmartapp.hello.activity.ActivityExamActivity;
 import com.suwonsmartapp.hello.activity.EditTextActivity;
 import com.suwonsmartapp.hello.activity.FirstActivity;
@@ -25,15 +34,6 @@ import com.suwonsmartapp.hello.thread.AsyncTaskActivity;
 import com.suwonsmartapp.hello.thread.LoginActivity;
 import com.suwonsmartapp.hello.thread.ThreadActivity;
 import com.suwonsmartapp.hello.thread.TimerActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.util.Pair;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 /**
  * Created by junsuk on 15. 3. 19..
@@ -107,7 +107,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "KitchenTimer",
             "BroadcastReceiver",
             "Json Parsing",
-            "Html Parsing"
+            "Html Parsing",
+            "Google Map"
     };
 
     private static final Class[] THREAD_CLASSES = {
@@ -118,7 +119,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             KitchenTimerActivity.class,
             BroadcastActivity.class,
             ParsingActivity.class,
-            com.suwonsmartapp.hello.parsing_xml.ParsingActivity.class
+            com.suwonsmartapp.hello.parsing_xml.ParsingActivity.class,
+            com.suwonsmartapp.hello.map.MainActivity.class
     };
 
     private ListView mListView;
