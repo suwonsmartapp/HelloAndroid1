@@ -162,6 +162,10 @@
             android:name=".bitmap.BitmapActivity"
             android:label="@string/title_activity_bitmap" >
         </activity>
+        <activity
+            android:name=".graphic.GraphicActivity"
+            android:label="@string/title_activity_graphic" >
+        </activity>
     </application>
 
 </manifest>

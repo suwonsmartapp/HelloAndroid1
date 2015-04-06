@@ -25,6 +25,7 @@ import com.suwonsmartapp.hello.challenge.challenge05.Mission05MainActivity;
 import com.suwonsmartapp.hello.challenge.challenge06.Mission06MainActivity;
 import com.suwonsmartapp.hello.challenge.challenge07_08.CalendarActivity;
 import com.suwonsmartapp.hello.event.TouchEventActivity;
+import com.suwonsmartapp.hello.graphic.GraphicActivity;
 import com.suwonsmartapp.hello.listview.GridActivity;
 import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
@@ -110,7 +111,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "Json Parsing",
             "Html Parsing",
             "Google Map",
-            "Bitmap"
+            "Bitmap",
+            "CustomView"
     };
 
     private static final Class[] THREAD_CLASSES = {
@@ -123,7 +125,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             ParsingActivity.class,
             com.suwonsmartapp.hello.parsing_xml.ParsingActivity.class,
             com.suwonsmartapp.hello.map.MainActivity.class,
-            BitmapActivity.class
+            BitmapActivity.class,
+            GraphicActivity.class
     };
 
     private ListView mListView;
