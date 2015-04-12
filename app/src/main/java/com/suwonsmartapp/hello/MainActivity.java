@@ -21,7 +21,12 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
             "Challenge",
             "Event",
             "ListView",
-            "Thread"
+            "Thread",
+            "BroadcastReceiver",
+            "Parsing",
+            "Map",
+            "Graphic",
+            "Custom"
     };
 
     private ListView mListView;

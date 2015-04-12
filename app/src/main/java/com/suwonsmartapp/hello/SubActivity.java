@@ -1,15 +1,6 @@
 
 package com.suwonsmartapp.hello;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.util.Pair;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
 import com.suwonsmartapp.hello.activity.ActivityExamActivity;
 import com.suwonsmartapp.hello.activity.EditTextActivity;
 import com.suwonsmartapp.hello.activity.FirstActivity;
@@ -36,6 +27,15 @@ import com.suwonsmartapp.hello.thread.AsyncTaskActivity;
 import com.suwonsmartapp.hello.thread.LoginActivity;
 import com.suwonsmartapp.hello.thread.ThreadActivity;
 import com.suwonsmartapp.hello.thread.TimerActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Pair;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 /**
  * Created by junsuk on 15. 3. 19..
@@ -106,13 +106,7 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "AsyncTask",
             "Login",
             "Timer",
-            "KitchenTimer",
-            "BroadcastReceiver",
-            "Json Parsing",
-            "Html Parsing",
-            "Google Map",
-            "Bitmap",
-            "CustomView"
+            "KitchenTimer"
     };
 
     private static final Class[] THREAD_CLASSES = {
@@ -120,12 +114,48 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             AsyncTaskActivity.class,
             LoginActivity.class,
             TimerActivity.class,
-            KitchenTimerActivity.class,
-            BroadcastActivity.class,
+            KitchenTimerActivity.class
+    };
+
+    private static final String[] BROADCASTRECEIVER_ITEMS = {
+            "BroadcastReceiver"
+    };
+
+    private static final Class[] BROADCASTRECEIVER_CLASSES = {
+            BroadcastActivity.class
+    };
+
+    private static final String[] PARSING_ITEMS = {
+            "Json Parsing",
+            "Html Parsing"
+    };
+
+    private static final Class[] PARSING_CLASSES = {
             ParsingActivity.class,
             com.suwonsmartapp.hello.parsing_xml.ParsingActivity.class,
-            com.suwonsmartapp.hello.map.MainActivity.class,
-            BitmapActivity.class,
+    };
+
+    private static final String[] MAP_ITEMS = {
+            "Google Map"
+    };
+
+    private static final Class[] MAP_CLASSES = {
+            com.suwonsmartapp.hello.map.MainActivity.class
+    };
+
+    private static final String[] GRAPHIC_ITEMS = {
+            "Bitmap"
+    };
+
+    private static final Class[] GRAPHIC_CLASSES = {
+            BitmapActivity.class
+    };
+
+    private static final String[] CUSTOM_ITEMS = {
+            "Custom View"
+    };
+
+    private static final Class[] CUSTOM_CLASSES = {
             GraphicActivity.class
     };
 
@@ -167,6 +197,21 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
                 break;
             case "Thread":
                 result = new Pair(THREAD_ITEMS, THREAD_CLASSES);
+                break;
+            case "BroadcastReceiver":
+                result = new Pair(BROADCASTRECEIVER_ITEMS, BROADCASTRECEIVER_CLASSES);
+                break;
+            case "Parsing":
+                result = new Pair(PARSING_ITEMS, PARSING_CLASSES);
+                break;
+            case "Map":
+                result = new Pair(MAP_ITEMS, MAP_CLASSES);
+                break;
+            case "Graphic":
+                result = new Pair(GRAPHIC_ITEMS, GRAPHIC_CLASSES);
+                break;
+            case "Custom":
+                result = new Pair(CUSTOM_ITEMS, CUSTOM_CLASSES);
                 break;
         }
         return result;
