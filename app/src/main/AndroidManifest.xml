@@ -166,6 +166,9 @@
             android:name=".graphic.GraphicActivity"
             android:label="@string/title_activity_graphic" >
         </activity>
+        <activity
+            android:name=".save.preference.SharedPreferenceActivity"
+            android:label="@string/title_activity_shared_preference"></activity>
     </application>
 
 </manifest>

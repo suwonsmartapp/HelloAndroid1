@@ -42,4 +42,5 @@
     <string name="title_activity_web_view">WebViewActivity</string>
     <string name="title_activity_bitmap">BitmapActivity</string>
     <string name="title_activity_graphic">GraphicActivity</string>
+    <string name="title_activity_shared_preference">SharedPreferenceActivity</string>
 </resources>

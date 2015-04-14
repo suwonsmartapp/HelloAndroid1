@@ -10,9 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /**
- * Main Activity
- *
- * - ListView 로 메뉴 구성
+ * Main Activity - ListView 로 메뉴 구성
  */
 public class MainActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
@@ -26,7 +24,8 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
             "Parsing",
             "Map",
             "Graphic",
-            "Custom"
+            "Custom",
+            "Save"
     };
 
     private ListView mListView;

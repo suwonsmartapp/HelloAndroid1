@@ -22,6 +22,7 @@ import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
 import com.suwonsmartapp.hello.parsing_json.ParsingActivity;
+import com.suwonsmartapp.hello.save.preference.SharedPreferenceActivity;
 import com.suwonsmartapp.hello.service.KitchenTimerActivity;
 import com.suwonsmartapp.hello.thread.AsyncTaskActivity;
 import com.suwonsmartapp.hello.thread.LoginActivity;
@@ -159,6 +160,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             GraphicActivity.class
     };
 
+    private static final String[] SAVE_ITEMS = {
+            "SharedPrefence"
+    };
+
+    private static final Class[] SAVE_CLASSES = {
+            SharedPreferenceActivity.class
+    };
+
     private ListView mListView;
 
     @Override
@@ -212,6 +221,9 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
                 break;
             case "Custom":
                 result = new Pair(CUSTOM_ITEMS, CUSTOM_CLASSES);
+                break;
+            case "Save":
+                result = new Pair(SAVE_ITEMS, SAVE_CLASSES);
                 break;
         }
         return result;
