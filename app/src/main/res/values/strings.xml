@@ -43,4 +43,5 @@
     <string name="title_activity_bitmap">BitmapActivity</string>
     <string name="title_activity_graphic">GraphicActivity</string>
     <string name="title_activity_shared_preference">SharedPreferenceActivity</string>
+    <string name="title_activity_file">FileActivity</string>
 </resources>

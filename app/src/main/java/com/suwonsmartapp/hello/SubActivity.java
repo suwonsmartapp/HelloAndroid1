@@ -22,6 +22,7 @@ import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
 import com.suwonsmartapp.hello.parsing_json.ParsingActivity;
+import com.suwonsmartapp.hello.save.file.FileActivity;
 import com.suwonsmartapp.hello.save.preference.SettingsActivity;
 import com.suwonsmartapp.hello.save.preference.SharedPreferenceActivity;
 import com.suwonsmartapp.hello.service.KitchenTimerActivity;
@@ -163,12 +164,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
 
     private static final String[] SAVE_ITEMS = {
             "SharedPrefence",
-            "SettingsActivity"
+            "SettingsActivity",
+            "File 저장"
     };
 
     private static final Class[] SAVE_CLASSES = {
             SharedPreferenceActivity.class,
-            SettingsActivity.class
+            SettingsActivity.class,
+            FileActivity.class
     };
 
     private ListView mListView;
