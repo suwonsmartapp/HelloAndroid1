@@ -174,7 +174,10 @@
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".save.file.FileActivity"
-            android:label="@string/title_activity_file"></activity>
+            android:label="@string/title_activity_file" />
+        <activity
+            android:name=".save.db.DbActivity"
+            android:label="@string/title_activity_db"></activity>
     </application>
 
 </manifest>
