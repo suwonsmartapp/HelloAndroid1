@@ -3,9 +3,11 @@ package com.suwonsmartapp.hello.save.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+import android.widget.Toast;
 
 /**
  * Created by junsuk on 15. 4. 15..
@@ -17,10 +19,12 @@ public class PersonHelper extends SQLiteOpenHelper {
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_EMAIL = "email";
     private static final int DATABASE_VERSION = 1;
+    private final Context mContext;
 
     public PersonHelper(Context context) {
         // 부모의 생성자 호출
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        mContext = context;
     }
 
     // DB 가 없을 때 DB 생성 하는 부분
@@ -41,7 +45,6 @@ public class PersonHelper extends SQLiteOpenHelper {
 
     /**
      * Person 데이터를 DB에 삽입
-     * 
      * @param person 이름, 이메일 정보
      * @return 삽입 된 id 값
      */
@@ -54,4 +57,20 @@ public class PersonHelper extends SQLiteOpenHelper {
         long id = db.insert(TABLE_NAME, null, values);
         return id;
     }
+
+    public Cursor selectAll() {
+        // SELECT * FROM Person;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM Person", null);
+        return c;
+    }
+
+    public void delete(long id) {
+        // DELETE FROM Person WHERE _id = pk;
+        SQLiteDatabase db = getWritableDatabase();
+
+        int deletedRowCount = db.delete(TABLE_NAME, BaseColumns._ID + " = " + id, null);
+        Toast.makeText(mContext, "deletedRowCount : " + deletedRowCount, Toast.LENGTH_SHORT).show();
+    }
+
 }
