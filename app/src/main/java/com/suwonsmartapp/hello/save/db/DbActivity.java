@@ -1,10 +1,7 @@
-
 package com.suwonsmartapp.hello.save.db;
 
 import com.suwonsmartapp.hello.R;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.Button;
@@ -30,15 +27,18 @@ public class DbActivity extends ActionBarActivity {
         mPersonListView = (ListView) findViewById(R.id.lv_person);
 
         PersonHelper dbHelper = new PersonHelper(getApplicationContext());
-        // DB가 없을 때 dbHelper.onCreate 가 호출되며 DB가 생성 됨
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        // dbHelper.getReadableDatabase();
-
+        // // DB가 없을 때 dbHelper.onCreate 가 호출되며 DB가 생성 됨
+        // SQLiteDatabase db = dbHelper.getWritableDatabase();
+        // //dbHelper.getReadableDatabase();
+        //
+        // //
         // db.execSQL("INSERT INTO Person (name, email) VALUES ('오준석', 'a811219@gmail.com')");
-        ContentValues values = new ContentValues();
-        values.put("name", "오준석");
-        values.put("email", "a811219@gmail.com");
-        long id = db.insert("Person", null, values);
+        // ContentValues values = new ContentValues();
+        // values.put("name", "오준석");
+        // values.put("email", "a811219@gmail.com");
+        // long id = db.insert("Person", null, values);
+        //
+        long id = dbHelper.insert(new Person("손상문", "abc@gamil.com"));
 
         Toast.makeText(getApplicationContext(), "insert id : " + id, Toast.LENGTH_SHORT).show();
     }
