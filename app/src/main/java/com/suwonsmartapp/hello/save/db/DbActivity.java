@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.v7.app.ActionBarActivity;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -56,6 +59,9 @@ public class DbActivity extends ActionBarActivity implements View.OnClickListene
         mSubmitBtn.setOnClickListener(this);
 
         mPersonListView.setOnItemLongClickListener(this);
+
+        // 롱클릭시 ContextMenu 호출되도록 등록
+        registerForContextMenu(mPersonListView);
     }
 
     @Override
@@ -93,9 +99,19 @@ public class DbActivity extends ActionBarActivity implements View.OnClickListene
         mAdapter.swapCursor(cursor);
     }
 
+    int mSeletedPosition = -1;
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        // 모든 data 를 얻어 옴
+        Toast.makeText(getApplicationContext(), "longclick : " + position, Toast.LENGTH_SHORT).show();
+
+        mSeletedPosition = position;
+
+        // return true;         ->> 여기서 이벤트 종료
+        return false;       // 처리가 안 된 것으로 알려주고, 이벤트를 흘려서 컨텍스트 메뉴가 동작 되도록
+    }
+
+    private void dbDelete(int position) {
+        long id;// 모든 data 를 얻어 옴
         Cursor cursor = mDbHelper.selectAll();
 
         // 롱클릭 한 data 로 cursor 이동
@@ -114,6 +130,48 @@ public class DbActivity extends ActionBarActivity implements View.OnClickListene
 
         Toast.makeText(getApplicationContext(), "삭제 되었습니다 : " + position, Toast.LENGTH_SHORT)
                 .show();
-        return false;
+    }
+
+    // 롱 클릭시 보여줄 menu 파일 inflate
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_db, menu);
+    }
+
+    // 컨텍스트 메뉴 이벤트 처리
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.action_update:
+                dbUpdate();
+                return true;
+            case R.id.action_delete:
+                dbDelete(mSeletedPosition);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    private void dbUpdate() {
+        // 현재 선택 된 위치로 cursor 이동
+        Cursor cursor = mAdapter.getCursor();
+        cursor.moveToPosition(mSeletedPosition);
+
+        int id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID));
+
+        Person person = new Person();
+        person.setName(mNameEditText.getText().toString());
+        person.setEmail(mEmailEditText.getText().toString());
+
+        int updatedCount = mDbHelper.update(id, person);
+
+        if (updatedCount > 0) {
+            mAdapter.swapCursor(mDbHelper.selectAll());
+        }
     }
 }

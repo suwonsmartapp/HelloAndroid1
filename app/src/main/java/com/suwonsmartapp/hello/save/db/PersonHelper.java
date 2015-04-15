@@ -58,6 +58,10 @@ public class PersonHelper extends SQLiteOpenHelper {
         return id;
     }
 
+    /**
+     * 모든 데이타를 Cursor 로 받음
+     * @return _id, name, email
+     */
     public Cursor selectAll() {
         // SELECT * FROM Person;
         SQLiteDatabase db = getReadableDatabase();
@@ -65,12 +69,31 @@ public class PersonHelper extends SQLiteOpenHelper {
         return c;
     }
 
-    public void delete(long id) {
+    /**
+     * id 값에 해당하는 data를 삭제
+     * @param id _id
+     * @return 삭제 된 data 수
+     */
+    public int delete(long id) {
         // DELETE FROM Person WHERE _id = pk;
         SQLiteDatabase db = getWritableDatabase();
 
         int deletedRowCount = db.delete(TABLE_NAME, BaseColumns._ID + " = " + id, null);
         Toast.makeText(mContext, "deletedRowCount : " + deletedRowCount, Toast.LENGTH_SHORT).show();
+        return deletedRowCount;
     }
+
+    public int update(long id, Person person) {
+        // UPDATE Person SET name='person.name', email='person.email' WHERE _id = id;
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_NAME, person.getName());
+        contentValues.put(COLUMN_EMAIL, person.getEmail());
+
+        int updatedCount = db.update(TABLE_NAME, contentValues, BaseColumns._ID + " = " + id, null);
+        return updatedCount;
+    }
+
 
 }
