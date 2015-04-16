@@ -5,6 +5,7 @@ import com.suwonsmartapp.hello.R;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
@@ -13,14 +14,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 
 public class CalendarActivity extends ActionBarActivity implements View.OnClickListener,
         AdapterView.OnItemClickListener {
@@ -28,7 +28,8 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
     private static final String TAG = CalendarActivity.class.getSimpleName();
 
     // 달력과 일정을 연결하는 Map
-    private HashMap<Calendar, ArrayList<String>> mScheduleMap;
+//    private HashMap<Calendar, ArrayList<String>> mScheduleMap;
+    private CalendarDbHelper mDbHelper;
 
     private CalendarView mCalendarView;
     private ListView mScheduleListView;
@@ -38,7 +39,9 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
     private CalendarAdapter mCalendarAdapter;
 
     // 일정 표시용 어댑터
-    private ArrayAdapter<String> mScheduleAdapter;
+//    private ArrayAdapter<String> mScheduleAdapter;
+    private SimpleCursorAdapter mScheduleAdapter;
+    private SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyyMMdd");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,8 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
         findViewById(R.id.btn_next_month).setOnClickListener(this);
 
         // Map 초기화
-        mScheduleMap = new HashMap<>();
+//        mScheduleMap = new HashMap<>();
+        mDbHelper = new CalendarDbHelper(getApplicationContext());
     }
 
     private void setText() {
@@ -91,14 +95,35 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
         mCalendarAdapter.setSelectedPosition(position);
 
         // 일정 가져오기
-        final Calendar key = (Calendar) mCalendarAdapter.getItem(position);
-        ArrayList<String> scheduleList = mScheduleMap.get(key);
-        if (scheduleList == null) {
-            mScheduleListView.setAdapter(null);
-        } else {
-            mScheduleAdapter = new ArrayAdapter<String>(CalendarActivity.this,
-                    android.R.layout.simple_list_item_1, scheduleList);
+        final Calendar calendar = (Calendar) mCalendarAdapter.getItem(position);
+
+//        ArrayList<String> scheduleList = mScheduleMap.get(key);
+//        if (scheduleList == null) {
+//            mScheduleAdapter = new ArrayAdapter<String>(CalendarActivity.this,
+//                    android.R.layout.simple_list_item_1, scheduleList);
+        invalidateListView(calendar);
+    }
+
+    private void invalidateListView(Calendar calendar) {
+        String date = mDateFormat.format(calendar.getTime());
+        Cursor cursor = mDbHelper.select(date);
+        if (mScheduleAdapter == null) {
+            mScheduleAdapter = new SimpleCursorAdapter(CalendarActivity.this,   // Context
+                    android.R.layout.simple_list_item_2,    // Layout
+                    cursor,                                 // Cursor
+                    new String[]{                          // 컬럼 명 배열
+                            CalendarDbHelper.COLUMN_TIME,
+                            CalendarDbHelper.COLUMN_TODO
+                    },
+                    new int[]{                             // 컬럼 명 배열과 매칭되는 layout id
+                            android.R.id.text1,
+                            android.R.id.text2
+                    },
+                    0);                                     // flag 는 0
+
             mScheduleListView.setAdapter(mScheduleAdapter);
+        } else {
+            mScheduleAdapter.swapCursor(cursor);
         }
     }
 
@@ -124,21 +149,30 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
                 // 저장 처리
                 if (!TextUtils.isEmpty(schedule.getText().toString())
                         && !TextUtils.isEmpty(time.getText().toString())) {
-                    ArrayList<String> value = mScheduleMap.get(key);
-                    if (value == null) {
-                        value = new ArrayList<String>();
-                    }
-                    value.add(time.getText().toString() + " " + schedule.getText().toString());
+//                    ArrayList<String> value = mScheduleMap.get(key);
+                    String date = mDateFormat.format(key.getTime());
+                    Schedule scheduleData = new Schedule();
+                    scheduleData.setDate(date);
+                    scheduleData.setTime(time.getText().toString());
+                    scheduleData.setTodo(schedule.getText().toString());
+                    scheduleData.setWeather("");
+                    mDbHelper.insert(scheduleData);
 
-                    mScheduleAdapter = new ArrayAdapter<String>(CalendarActivity.this,
-                            android.R.layout.simple_list_item_1, value);
+//                    if (value == null) {
+//                    if (cursor.getCount() == 0)
+//                        value = new ArrayList<String>();
+//                }
+//                value.add(time.getText().toString() + " " + schedule.getText().toString());
 
-                    mScheduleListView.setAdapter(mScheduleAdapter);
+//                    mScheduleAdapter = new ArrayAdapter<String>(CalendarActivity.this,
+//                            android.R.layout.simple_list_item_1, value);
+                    invalidateListView(key);
 
-                    mScheduleMap.put(key, value);
-                }
+
+//                mScheduleMap.put(key, value);
             }
-        });
+        }
+    });
         builder.setNegativeButton("닫기", null);
         builder.show();
     }

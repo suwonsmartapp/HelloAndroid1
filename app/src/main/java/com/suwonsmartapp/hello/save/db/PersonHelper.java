@@ -30,8 +30,7 @@ public class PersonHelper extends SQLiteOpenHelper {
     // DB 가 없을 때 DB 생성 하는 부분
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // CREATE TABLE Person (_id INTEGER PRIMARY KEY AUTOINCREMENT, name
-        // TEXT, email TEXT);
+        // CREATE TABLE Person (_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT);
         db.execSQL("CREATE TABLE " + TABLE_NAME + " (" + BaseColumns._ID
                 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAME + " TEXT, " + COLUMN_EMAIL
                 + " TEXT);");
