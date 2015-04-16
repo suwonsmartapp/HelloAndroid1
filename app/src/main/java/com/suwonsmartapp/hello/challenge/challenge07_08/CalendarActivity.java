@@ -159,9 +159,11 @@ public class CalendarActivity extends ActionBarActivity implements View.OnClickL
 
         // noinspection SimplifiableIfStatement
         if (id == R.id.menu_schedule_input) {
-            Calendar selectedItem = (Calendar) mCalendarAdapter.getItem(mCalendarAdapter
-                    .getSelectedPosition());
-            showScheduleInputDialog(selectedItem);
+            if (mCalendarAdapter != null) {
+                Calendar selectedItem = (Calendar) mCalendarAdapter.getItem(mCalendarAdapter
+                        .getSelectedPosition());
+                showScheduleInputDialog(selectedItem);
+            }
             return true;
         }
 
