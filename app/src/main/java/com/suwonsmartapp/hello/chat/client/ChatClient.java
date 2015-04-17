@@ -11,6 +11,8 @@ public class ChatClient {
 	private final static int SERVER_PORT = 5000;
 	
 	private Socket mSocket;
+
+	private ClientReciver mReceiveThread;
 	
 	public static void main(String[] args) {
 		new ChatClient().connect();
@@ -19,8 +21,9 @@ public class ChatClient {
 	public void connect() {
 		try {
 			mSocket = new Socket(SERVER_HOST, SERVER_PORT);
-			
-			new ClientReciver(mSocket, "닉네임").start();
+
+			mReceiveThread = new ClientReciver(mSocket, "오준석");
+			mReceiveThread.start();
 			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
@@ -28,7 +31,11 @@ public class ChatClient {
 			e.printStackTrace();
 		}
 	}
-	
+
+	public void sendMessage(String message) {
+		mReceiveThread.sendMessage(message);
+	}
+
 	class ClientReciver extends Thread {
 		
 		private DataInputStream mInputStream;
@@ -44,18 +51,29 @@ public class ChatClient {
 
 				System.out.println("id : " + nickName + "접속 완료");
 				
-				try {
-					Thread.sleep(5000);
-					mOutputStream.writeUTF("exit");
-					mOutputStream.flush();
-					System.out.println("id : " + nickName + "접속 종료");
-					System.exit(0);
-				} catch (InterruptedException e) {
-				}
+//				try {
+//					Thread.sleep(5000);
+//					mOutputStream.writeUTF("exit");
+//					mOutputStream.flush();
+//					System.out.println("id : " + nickName + "접속 종료");
+//					System.exit(0);
+//				} catch (InterruptedException e) {
+//				}
 				
 			} catch (IOException e) {
 				e.printStackTrace();
 				System.out.println("writeUTF IOException");
+			}
+		}
+
+		public void sendMessage(String message) {
+			if (mOutputStream != null) {
+				try {
+					mOutputStream.writeUTF(message);
+					mOutputStream.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		
