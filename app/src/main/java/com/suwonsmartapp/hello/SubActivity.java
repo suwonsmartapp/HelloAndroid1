@@ -1,6 +1,15 @@
 
 package com.suwonsmartapp.hello;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Pair;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
 import com.suwonsmartapp.hello.activity.ActivityExamActivity;
 import com.suwonsmartapp.hello.activity.EditTextActivity;
 import com.suwonsmartapp.hello.activity.FirstActivity;
@@ -15,6 +24,7 @@ import com.suwonsmartapp.hello.challenge.challenge02.SMSActivity;
 import com.suwonsmartapp.hello.challenge.challenge05.Mission05MainActivity;
 import com.suwonsmartapp.hello.challenge.challenge06.Mission06MainActivity;
 import com.suwonsmartapp.hello.challenge.challenge07_08.CalendarActivity;
+import com.suwonsmartapp.hello.chat.ClientActivity;
 import com.suwonsmartapp.hello.event.TouchEventActivity;
 import com.suwonsmartapp.hello.graphic.GraphicActivity;
 import com.suwonsmartapp.hello.listview.GridActivity;
@@ -31,15 +41,6 @@ import com.suwonsmartapp.hello.thread.AsyncTaskActivity;
 import com.suwonsmartapp.hello.thread.LoginActivity;
 import com.suwonsmartapp.hello.thread.ThreadActivity;
 import com.suwonsmartapp.hello.thread.TimerActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.util.Pair;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 /**
  * Created by junsuk on 15. 3. 19..
@@ -110,7 +111,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "AsyncTask",
             "Login",
             "Timer",
-            "KitchenTimer"
+            "KitchenTimer",
+            "채팅 클라이언트"
     };
 
     private static final Class[] THREAD_CLASSES = {
@@ -118,7 +120,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             AsyncTaskActivity.class,
             LoginActivity.class,
             TimerActivity.class,
-            KitchenTimerActivity.class
+            KitchenTimerActivity.class,
+            ClientActivity.class
     };
 
     private static final String[] BROADCASTRECEIVER_ITEMS = {

@@ -177,7 +177,11 @@
             android:label="@string/title_activity_file" />
         <activity
             android:name=".save.db.DbActivity"
-            android:label="@string/title_activity_db"></activity>
+            android:label="@string/title_activity_db" />
+
+        <activity
+            android:name=".chat.ClientActivity"
+            android:label="ClientActivity" />
     </application>
 
 </manifest>
