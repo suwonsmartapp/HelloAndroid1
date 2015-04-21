@@ -31,7 +31,7 @@ public class MultiChatServer {
 				socket = mServerSocket.accept();
 				System.out.println(socket.getInetAddress() + "에서 접속함");
 				
-				new ServerReciver(socket).start();
+				new ServerReceiver(socket).start();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -65,20 +65,31 @@ public class MultiChatServer {
 		}
 	}
 	
-	class ServerReciver extends Thread {
+	class ServerReceiver extends Thread {
 		private DataInputStream mInputStream;
 		private DataOutputStream mOutputStream;
 		
 		private ClientInfo mClientInfo;
 		
-		public ServerReciver(Socket socket) {
+		public ServerReceiver(Socket socket) {
 			try {
 				mInputStream = new DataInputStream(socket.getInputStream());
 				mOutputStream = new DataOutputStream(socket.getOutputStream());
 				
 				String nickName = mInputStream.readUTF();
+				String ip = socket.getInetAddress().toString();
+
+//				synchronized (mClientList) {
+//					for (ClientInfo clientInfo : mClientList) {
+//						if (clientInfo.getIp().equals(ip)) {
+//							mClientList.remove(clientInfo);
+//							sendToAll(clientInfo.getNickName() + " 님은 재접속 되어, 기존 연결은 끊어집니다");
+//							break;
+//						}
+//					}
+//				}
 				
-				mClientInfo = new ClientInfo(nickName, mOutputStream);
+				mClientInfo = new ClientInfo(nickName, ip, mOutputStream);
 				
 				addClient(mClientInfo);
 				
