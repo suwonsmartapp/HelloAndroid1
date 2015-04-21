@@ -7,13 +7,25 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class ChatClient {
+//	private final static String SERVER_HOST = "suwonsmartapp.iptime.org";
 	private final static String SERVER_HOST = "192.168.0.222";
 	private final static int SERVER_PORT = 5000;
 	
 	private Socket mSocket;
 
-	private ClientReciver mReceiveThread;
-	
+	private ClientReceiver mReceiveThread;
+
+	private ClientCallback mClientCallback;
+
+	public interface ClientCallback {
+		void onReceiveMessage(String message);
+		String getNickName();
+	}
+
+	public void setClientCallback(ClientCallback callback) {
+		mClientCallback = callback;
+	}
+
 	public static void main(String[] args) {
 		new ChatClient().connect();
 	}
@@ -22,7 +34,12 @@ public class ChatClient {
 		try {
 			mSocket = new Socket(SERVER_HOST, SERVER_PORT);
 
-			mReceiveThread = new ClientReciver(mSocket, "오준석");
+			String nickName = "무명씨";
+			if (mClientCallback != null) {
+				nickName = mClientCallback.getNickName();
+			}
+
+			mReceiveThread = new ClientReceiver(mSocket, nickName);
 			mReceiveThread.start();
 			
 		} catch (UnknownHostException e) {
@@ -32,16 +49,25 @@ public class ChatClient {
 		}
 	}
 
+	public void disconnect() {
+		try {
+			mReceiveThread = null;
+			mSocket.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void sendMessage(String message) {
 		mReceiveThread.sendMessage(message);
 	}
 
-	class ClientReciver extends Thread {
+	class ClientReceiver extends Thread {
 		
 		private DataInputStream mInputStream;
 		private DataOutputStream mOutputStream;
 		
-		public ClientReciver(Socket socket, String nickName) {
+		public ClientReceiver(Socket socket, String nickName) {
 			try {
 				mInputStream = new DataInputStream(socket.getInputStream());
 				mOutputStream = new DataOutputStream(socket.getOutputStream());
@@ -82,7 +108,10 @@ public class ChatClient {
 			try {
 				// 계속 듣기만
 				while (mInputStream != null) {
-					System.out.println(mInputStream.readUTF());
+//					System.out.println(mInputStream.readUTF());
+					if (mClientCallback != null) {
+						mClientCallback.onReceiveMessage(mInputStream.readUTF());
+					}
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
