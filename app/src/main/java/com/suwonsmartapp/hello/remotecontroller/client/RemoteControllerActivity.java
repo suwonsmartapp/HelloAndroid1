@@ -2,8 +2,8 @@ package com.suwonsmartapp.hello.remotecontroller.client;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.view.View;
-import android.widget.Button;
 
 import com.suwonsmartapp.hello.R;
 import com.suwonsmartapp.hello.chat.client.ChatClient;
@@ -20,11 +20,11 @@ public class RemoteControllerActivity extends AppCompatActivity implements View.
 
     private ChatClient mClient;
 
-    private Button mUp;
-    private Button mDown;
-    private Button mLeft;
-    private Button mRight;
-    private Button mEnter;
+    private AppCompatButton mUp;
+    private AppCompatButton mDown;
+    private AppCompatButton mLeft;
+    private AppCompatButton mRight;
+    private AppCompatButton mEnter;
 
 
     @Override
@@ -38,11 +38,11 @@ public class RemoteControllerActivity extends AppCompatActivity implements View.
     }
 
     private void init() {
-        mUp = (Button) findViewById(R.id.btn_up);
-        mDown = (Button) findViewById(R.id.btn_down);
-        mLeft = (Button) findViewById(R.id.btn_left);
-        mRight = (Button) findViewById(R.id.btn_right);
-        mEnter = (Button) findViewById(R.id.btn_enter);
+        mUp = (AppCompatButton) findViewById(R.id.btn_up);
+        mDown = (AppCompatButton) findViewById(R.id.btn_down);
+        mLeft = (AppCompatButton) findViewById(R.id.btn_left);
+        mRight = (AppCompatButton) findViewById(R.id.btn_right);
+        mEnter = (AppCompatButton) findViewById(R.id.btn_enter);
 
         mUp.setOnClickListener(this);
         mDown.setOnClickListener(this);
