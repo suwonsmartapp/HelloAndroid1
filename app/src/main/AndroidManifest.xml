@@ -178,10 +178,13 @@
         <activity
             android:name=".save.db.DbActivity"
             android:label="@string/title_activity_db" />
-
         <activity
             android:name=".chat.ClientActivity"
             android:label="ClientActivity" />
+        <activity
+            android:name=".remotecontroller.client.RemoteControllerActivity"
+            android:label="@string/title_activity_remote_controller" >
+        </activity>
     </application>
 
 </manifest>

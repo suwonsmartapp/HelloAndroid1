@@ -31,8 +31,12 @@ public class ChatClient {
 	}
 	
 	public void connect() {
+		connect(SERVER_HOST, SERVER_PORT);
+	}
+
+	public void connect(String serverHost, int serverPort) {
 		try {
-			mSocket = new Socket(SERVER_HOST, SERVER_PORT);
+			mSocket = new Socket(serverHost, serverPort);
 
 			String nickName = "무명씨";
 			if (mClientCallback != null) {
@@ -41,7 +45,7 @@ public class ChatClient {
 
 			mReceiveThread = new ClientReceiver(mSocket, nickName);
 			mReceiveThread.start();
-			
+
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -66,6 +70,8 @@ public class ChatClient {
 		
 		private DataInputStream mInputStream;
 		private DataOutputStream mOutputStream;
+//		ObjectInputStream	// Java 전용
+//		ObjectOutputStream	// Java 전용
 		
 		public ClientReceiver(Socket socket, String nickName) {
 			try {

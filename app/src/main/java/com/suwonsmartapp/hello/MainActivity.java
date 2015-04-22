@@ -3,7 +3,7 @@ package com.suwonsmartapp.hello;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,7 +12,7 @@ import android.widget.ListView;
 /**
  * Main Activity - ListView 로 메뉴 구성
  */
-public class MainActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     public static final String[] ITEMS = {
             "Activity",

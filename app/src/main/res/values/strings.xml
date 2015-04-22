@@ -45,4 +45,5 @@
     <string name="title_activity_shared_preference">SharedPreferenceActivity</string>
     <string name="title_activity_file">FileActivity</string>
     <string name="title_activity_db">DbActivity</string>
+    <string name="title_activity_remote_controller">RemoteControllerActivity</string>
 </resources>

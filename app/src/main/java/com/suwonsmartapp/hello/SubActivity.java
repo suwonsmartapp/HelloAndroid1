@@ -32,6 +32,7 @@ import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
 import com.suwonsmartapp.hello.parsing_json.ParsingActivity;
+import com.suwonsmartapp.hello.remotecontroller.client.RemoteControllerActivity;
 import com.suwonsmartapp.hello.save.db.DbActivity;
 import com.suwonsmartapp.hello.save.file.FileActivity;
 import com.suwonsmartapp.hello.save.preference.SettingsActivity;
@@ -85,11 +86,13 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
     };
 
     private static final String[] EVENT_ITEMS = {
-            "TouchEvent"
+            "TouchEvent",
+            "리모콘"
     };
 
     private static final Class[] EVENT_CLASSES = {
-            TouchEventActivity.class
+            TouchEventActivity.class,
+            RemoteControllerActivity.class
     };
 
     private static final String[] LISTVIEW_ITEMS = {
