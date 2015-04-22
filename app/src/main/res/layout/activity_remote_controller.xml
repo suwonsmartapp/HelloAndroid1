@@ -15,7 +15,7 @@
 
         <TableRow>
 
-            <AppCompatButton
+            <Button
                 android:id="@+id/btn_up"
                 android:text="UP"
                 android:layout_width="wrap_content"
@@ -24,19 +24,19 @@
         </TableRow>
 
         <TableRow>
-            <AppCompatButton
+            <Button
                 android:id="@+id/btn_left"
                 android:text="LEFT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <AppCompatButton
+            <Button
                 android:id="@+id/btn_down"
                 android:text="DOWN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <AppCompatButton
+            <Button
                 android:id="@+id/btn_right"
                 android:text="RIGHT"
                 android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
 
 
 
-    <AppCompatButton
+    <Button
         android:id="@+id/btn_enter"
         android:text="ENTER"
         android:layout_width="wrap_content"
