@@ -8,6 +8,9 @@ import android.widget.Button;
 import com.suwonsmartapp.hello.R;
 import com.suwonsmartapp.hello.chat.client.ChatClient;
 
+/**
+ * 서버파일 위치 : app/Server.java
+ */
 public class RemoteControllerActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final static String SERVER_HOST = "192.168.0.4";
