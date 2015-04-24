@@ -185,6 +185,10 @@
             android:name=".remotecontroller.client.RemoteControllerActivity"
             android:label="@string/title_activity_remote_controller" >
         </activity>
+        <activity
+            android:name=".camera.intent.CameraIntentActivity"
+            android:label="@string/title_activity_camera_intent" >
+        </activity>
     </application>
 
 </manifest>

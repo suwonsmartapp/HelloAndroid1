@@ -19,6 +19,7 @@ import com.suwonsmartapp.hello.activity.SecondActivity;
 import com.suwonsmartapp.hello.activity.TableLayoutActivity;
 import com.suwonsmartapp.hello.bitmap.BitmapActivity;
 import com.suwonsmartapp.hello.broadcast.BroadcastActivity;
+import com.suwonsmartapp.hello.camera.intent.CameraIntentActivity;
 import com.suwonsmartapp.hello.challenge.challenge01.ImageExamActivity;
 import com.suwonsmartapp.hello.challenge.challenge02.SMSActivity;
 import com.suwonsmartapp.hello.challenge.challenge05.Mission05MainActivity;
@@ -183,6 +184,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             DbActivity.class
     };
 
+    private static final String[] CAMERA_ITEMS = {
+            "Intent 호출"
+    };
+
+    private static final Class[] CAMERA_CLASSES = {
+            CameraIntentActivity.class
+    };
+
     private ListView mListView;
 
     @Override
@@ -239,6 +248,9 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
                 break;
             case "Save":
                 result = new Pair(SAVE_ITEMS, SAVE_CLASSES);
+                break;
+            case "Camera":
+                result = new Pair(CAMERA_ITEMS, CAMERA_CLASSES);
                 break;
         }
         return result;
