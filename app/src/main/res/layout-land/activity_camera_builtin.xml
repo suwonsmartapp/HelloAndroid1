@@ -8,11 +8,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.suwonsmartapp.hello.camera.builtin.CameraBuiltinActivity">
 
-    <SurfaceView
-        android:id="@+id/surfaceView"
+    <FrameLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.suwonsmartapp.hello.camera.builtin.CameraOverlayView
+            android:id="@+id/overlayView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
 
     <LinearLayout
         android:layout_width="130dp"

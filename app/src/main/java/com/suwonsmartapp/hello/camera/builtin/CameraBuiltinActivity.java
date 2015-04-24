@@ -26,11 +26,12 @@ import java.io.IOException;
 
 // 롤리팝에 추가된 Camera2 사용법
 // https://github.com/googlesamples/android-Camera2Basic
-public class CameraBuiltinActivity extends AppCompatActivity implements SurfaceHolder.Callback, View.OnClickListener {
+public class CameraBuiltinActivity extends AppCompatActivity implements SurfaceHolder.Callback, View.OnClickListener, Camera.FaceDetectionListener {
 
     private SurfaceView mPreview;
     private Button mBtnShutter;
     private Camera mCamera;
+    private CameraOverlayView mCameraOverlayView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class CameraBuiltinActivity extends AppCompatActivity implements SurfaceH
 
         mPreview = (SurfaceView) findViewById(R.id.surfaceView);
         mBtnShutter = (Button) findViewById(R.id.btn_shutter);
+
+        mCameraOverlayView = (CameraOverlayView) findViewById(R.id.overlayView);
 
         mPreview.getHolder().addCallback(this);
         mPreview.getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
@@ -49,6 +52,7 @@ public class CameraBuiltinActivity extends AppCompatActivity implements SurfaceH
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         mCamera = Camera.open();
+        mCamera.setFaceDetectionListener(this);
 
         try {
             mCamera.setPreviewDisplay(holder);
@@ -59,12 +63,23 @@ public class CameraBuiltinActivity extends AppCompatActivity implements SurfaceH
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+        mCamera.stopPreview();
+
         mCamera.startPreview();
+
+
+        // 얼굴 인식 기능 체크
+        Camera.Parameters params = mCamera.getParameters();
+        if (params.getMaxNumDetectedFaces() > 0) {
+            // 얼굴 인식 시작
+            mCamera.startFaceDetection();
+        }
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         // 카메라 메모리 해제
+        mCamera.stopFaceDetection();
         mCamera.release();
         mCamera = null;
     }
@@ -93,6 +108,11 @@ public class CameraBuiltinActivity extends AppCompatActivity implements SurfaceH
                 camera.startPreview();
             }
         });
+    }
+
+    @Override
+    public void onFaceDetection(Camera.Face[] faces, Camera camera) {
+        mCameraOverlayView.setFaces(faces);
     }
 
 
