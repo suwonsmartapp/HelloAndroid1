@@ -23,6 +23,9 @@ import java.io.IOException;
 // 1. 카메라 프리뷰 보기 위해 SurfaceView 를 써야만 됨. 고속 렌더링이 가능 View
 // 2. SurfaceView 의 holder 에 Callback 을 연결. SurfaceHolder.Callback 구현
 // 3. Camera 객체를 각가의 콜백에서 사용
+
+// 롤리팝에 추가된 Camera2 사용법
+// https://github.com/googlesamples/android-Camera2Basic
 public class CameraBuiltinActivity extends AppCompatActivity implements SurfaceHolder.Callback, View.OnClickListener {
 
     private SurfaceView mPreview;
