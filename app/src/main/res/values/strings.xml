@@ -47,4 +47,5 @@
     <string name="title_activity_db">DbActivity</string>
     <string name="title_activity_remote_controller">RemoteControllerActivity</string>
     <string name="title_activity_camera_intent">CameraIntentActivity</string>
+    <string name="title_activity_camera_builtin">CameraBuiltinActivity</string>
 </resources>

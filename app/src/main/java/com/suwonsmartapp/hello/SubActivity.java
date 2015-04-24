@@ -19,6 +19,7 @@ import com.suwonsmartapp.hello.activity.SecondActivity;
 import com.suwonsmartapp.hello.activity.TableLayoutActivity;
 import com.suwonsmartapp.hello.bitmap.BitmapActivity;
 import com.suwonsmartapp.hello.broadcast.BroadcastActivity;
+import com.suwonsmartapp.hello.camera.builtin.CameraBuiltinActivity;
 import com.suwonsmartapp.hello.camera.intent.CameraIntentActivity;
 import com.suwonsmartapp.hello.challenge.challenge01.ImageExamActivity;
 import com.suwonsmartapp.hello.challenge.challenge02.SMSActivity;
@@ -185,11 +186,13 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
     };
 
     private static final String[] CAMERA_ITEMS = {
-            "Intent 호출"
+            "Intent 호출",
+            "나만의 카메라 앱 "
     };
 
     private static final Class[] CAMERA_CLASSES = {
-            CameraIntentActivity.class
+            CameraIntentActivity.class,
+            CameraBuiltinActivity.class
     };
 
     private ListView mListView;

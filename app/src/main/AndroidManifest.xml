@@ -20,6 +20,10 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
+    <!-- 카메라 권한 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -188,6 +192,11 @@
         <activity
             android:name=".camera.intent.CameraIntentActivity"
             android:label="@string/title_activity_camera_intent" >
+        </activity>
+        <activity
+            android:screenOrientation="landscape"
+            android:name=".camera.builtin.CameraBuiltinActivity"
+            android:label="@string/title_activity_camera_builtin" >
         </activity>
     </application>
 
