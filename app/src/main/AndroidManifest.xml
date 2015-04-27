@@ -203,6 +203,12 @@
             android:name=".multimedia.MediaPlayerActivity"
             android:label="@string/title_activity_media_player" >
         </activity>
+
+        <service
+            android:name=".multimedia.MusicService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>

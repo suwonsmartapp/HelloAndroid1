@@ -13,8 +13,6 @@ import android.widget.VideoView;
 
 import com.suwonsmartapp.hello.R;
 
-import java.io.IOException;
-
 /**
  * 챕터 9. 멀티미디어
  */
@@ -91,21 +89,12 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         if (requestCode == REQUEST_CODE_AUDIO && resultCode == RESULT_OK) {
             // Audio
             Uri fileUri = data.getData();
-            try {
-                if (mMediaPlayer != null) {
-                    mMediaPlayer.release();
-                    mMediaPlayer = null;
-                }
-                mMediaPlayer = new MediaPlayer();
-                mMediaPlayer.setDataSource(getApplicationContext(), fileUri);
-                mMediaPlayer.prepare();
-                mMediaPlayer.start();
 
-                mBtnAudioFilePick.setText(fileUri.getPath());
-            } catch (IOException e) {
-                // IOException 이 났을 때 다른 익셉션을 발생시켜서 죽인다
-                throw new RuntimeException("io exception");
-            }
+            Intent intent = new Intent(getApplicationContext(), MusicService.class);
+            intent.putExtra("uri", fileUri);
+            startService(intent);
+
+            mBtnAudioFilePick.setText(fileUri.getPath());
         } else if (requestCode == REQUEST_CODE_VIDEO && resultCode == RESULT_OK) {
             // Video
             Uri fileUri = data.getData();
