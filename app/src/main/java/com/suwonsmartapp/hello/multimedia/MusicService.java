@@ -30,7 +30,11 @@ public class MusicService extends Service {
         }
 
         try {
+            if (intent == null) {
+                return super.onStartCommand(intent, flags, startId);
+            }
             Uri fileUri = intent.getParcelableExtra("uri");
+
             mMediaPlayer = new MediaPlayer();
             mMediaPlayer.setDataSource(MusicService.this, fileUri);
             mMediaPlayer.prepare();
