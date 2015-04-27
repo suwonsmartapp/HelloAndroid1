@@ -13,6 +13,8 @@ import android.widget.VideoView;
 
 import com.suwonsmartapp.hello.R;
 
+import java.io.IOException;
+
 /**
  * 챕터 9. 멀티미디어
  */
@@ -38,6 +40,10 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
 
         // 레이아웃 초기화, 이벤트 연결
         init();
+
+        if (getIntent() != null) {
+            Toast.makeText(getApplicationContext(), "uri : " + getIntent().getData(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void init() {
@@ -90,9 +96,23 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
             // Audio
             Uri fileUri = data.getData();
 
-            Intent intent = new Intent(getApplicationContext(), MusicService.class);
-            intent.putExtra("uri", fileUri);
-            startService(intent);
+//            Intent intent = new Intent(getApplicationContext(), MusicService.class);
+//            intent.putExtra("uri", fileUri);
+//            startService(intent);
+
+            if (mMediaPlayer != null) {
+                mMediaPlayer.release();
+                mMediaPlayer = null;
+            }
+
+            try {
+                mMediaPlayer = new MediaPlayer();
+                mMediaPlayer.setDataSource(getApplicationContext(), fileUri);
+                mMediaPlayer.prepare();
+                mMediaPlayer.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             mBtnAudioFilePick.setText(fileUri.getPath());
         } else if (requestCode == REQUEST_CODE_VIDEO && resultCode == RESULT_OK) {
