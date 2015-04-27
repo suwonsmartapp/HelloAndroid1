@@ -10,11 +10,23 @@
     tools:context="com.suwonsmartapp.hello.multimedia.MediaPlayerActivity">
 
 
-    <Button
-        android:id="@+id/btn_filePick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="파일 선택" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_audioFilePick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오디오 선택" />
+
+        <Button
+            android:id="@+id/btn_videoFilePick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비디오 선택" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,8 +46,8 @@
     </LinearLayout>
 
 
-    <SurfaceView
-        android:id="@+id/surfaceView"
+    <VideoView
+        android:id="@+id/videoView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
