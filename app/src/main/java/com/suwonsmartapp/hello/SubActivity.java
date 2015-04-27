@@ -33,6 +33,7 @@ import com.suwonsmartapp.hello.listview.GridActivity;
 import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
+import com.suwonsmartapp.hello.multimedia.MediaPlayerActivity;
 import com.suwonsmartapp.hello.parsing_json.ParsingActivity;
 import com.suwonsmartapp.hello.remotecontroller.client.RemoteControllerActivity;
 import com.suwonsmartapp.hello.save.db.DbActivity;
@@ -195,6 +196,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             CameraBuiltinActivity.class
     };
 
+    private static final String[] MULTI_ITEMS = {
+            "플레이어"
+    };
+
+    private static final Class[] MULTI_CLASSES = {
+            MediaPlayerActivity.class
+    };
+
     private ListView mListView;
 
     @Override
@@ -254,6 +263,9 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
                 break;
             case "Camera":
                 result = new Pair(CAMERA_ITEMS, CAMERA_CLASSES);
+                break;
+            case "Multimedia":
+                result = new Pair(MULTI_ITEMS, MULTI_CLASSES);
                 break;
         }
         return result;

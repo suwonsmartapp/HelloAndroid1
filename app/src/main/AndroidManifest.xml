@@ -22,6 +22,7 @@
 
     <!-- 카메라 권한 -->
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
 
     <application
@@ -194,9 +195,13 @@
             android:label="@string/title_activity_camera_intent" >
         </activity>
         <activity
-            android:screenOrientation="landscape"
             android:name=".camera.builtin.CameraBuiltinActivity"
-            android:label="@string/title_activity_camera_builtin" >
+            android:label="@string/title_activity_camera_builtin"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".multimedia.MediaPlayerActivity"
+            android:label="@string/title_activity_media_player" >
         </activity>
     </application>
 
