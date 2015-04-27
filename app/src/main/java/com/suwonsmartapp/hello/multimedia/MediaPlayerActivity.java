@@ -5,8 +5,10 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.suwonsmartapp.hello.R;
@@ -113,5 +115,16 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
 
             mBtnVideoFilePick.setText(fileUri.getPath());
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+            Toast.makeText(getApplicationContext(), "볼륨 다운", Toast.LENGTH_SHORT).show();
+        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+            Toast.makeText(getApplicationContext(), "볼륨 업", Toast.LENGTH_SHORT).show();
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }
