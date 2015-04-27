@@ -41,6 +41,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         // 레이아웃 초기화, 이벤트 연결
         init();
 
+        // 다른 앱에서 호출 될 때의 처리
         if (getIntent() != null) {
             Uri uri = getIntent().getData();
             if (uri != null) {
