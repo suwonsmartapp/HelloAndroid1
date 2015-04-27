@@ -42,7 +42,10 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         init();
 
         if (getIntent() != null) {
-            Toast.makeText(getApplicationContext(), "uri : " + getIntent().getData(), Toast.LENGTH_SHORT).show();
+            Uri uri = getIntent().getData();
+            if (uri != null) {
+                startMusic(uri);
+            }
         }
     }
 
@@ -100,21 +103,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
 //            intent.putExtra("uri", fileUri);
 //            startService(intent);
 
-            if (mMediaPlayer != null) {
-                mMediaPlayer.release();
-                mMediaPlayer = null;
-            }
-
-            try {
-                mMediaPlayer = new MediaPlayer();
-                mMediaPlayer.setDataSource(getApplicationContext(), fileUri);
-                mMediaPlayer.prepare();
-                mMediaPlayer.start();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            mBtnAudioFilePick.setText(fileUri.getPath());
+            startMusic(fileUri);
         } else if (requestCode == REQUEST_CODE_VIDEO && resultCode == RESULT_OK) {
             // Video
             Uri fileUri = data.getData();
@@ -124,6 +113,24 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
 
             mBtnVideoFilePick.setText(fileUri.getPath());
         }
+    }
+
+    private void startMusic(Uri fileUri) {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.release();
+            mMediaPlayer = null;
+        }
+
+        try {
+            mMediaPlayer = new MediaPlayer();
+            mMediaPlayer.setDataSource(getApplicationContext(), fileUri);
+            mMediaPlayer.prepare();
+            mMediaPlayer.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        mBtnAudioFilePick.setText(fileUri.getPath());
     }
 
     @Override
