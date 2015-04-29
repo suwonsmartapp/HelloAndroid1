@@ -85,7 +85,7 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
     private static final Class[] CHALLENGE_CLASSES = {
             ImageExamActivity.class,
             SMSActivity.class,
-            MainActivity.class,
+            com.suwonsmartapp.hello.challenge.challenge04.MainActivity.class,
             Mission05MainActivity.class,
             Mission06MainActivity.class,
             CalendarActivity.class,
