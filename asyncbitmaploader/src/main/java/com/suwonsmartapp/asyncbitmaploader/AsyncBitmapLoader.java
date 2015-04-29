@@ -54,7 +54,8 @@ public class AsyncBitmapLoader {
 
     public AsyncBitmapLoader(Context context) {
         mContext = context;
-        mImageCache = ImageCacheFactory.getInstance().createMemoryCache("memoryCache", MAX_CACHE_SIZE);
+//        mImageCache = ImageCacheFactory.getInstance().createMemoryCache("memoryCache", MAX_CACHE_SIZE);
+        mImageCache = new MemoryImageCache(MAX_CACHE_SIZE);
 
         mTransparentColorDrawable = new ColorDrawable(Color.TRANSPARENT);
     }
@@ -186,6 +187,13 @@ public class AsyncBitmapLoader {
         }
         // 새로운 Task 실행
         return true;
+    }
+
+    public void destroy() {
+        if (mImageCache != null) {
+            mImageCache.clear();
+            mImageCache = null;
+        }
     }
 
 }

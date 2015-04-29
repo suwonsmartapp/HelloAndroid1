@@ -26,7 +26,9 @@ import com.suwonsmartapp.hello.challenge.challenge02.SMSActivity;
 import com.suwonsmartapp.hello.challenge.challenge05.Mission05MainActivity;
 import com.suwonsmartapp.hello.challenge.challenge06.Mission06MainActivity;
 import com.suwonsmartapp.hello.challenge.challenge07_08.CalendarActivity;
+import com.suwonsmartapp.hello.challenge.challenge17.MovieListActivity;
 import com.suwonsmartapp.hello.chat.ClientActivity;
+import com.suwonsmartapp.hello.contentprovider.ContactActivity;
 import com.suwonsmartapp.hello.event.TouchEventActivity;
 import com.suwonsmartapp.hello.graphic.GraphicActivity;
 import com.suwonsmartapp.hello.listview.GridActivity;
@@ -76,7 +78,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "Challenge04",
             "Challenge05",
             "Challenge06",
-            "Challenge07~08"
+            "Challenge07~08",
+            "Challenge17"
     };
 
     private static final Class[] CHALLENGE_CLASSES = {
@@ -85,7 +88,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             MainActivity.class,
             Mission05MainActivity.class,
             Mission06MainActivity.class,
-            CalendarActivity.class
+            CalendarActivity.class,
+            MovieListActivity.class
     };
 
     private static final String[] EVENT_ITEMS = {
@@ -204,6 +208,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             MediaPlayerActivity.class
     };
 
+    private static final String[] PROVIDER_ITEMS = {
+            "주소록 가져오기"
+    };
+
+    private static final Class[] PROVIDER_CLASSES = {
+            ContactActivity.class
+    };
+
     private ListView mListView;
 
     @Override
@@ -266,6 +278,9 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
                 break;
             case "Multimedia":
                 result = new Pair(MULTI_ITEMS, MULTI_CLASSES);
+                break;
+            case "ContentProvider":
+                result = new Pair(PROVIDER_ITEMS, PROVIDER_CLASSES);
                 break;
         }
         return result;

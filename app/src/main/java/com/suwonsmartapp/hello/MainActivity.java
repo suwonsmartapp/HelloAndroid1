@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             "Custom",
             "Save",
             "Camera",
-            "Multimedia"
+            "Multimedia",
+            "ContentProvider"
     };
 
     private ListView mListView;

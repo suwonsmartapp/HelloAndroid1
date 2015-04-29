@@ -49,4 +49,6 @@
     <string name="title_activity_camera_intent">CameraIntentActivity</string>
     <string name="title_activity_camera_builtin">CameraBuiltinActivity</string>
     <string name="title_activity_media_player">MediaPlayerActivity</string>
+    <string name="title_activity_movie_list">MovieListActivity</string>
+    <string name="title_activity_contact">ContactActivity</string>
 </resources>
