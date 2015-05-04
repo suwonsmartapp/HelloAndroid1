@@ -1,6 +1,7 @@
 
 package com.suwonsmartapp.hello.challenge.challenge17;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.suwonsmartapp.hello.R;
 
@@ -72,8 +74,12 @@ public class MovieListActivity extends AppCompatActivity implements
         Cursor cursor = (Cursor)mAdapter.getItem(position);
         String dataUri = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA));
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.parse(dataUri), "video/*");
-        startActivity(intent);
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.parse(dataUri), "video/*");
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(getApplicationContext(), "지원되는 프로그램 없음", Toast.LENGTH_SHORT).show();
+        }
     }
 }
