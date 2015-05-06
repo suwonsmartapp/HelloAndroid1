@@ -45,6 +45,36 @@
             android:text="재시작" />
     </LinearLayout>
 
+    <LinearLayout
+        android:background="#5500ff00"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_artist"
+            android:text="아티스트"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_album"
+            android:text="앨범"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:text="타이틀"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Chronometer
+            android:id="@+id/chronometer_play_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <VideoView
         android:id="@+id/videoView"

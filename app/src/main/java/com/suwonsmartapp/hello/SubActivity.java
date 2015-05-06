@@ -30,6 +30,7 @@ import com.suwonsmartapp.hello.challenge.challenge17.MovieListActivity;
 import com.suwonsmartapp.hello.chat.ClientActivity;
 import com.suwonsmartapp.hello.contentprovider.ContactActivity;
 import com.suwonsmartapp.hello.event.TouchEventActivity;
+import com.suwonsmartapp.hello.filemanager.FileManagerActivity;
 import com.suwonsmartapp.hello.graphic.GraphicActivity;
 import com.suwonsmartapp.hello.listview.GridActivity;
 import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
@@ -216,6 +217,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             ContactActivity.class
     };
 
+    private static final String[] FILEMANAGER_ITEMS = {
+            "파일관리자"
+    };
+
+    private static final Class[] FILEMANAGER_CLASSES = {
+            FileManagerActivity.class
+    };
+
     private ListView mListView;
 
     @Override
@@ -281,6 +290,9 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
                 break;
             case "ContentProvider":
                 result = new Pair(PROVIDER_ITEMS, PROVIDER_CLASSES);
+                break;
+            case "파일관리자":
+                result = new Pair(FILEMANAGER_ITEMS, FILEMANAGER_CLASSES);
                 break;
         }
         return result;

@@ -230,8 +230,13 @@
         </activity>
         <activity
             android:name=".contentprovider.ContactActivity"
+            android:label="@string/title_activity_contact"
+            android:theme="@style/Theme.AppCompat" >
+        </activity>
+        <activity
             android:theme="@style/Theme.AppCompat"
-            android:label="@string/title_activity_contact" >
+            android:name=".filemanager.FileManagerActivity"
+            android:label="@string/title_activity_file_manager" >
         </activity>
     </application>
 

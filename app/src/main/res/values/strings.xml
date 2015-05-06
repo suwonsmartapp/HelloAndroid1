@@ -51,4 +51,5 @@
     <string name="title_activity_media_player">MediaPlayerActivity</string>
     <string name="title_activity_movie_list">MovieListActivity</string>
     <string name="title_activity_contact">ContactActivity</string>
+    <string name="title_activity_file_manager">FileManagerActivity</string>
 </resources>
