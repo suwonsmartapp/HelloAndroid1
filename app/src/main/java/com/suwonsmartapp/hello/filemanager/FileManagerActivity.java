@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -146,7 +148,8 @@ public class FileManagerActivity extends AppCompatActivity implements AdapterVie
                 try {
                     // 파일인 경우
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.fromFile(fileData));
-                    startActivity(intent);
+                    intent.setType("audio/*");
+                    startActivity(Intent.createChooser(intent, "파일선택..."));
                 } catch(ActivityNotFoundException e) {
                     Toast.makeText(getApplicationContext(), "실행 할 앱이 없습니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -161,9 +164,25 @@ public class FileManagerActivity extends AppCompatActivity implements AdapterVie
         File dir = new File(path);
         File[] files = dir.listFiles();
 
+        if (files == null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(FileManagerActivity.this);
+            builder.setTitle("오류")
+                    .setMessage("파일/폴더를 열 수 없습니다!")
+                    .setPositiveButton("확인", null)
+                    .show();
+            mFileStack.pop();
+            return;
+        }
+
         List<File> fileList = new ArrayList<>();
+
+//        for (int i = 0; i < files.length; i++) {
+//            File f = files[i];
+//        }
         for(File f : files) {
-            fileList.add(f);
+            if (f != null) {
+                fileList.add(f);
+            }
         }
 
         FileAdapter fileAdapter = new FileAdapter(getApplicationContext(), fileList);
@@ -191,5 +210,15 @@ public class FileManagerActivity extends AppCompatActivity implements AdapterVie
         }
 
         return super.onKeyDown(keyCode, event);
+    }
+
+    public static String getMimeType(String url) {
+        String type = null;
+        String extension = MimeTypeMap.getFileExtensionFromUrl(url);
+        if (extension != null) {
+            MimeTypeMap mime = MimeTypeMap.getSingleton();
+            type = mime.getMimeTypeFromExtension(extension);
+        }
+        return type;
     }
 }
