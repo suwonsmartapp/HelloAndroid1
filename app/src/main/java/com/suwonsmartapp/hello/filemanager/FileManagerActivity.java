@@ -15,6 +15,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.suwonsmartapp.hello.R;
@@ -157,7 +158,11 @@ public class FileManagerActivity extends AppCompatActivity implements AdapterVie
         }
 //        Toast.makeText(getApplicationContext(), "path : " + data.get("path"), Toast.LENGTH_SHORT).show();
 
+        printLog();
+    }
 
+    private void printLog() {
+        ((TextView)findViewById(R.id.tv_log)).setText(mFileStack.toString());
     }
 
     private void showFileList(String path) {
@@ -199,6 +204,8 @@ public class FileManagerActivity extends AppCompatActivity implements AdapterVie
             if (!mFileStack.empty()) {
                 // 스택이 안 비었으면, 뒤로 간다
                 String prevPath = mFileStack.pop();
+                mCurrentPath = prevPath;
+                printLog();
                 if (prevPath.equals("")) {
                     setUpHome();
                 } else {
