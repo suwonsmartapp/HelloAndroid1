@@ -1,4 +1,4 @@
-package com.suwonsmartapp.hello.filemanager;
+package com.suwonsmartapp.mylibrary;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import com.suwonsmartapp.hello.R;
 
 import java.io.File;
 import java.text.DecimalFormat;
@@ -17,6 +15,13 @@ import java.util.List;
 
 /**
  * Created by junsuk on 15. 5. 6..
+ *
+ * 라이브러리 프로젝트 작성 방법
+ *
+ * 1. File -> New -> New Module -> Android Library Module
+ * 2. 라이브러리로 빼고 싶은 클래스를 복사한다
+ * 3. 라이브러리 프로젝트에서 우클릭 -> Make Module
+ * 4. 에러가 없으면 성공
  */
 public class FileAdapter extends BaseAdapter {
 
