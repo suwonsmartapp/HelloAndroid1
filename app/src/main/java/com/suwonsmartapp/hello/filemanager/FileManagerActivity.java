@@ -1,3 +1,4 @@
+
 package com.suwonsmartapp.hello.filemanager;
 
 import android.content.ActivityNotFoundException;
@@ -28,11 +29,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-public class FileManagerActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class FileManagerActivity extends AppCompatActivity implements
+        AdapterView.OnItemClickListener {
 
-    public static final String sPathSdcard = Environment.getExternalStorageDirectory().getAbsolutePath();
-    public static final String sPathPicture = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath();
-    public static final String sPathDownload = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();;
+    public static final String sPathSdcard = Environment.getExternalStorageDirectory()
+            .getAbsolutePath();
+    public static final String sPathPicture = Environment.getExternalStoragePublicDirectory(
+            Environment.DIRECTORY_PICTURES).getAbsolutePath();
+    public static final String sPathDownload = Environment.getExternalStoragePublicDirectory(
+            Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();;
     public static final String sPathRoot = "/";
 
     private ListView mListView;
@@ -48,12 +53,15 @@ public class FileManagerActivity extends AppCompatActivity implements AdapterVie
     // 현재의 full path
     private String mCurrentPath = "";
 
+    private TextView mTvCurrentPath;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_manager);
 
         mListView = (ListView) findViewById(R.id.lv_filetree);
+        mTvCurrentPath = (TextView) findViewById(R.id.tv_currentPath);
 
         mFileStack = new Stack<>();
 
@@ -86,17 +94,20 @@ public class FileManagerActivity extends AppCompatActivity implements AdapterVie
         mTitleList.add(download);
         mTitleList.add(root);
 
-
-//        Pair<String, String> sdcard = new Pair<>("SD Card", sPathSdcard);
-//        Pair<String, String> picture = new Pair<>("사진", sPathPicture);
-//        Pair<String, String> download = new Pair<>("다운로드", sPathDownload);
-//        Pair<String, String> root = new Pair<>("루트", sPathRoot);
+        // Pair<String, String> sdcard = new Pair<>("SD Card", sPathSdcard);
+        // Pair<String, String> picture = new Pair<>("사진", sPathPicture);
+        // Pair<String, String> download = new Pair<>("다운로드", sPathDownload);
+        // Pair<String, String> root = new Pair<>("루트", sPathRoot);
 
         mAdapter = new SimpleAdapter(getApplicationContext(),
                 mTitleList,
                 android.R.layout.simple_list_item_2,
-                new String[] { "title", "path" },
-                new int[] { android.R.id.text1, android.R.id.text2} );
+                new String[] {
+                        "title", "path"
+                },
+                new int[] {
+                        android.R.id.text1, android.R.id.text2
+                });
 
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(this);
@@ -116,7 +127,7 @@ public class FileManagerActivity extends AppCompatActivity implements AdapterVie
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -126,44 +137,38 @@ public class FileManagerActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Object data = mListView.getAdapter().getItem(position);
+        Object item = mListView.getAdapter().getItem(position);
 
-        if (data instanceof Map) {
-            Map mapData = (Map)data;
+        if (item instanceof Map) {
+            Map mapData = (Map) item;
             String path = (String) mapData.get("path");
 
             mFileStack.push("");
-            mCurrentPath = path;
+            setCurrentPath(path);
 
             showFileList(path);
-        } else if (data instanceof File) {
+        } else if (item instanceof File) {
             // 디렉토리를 클릭했을 때는 그 안으로 들어간다
-            File fileData = (File)data;
+            File fileData = (File) item;
             if (fileData.isDirectory()) {
 
                 // 히스토리에 path 를 삽입
                 mFileStack.push(mCurrentPath);
-                mCurrentPath = fileData.getAbsolutePath();
+                setCurrentPath(fileData.getAbsolutePath());
 
                 showFileList(fileData.getAbsolutePath());
             } else {
                 try {
-                    // 파일인 경우
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.fromFile(fileData));
-                    intent.setType("audio/*");
+                    // 파일인 경우, 해당 파일의 MIME TYPE 을 설정하여 chooser를 호출
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setDataAndType(Uri.fromFile(fileData), getMimeType(fileData.getAbsolutePath()));
                     startActivity(Intent.createChooser(intent, "파일선택..."));
-                } catch(ActivityNotFoundException e) {
-                    Toast.makeText(getApplicationContext(), "실행 할 앱이 없습니다.", Toast.LENGTH_SHORT).show();
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(getApplicationContext(), "실행 할 앱이 없습니다.", Toast.LENGTH_SHORT)
+                            .show();
                 }
             }
         }
-//        Toast.makeText(getApplicationContext(), "path : " + data.get("path"), Toast.LENGTH_SHORT).show();
-
-        printLog();
-    }
-
-    private void printLog() {
-        ((TextView)findViewById(R.id.tv_log)).setText(mFileStack.toString());
     }
 
     private void showFileList(String path) {
@@ -182,10 +187,10 @@ public class FileManagerActivity extends AppCompatActivity implements AdapterVie
 
         List<File> fileList = new ArrayList<>();
 
-//        for (int i = 0; i < files.length; i++) {
-//            File f = files[i];
-//        }
-        for(File f : files) {
+        // for (int i = 0; i < files.length; i++) {
+        // File f = files[i];
+        // }
+        for (File f : files) {
             if (f != null) {
                 fileList.add(f);
             }
@@ -205,8 +210,7 @@ public class FileManagerActivity extends AppCompatActivity implements AdapterVie
             if (!mFileStack.empty()) {
                 // 스택이 안 비었으면, 뒤로 간다
                 String prevPath = mFileStack.pop();
-                mCurrentPath = prevPath;
-                printLog();
+                setCurrentPath(prevPath);
                 if (prevPath.equals("")) {
                     setUpHome();
                 } else {
@@ -218,6 +222,11 @@ public class FileManagerActivity extends AppCompatActivity implements AdapterVie
         }
 
         return super.onKeyDown(keyCode, event);
+    }
+
+    private void setCurrentPath(String path) {
+        mCurrentPath = path;
+        mTvCurrentPath.setText(mCurrentPath);
     }
 
     public static String getMimeType(String url) {
