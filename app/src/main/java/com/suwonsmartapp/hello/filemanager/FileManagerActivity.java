@@ -24,6 +24,8 @@ import com.suwonsmartapp.mylibrary.FileAdapter;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -196,10 +198,23 @@ public class FileManagerActivity extends AppCompatActivity implements
             }
         }
 
+//        Collections.sort(fileList);
+        Collections.sort(fileList, mDescComparator);
+
         FileAdapter fileAdapter = new FileAdapter(getApplicationContext(), fileList);
 
         mListView.setAdapter(fileAdapter);
     }
+
+    Comparator<File> mDescComparator = new Comparator<File>() {
+        @Override
+        public int compare(File lhs, File rhs) {
+            String left = lhs.getName();
+            String right = rhs.getName();
+
+            return right.compareTo(left);
+        }
+    };
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

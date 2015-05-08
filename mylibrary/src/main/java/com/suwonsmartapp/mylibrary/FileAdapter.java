@@ -1,6 +1,7 @@
 package com.suwonsmartapp.mylibrary;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class FileAdapter extends BaseAdapter {
     private List<File> mData;
     private Context mContext;
 
-    SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyy.MM.dd a KK:mm");
+    SimpleDateFormat mDateFormat = new SimpleDateFormat("yy.MM.dd a KK:mm");
     DecimalFormat mDecimalFormat = new DecimalFormat("#,###");
 
     public FileAdapter(Context context, List<File> data) {
@@ -83,9 +84,19 @@ public class FileAdapter extends BaseAdapter {
         // 디렉토리인지 아닌지
         if (file.isDirectory()) {
             holder.fileSize.setText("<dir>");
+            holder.fileName.setTextColor(Color.parseColor("#6A76FC"));
+            holder.fileSize.setTextColor(Color.parseColor("#6A76FC"));
+            holder.modified.setTextColor(Color.parseColor("#6A76FC"));
         } else {
             long size = file.length() / 1024;
-            holder.fileSize.setText(mDecimalFormat.format(size) + "kb");
+            if (size == 0) {
+                holder.fileSize.setText(String.valueOf(file.length()));
+            } else {
+                holder.fileSize.setText(mDecimalFormat.format(size) + " k");
+            }
+            holder.fileName.setTextColor(Color.parseColor("#C7C7C7"));
+            holder.fileSize.setTextColor(Color.parseColor("#C7C7C7"));
+            holder.modified.setTextColor(Color.parseColor("#C7C7C7"));
         }
 
         holder.modified.setText(mDateFormat.format(new Date(file.lastModified())));
