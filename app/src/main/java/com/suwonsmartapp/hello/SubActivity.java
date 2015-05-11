@@ -36,6 +36,7 @@ import com.suwonsmartapp.hello.listview.GridActivity;
 import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
+import com.suwonsmartapp.hello.location.LocationActivity;
 import com.suwonsmartapp.hello.multimedia.MediaPlayerActivity;
 import com.suwonsmartapp.hello.parsing_json.ParsingActivity;
 import com.suwonsmartapp.hello.remotecontroller.client.RemoteControllerActivity;
@@ -225,6 +226,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             FileManagerActivity.class
     };
 
+    private static final String[] LOCATION_ITEMS = {
+            "현재 위치 알아내기"
+    };
+
+    private static final Class[] LOCATION_CLASSES = {
+            LocationActivity.class
+    };
+
     private ListView mListView;
 
     @Override
@@ -293,6 +302,9 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
                 break;
             case "파일관리자":
                 result = new Pair(FILEMANAGER_ITEMS, FILEMANAGER_CLASSES);
+                break;
+            case "위치":
+                result = new Pair(LOCATION_ITEMS, LOCATION_CLASSES);
                 break;
         }
         return result;

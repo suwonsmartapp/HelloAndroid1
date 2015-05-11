@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             "Camera",
             "Multimedia",
             "ContentProvider",
-            "파일관리자"
+            "파일관리자",
+            "위치"
     };
 
     private ListView mListView;
