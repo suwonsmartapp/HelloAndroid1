@@ -211,6 +211,7 @@
         </activity>
         <activity
             android:name=".multimedia.MediaPlayerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_media_player" >
 
             <!-- 오디오 파일이 선택 되었을 때 Chooser 에 표시 되도록 -->
