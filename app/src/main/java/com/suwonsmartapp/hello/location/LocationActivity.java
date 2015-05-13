@@ -1,7 +1,9 @@
 
 package com.suwonsmartapp.hello.location;
 
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -13,12 +15,17 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.Geofence;
+import com.google.android.gms.location.GeofencingRequest;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.suwonsmartapp.hello.R;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -28,7 +35,7 @@ import java.util.Locale;
  */
 public class LocationActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
-        View.OnClickListener, LocationListener {
+        View.OnClickListener, LocationListener, ResultCallback<Status> {
 
     private String REQUESTING_LOCATION_UPDATES_KEY = "REQUESTING_LOCATION_UPDATES_KEY";
     private String LOCATION_KEY = "LOCATION_KEY";
@@ -47,6 +54,8 @@ public class LocationActivity extends AppCompatActivity implements
     private String mLastUpdateTime;
 
     private Geocoder mGeocoder;
+    private List<Geofence> mGeofenceList;
+    private PendingIntent mGeofencePendingIntent;
 
 
     @Override
@@ -70,6 +79,46 @@ public class LocationActivity extends AppCompatActivity implements
 
         // 현재 주소를 얻기 위한 객체
         mGeocoder = new Geocoder(this, Locale.getDefault());
+
+        // Geofence리스트 생성
+        createGeofenceList();
+    }
+
+    private void createGeofenceList() {
+        mGeofenceList = new ArrayList<>();
+        mGeofenceList.add(new Geofence.Builder()
+                // Set the request ID of the geofence. This is a string to identify this
+                // geofence.
+                .setRequestId("test")
+
+                .setCircularRegion(
+                        37.27425,
+                        127.0226286,
+                        30
+                )
+                .setExpirationDuration(60 * 60)
+                .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER |
+                        Geofence.GEOFENCE_TRANSITION_EXIT)
+                .build());
+    }
+
+    private GeofencingRequest getGeofencingRequest() {
+        GeofencingRequest.Builder builder = new GeofencingRequest.Builder();
+        builder.setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER);
+        builder.addGeofences(mGeofenceList);
+        return builder.build();
+    }
+
+    private PendingIntent getGeofencePendingIntent() {
+        // Reuse the PendingIntent if we already have it.
+        if (mGeofencePendingIntent != null) {
+            return mGeofencePendingIntent;
+        }
+        Intent intent = new Intent(this, GeofenceTransitionsIntentService.class);
+        // We use FLAG_UPDATE_CURRENT so that we get the same pending intent back when
+        // calling addGeofences() and removeGeofences().
+        return PendingIntent.getService(this, 0, intent, PendingIntent.
+                FLAG_UPDATE_CURRENT);
     }
 
     /**
@@ -89,6 +138,15 @@ public class LocationActivity extends AppCompatActivity implements
         LocationServices.FusedLocationApi.requestLocationUpdates(
                 mGoogleApiClient, mLocationRequest, this);
     }
+
+    protected void startGeofence() {
+        LocationServices.GeofencingApi.addGeofences(
+                mGoogleApiClient,
+                getGeofencingRequest(),
+                getGeofencePendingIntent()
+        ).setResultCallback(this);
+    }
+
 
     /**
      * Google Play Service 에 연결하는 객체를 생성
@@ -113,6 +171,9 @@ public class LocationActivity extends AppCompatActivity implements
         if (mRequestingLocationUpdates) {
             startLocationUpdates();
         }
+
+        // GeofencingApi 에 내가 지정한 Geofences 추가
+        startGeofence();
     }
 
     @Override
@@ -178,6 +239,7 @@ public class LocationActivity extends AppCompatActivity implements
         super.onResume();
         if (mGoogleApiClient.isConnected() && !mRequestingLocationUpdates) {
             startLocationUpdates();
+            startGeofence();
         }
     }
 
@@ -186,11 +248,20 @@ public class LocationActivity extends AppCompatActivity implements
         Toast.makeText(getApplicationContext(), "onPause!!!!!!", Toast.LENGTH_SHORT).show();
         super.onPause();
         stopLocationUpdates();
+        stopGeofence();
     }
 
     protected void stopLocationUpdates() {
         LocationServices.FusedLocationApi.removeLocationUpdates(
                 mGoogleApiClient, this);
+    }
+
+    protected void stopGeofence() {
+        LocationServices.GeofencingApi.removeGeofences(
+                mGoogleApiClient,
+                // This is the same pending intent that was used in addGeofences().
+                getGeofencePendingIntent()
+        ).setResultCallback(this); // Result processed in onResult().
     }
 
     @Override
@@ -234,4 +305,12 @@ public class LocationActivity extends AppCompatActivity implements
             Toast.makeText(getApplicationContext(), "mLastUpdateTime : " + mLastUpdateTime, Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    public void onResult(Status status) {
+        // Geofence 결과가 오는 콜백
+        Toast.makeText(getApplicationContext(), "geofence status : " + status, Toast.LENGTH_SHORT).show();
+    }
+
+
 }
