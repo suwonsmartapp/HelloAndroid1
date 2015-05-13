@@ -2,6 +2,8 @@
 package com.suwonsmartapp.hello.location;
 
 import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -15,6 +17,10 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.suwonsmartapp.hello.R;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * http://developer.android.com/training/location/index.html
@@ -40,6 +46,8 @@ public class LocationActivity extends AppCompatActivity implements
     private Location mCurrentLocation;
     private String mLastUpdateTime;
 
+    private Geocoder mGeocoder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +67,9 @@ public class LocationActivity extends AppCompatActivity implements
 
         // 임시로 저장한 데이터 복원
         updateValuesFromBundle(savedInstanceState);
+
+        // 현재 주소를 얻기 위한 객체
+        mGeocoder = new Geocoder(this, Locale.getDefault());
     }
 
     /**
@@ -133,9 +144,17 @@ public class LocationActivity extends AppCompatActivity implements
             }
         }
         if (mLastLocation != null) {
-            Toast.makeText(getApplicationContext(),
-                    "lat : " + mLastLocation.getLatitude() +
-                            ", lon : " + mLastLocation.getLongitude(), Toast.LENGTH_SHORT).show();
+            // 위도, 경도로부터 주소를 얻는 방법
+            List<Address> addressList;
+            Address address = null;
+            try {
+                addressList = mGeocoder.getFromLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), 1);
+                address = addressList.get(0);
+                Toast.makeText(getApplicationContext(),
+                        "address : " + address.toString(), Toast.LENGTH_LONG).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             mCurrentLocation = mLastLocation;
             mLastUpdateTime = String.valueOf(mLastLocation.getTime());
