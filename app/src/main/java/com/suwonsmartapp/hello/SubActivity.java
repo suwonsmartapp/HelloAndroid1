@@ -38,6 +38,7 @@ import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
 import com.suwonsmartapp.hello.location.LocationActivity;
 import com.suwonsmartapp.hello.multimedia.MediaPlayerActivity;
+import com.suwonsmartapp.hello.notification.NotificationActivity;
 import com.suwonsmartapp.hello.parsing_json.ParsingActivity;
 import com.suwonsmartapp.hello.remotecontroller.client.RemoteControllerActivity;
 import com.suwonsmartapp.hello.save.db.DbActivity;
@@ -234,6 +235,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             LocationActivity.class
     };
 
+    private static final String[] NOTIFICATION_ITEMS = {
+            "Notification 예제"
+    };
+
+    private static final Class[] NOTIFICATION_CLASSES = {
+            NotificationActivity.class
+    };
+
     private ListView mListView;
 
     @Override
@@ -305,6 +314,9 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
                 break;
             case "위치":
                 result = new Pair(LOCATION_ITEMS, LOCATION_CLASSES);
+                break;
+            case "Notification":
+                result = new Pair(NOTIFICATION_ITEMS, NOTIFICATION_CLASSES);
                 break;
         }
         return result;

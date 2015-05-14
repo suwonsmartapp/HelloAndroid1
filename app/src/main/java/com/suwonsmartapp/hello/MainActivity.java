@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             "Multimedia",
             "ContentProvider",
             "파일관리자",
-            "위치"
+            "위치",
+            "Notification"
     };
 
     private ListView mListView;

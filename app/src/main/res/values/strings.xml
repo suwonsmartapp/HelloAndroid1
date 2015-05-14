@@ -53,4 +53,5 @@
     <string name="title_activity_contact">ContactActivity</string>
     <string name="title_activity_file_manager">FileManagerActivity</string>
     <string name="title_activity_location">LocationActivity</string>
+    <string name="title_activity_notification">NotificationActivity</string>
 </resources>
