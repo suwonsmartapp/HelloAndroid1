@@ -1,6 +1,7 @@
 package com.suwonsmartapp.hello.fragment;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
@@ -28,10 +29,11 @@ public class FragmentMainActivity extends ActionBarActivity implements UpFragmen
         mFragmentUp = (UpFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_up);
         mFragmentDown = (DownFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_down);
 
-        if (mFragmentDown == null) {
-            mDualPane = false;
-        } else {
+        if (getResources().getConfiguration().orientation
+                == Configuration.ORIENTATION_LANDSCAPE) {
             mDualPane = true;
+        } else {
+            mDualPane = false;
         }
 
         mFragmentUp.setOnImageChangeListener(this);

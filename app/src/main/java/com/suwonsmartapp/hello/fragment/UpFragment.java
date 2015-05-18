@@ -31,6 +31,18 @@ public class UpFragment extends Fragment implements View.OnClickListener {
     public UpFragment() {
     }
 
+    // onAttach 에서 리스너 연결 하는 방법
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//
+//        try {
+//            mListener = (OnImageChangeListener) activity;
+//        } catch (ClassCastException e) {
+//            throw new ClassCastException(activity.toString() + " must implement OnArticleSelectedListener");
+//        }
+//    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
