@@ -255,6 +255,14 @@
             android:name=".notification.NotificationActivity"
             android:label="@string/title_activity_notification" >
         </activity>
+        <activity
+            android:name=".fragment.FragmentMainActivity"
+            android:label="@string/title_activity_fragment_main" >
+        </activity>
+        <activity
+            android:name=".fragment.DownFragmentActivity"
+            android:label="@string/title_activity_down_fragment" >
+        </activity>
     </application>
 
 </manifest>

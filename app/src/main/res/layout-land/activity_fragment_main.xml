@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/fragment_up"
+        android:name="com.suwonsmartapp.hello.fragment.UpFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_fragment_main" />
+
+    <fragment
+        android:id="@+id/fragment_down"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.suwonsmartapp.hello.fragment.DownFragment"
+        tools:layout="@layout/fragment_down" />
+</LinearLayout>
+

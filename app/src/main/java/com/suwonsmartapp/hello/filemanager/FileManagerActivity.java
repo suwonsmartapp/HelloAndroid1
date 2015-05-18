@@ -198,8 +198,8 @@ public class FileManagerActivity extends AppCompatActivity implements
             }
         }
 
-//        Collections.sort(fileList);
-        Collections.sort(fileList, mDescComparator);
+        Collections.sort(fileList);
+        Collections.sort(fileList, mFolderAscComparator);
 
         FileAdapter fileAdapter = new FileAdapter(getApplicationContext(), fileList);
 
@@ -213,6 +213,14 @@ public class FileManagerActivity extends AppCompatActivity implements
             String right = rhs.getName();
 
             return right.compareTo(left);
+        }
+    };
+
+    Comparator<File> mFolderAscComparator = new Comparator<File>() {
+        @Override
+        public int compare(File lhs, File rhs) {
+
+            return 0;
         }
     };
 
@@ -249,7 +257,7 @@ public class FileManagerActivity extends AppCompatActivity implements
         String extension = MimeTypeMap.getFileExtensionFromUrl(url);
         if (extension != null) {
             MimeTypeMap mime = MimeTypeMap.getSingleton();
-            type = mime.getMimeTypeFromExtension(extension);
+            type = mime.getMimeTypeFromExtension(extension.toLowerCase());
         }
         return type;
     }

@@ -31,6 +31,7 @@ import com.suwonsmartapp.hello.chat.ClientActivity;
 import com.suwonsmartapp.hello.contentprovider.ContactActivity;
 import com.suwonsmartapp.hello.event.TouchEventActivity;
 import com.suwonsmartapp.hello.filemanager.FileManagerActivity;
+import com.suwonsmartapp.hello.fragment.FragmentMainActivity;
 import com.suwonsmartapp.hello.graphic.GraphicActivity;
 import com.suwonsmartapp.hello.listview.GridActivity;
 import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
@@ -243,6 +244,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             NotificationActivity.class
     };
 
+    private static final String[] FRAGMENT_ITEMS = {
+            "Fragment"
+    };
+
+    private static final Class[] FRAGMENT_CLASSES = {
+            FragmentMainActivity.class
+    };
+
     private ListView mListView;
 
     @Override
@@ -317,6 +326,9 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
                 break;
             case "Notification":
                 result = new Pair(NOTIFICATION_ITEMS, NOTIFICATION_CLASSES);
+                break;
+            case "Fragment":
+                result = new Pair(FRAGMENT_ITEMS, FRAGMENT_CLASSES);
                 break;
         }
         return result;

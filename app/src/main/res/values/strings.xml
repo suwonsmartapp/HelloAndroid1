@@ -54,4 +54,7 @@
     <string name="title_activity_file_manager">FileManagerActivity</string>
     <string name="title_activity_location">LocationActivity</string>
     <string name="title_activity_notification">NotificationActivity</string>
+    <string name="title_activity_fragment_main">FragmentMainActivity</string>
+    <string name="title_activity_phone">PhoneActivity</string>
+    <string name="title_activity_down_fragment">DownFragmentActivity</string>
 </resources>
