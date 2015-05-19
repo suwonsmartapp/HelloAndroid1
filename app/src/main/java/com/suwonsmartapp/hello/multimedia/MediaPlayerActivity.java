@@ -50,7 +50,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
     private Chronometer mPlayTime;
     private TextView mTvDuration;
     private SeekBar mSeekBar;
-    private ImageView mIvAlbutArt;
+    private ImageView mIvAlbumArt;
 
     // 플레이어
     private MediaPlayer mMediaPlayer;
@@ -93,7 +93,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         mPlayTime = (Chronometer) findViewById(R.id.chronometer_play_time);
         mTvDuration = (TextView) findViewById(R.id.tv_duration);
         mSeekBar = (SeekBar) findViewById(R.id.seekbar_play_time);
-        mIvAlbutArt = (ImageView) findViewById(R.id.iv_albumArt);
+        mIvAlbumArt = (ImageView) findViewById(R.id.iv_albumArt);
 
         mBtnAudioFilePick.setOnClickListener(this);
         mBtnVideoFilePick.setOnClickListener(this);
@@ -164,7 +164,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
             // Video
             Uri fileUri = data.getData();
 
-            mIvAlbutArt.setVisibility(View.INVISIBLE);
+            mIvAlbumArt.setVisibility(View.INVISIBLE);
             mVideoView.setVisibility(View.VISIBLE);
 
             mVideoView.setVideoURI(fileUri);
@@ -195,8 +195,8 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         byte data[] = retriever.getEmbeddedPicture();
         if (null != data) {
             mVideoView.setVisibility(View.INVISIBLE);
-            mIvAlbutArt.setVisibility(View.VISIBLE);
-            mIvAlbutArt.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+            mIvAlbumArt.setVisibility(View.VISIBLE);
+            mIvAlbumArt.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
         }
     }
 
