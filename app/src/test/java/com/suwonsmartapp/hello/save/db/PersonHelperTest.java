@@ -23,6 +23,7 @@ public class PersonHelperTest {
     PersonHelper mHelper;
     Context mContext;
 
+    // 테스트 수행 시 처음에 실행되는 메소드
     @Before
     public void setUp() throws Exception {
         // 가상 Context
@@ -32,11 +33,17 @@ public class PersonHelperTest {
         mHelper = new PersonHelper(mContext);
     }
 
+    // 테스트 종료 시 수행되는 메소드
     @After
     public void tearDown() throws Exception {
         mHelper.close();
     }
 
+    /**
+     * Insert 테스트
+     * @see PersonHelper#insert(Person)
+     * @throws Exception
+     */
     @Test
     public void testInsert() throws Exception {
         long id = mHelper.insert(new Person("test,", "abc@abc.com"));
