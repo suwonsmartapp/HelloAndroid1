@@ -16,6 +16,15 @@ import com.suwonsmartapp.hello.R;
 
 import java.util.ArrayList;
 
+/**
+ * http://developer.android.com/training/implementing-navigation/lateral.html
+ *
+ * 프래그먼트 어댑터 두 종류의 차이
+ *
+ * FragmentPagerAdapter : 화면에 안 보이는 Fragment도 메모리에 남아 있음. 빠름.
+ *
+ * FragmentStatePagerAdapter : 화면에 안 보이는 Fragment 는 메모리에서 해제. 대신 로드시 오버헤드가 있음.
+ */
 public class ViewPagerActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ViewPager mViewPager;
