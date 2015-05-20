@@ -263,6 +263,10 @@
             android:name=".fragment.DownFragmentActivity"
             android:label="@string/title_activity_down_fragment" >
         </activity>
+        <activity
+            android:name=".activity.ViewPagerActivity"
+            android:label="@string/title_activity_view_pager" >
+        </activity>
     </application>
 
 </manifest>

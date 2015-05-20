@@ -17,6 +17,7 @@ import com.suwonsmartapp.hello.activity.FrameLayoutActivity;
 import com.suwonsmartapp.hello.activity.RelativeLayoutExamActivity;
 import com.suwonsmartapp.hello.activity.SecondActivity;
 import com.suwonsmartapp.hello.activity.TableLayoutActivity;
+import com.suwonsmartapp.hello.activity.ViewPagerActivity;
 import com.suwonsmartapp.hello.bitmap.BitmapActivity;
 import com.suwonsmartapp.hello.broadcast.BroadcastActivity;
 import com.suwonsmartapp.hello.camera.builtin.CameraBuiltinActivity;
@@ -64,7 +65,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "FrameLayout",
             "RelativeLayout",
             "SecondActivity",
-            "TableLayout"
+            "TableLayout",
+            "ViewPager"
     };
     private static final Class[] ACTIVITY_CLASSES = {
             ActivityExamActivity.class,
@@ -73,7 +75,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             FrameLayoutActivity.class,
             RelativeLayoutExamActivity.class,
             SecondActivity.class,
-            TableLayoutActivity.class
+            TableLayoutActivity.class,
+            ViewPagerActivity.class
     };
 
     private static final String[] CHALLENGE_ITEMS = {
