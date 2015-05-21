@@ -198,8 +198,11 @@ public class FileManagerActivity extends AppCompatActivity implements
             }
         }
 
+        // 파일명으로 정렬을 먼저 하고
         Collections.sort(fileList);
-        Collections.sort(fileList, mFolderAscComparator);
+        // 디렉토리만
+        Collections.sort(fileList, mFolderComparator);
+
 
         FileAdapter fileAdapter = new FileAdapter(getApplicationContext(), fileList);
 
@@ -216,10 +219,16 @@ public class FileManagerActivity extends AppCompatActivity implements
         }
     };
 
-    Comparator<File> mFolderAscComparator = new Comparator<File>() {
+    Comparator<File> mFolderComparator = new Comparator<File>() {
         @Override
         public int compare(File lhs, File rhs) {
+            if (!lhs.isDirectory() && rhs.isDirectory()) {
+                return 1;
+            } else if (lhs.isDirectory() && !rhs.isDirectory()) {
+                return -1;
+            }
 
+            // 0 보다 크면 lhs가 큰 것, 0보다 작으면 rhs가 큰 것, 0 이면 같다
             return 0;
         }
     };
@@ -254,7 +263,13 @@ public class FileManagerActivity extends AppCompatActivity implements
 
     public static String getMimeType(String url) {
         String type = null;
-        String extension = MimeTypeMap.getFileExtensionFromUrl(url);
+
+        // 파일명에 공백이 있을 때 확장자를 못 가져오는 이슈 해결책
+        // https://code.google.com/p/android/issues/detail?id=5510
+        String text = url.substring(url.lastIndexOf("."));
+        String extension = MimeTypeMap.getFileExtensionFromUrl(text);
+
+//        String extension = MimeTypeMap.getFileExtensionFromUrl(url);
         if (extension != null) {
             MimeTypeMap mime = MimeTypeMap.getSingleton();
             type = mime.getMimeTypeFromExtension(extension.toLowerCase());
