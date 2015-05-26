@@ -14,6 +14,7 @@ import com.suwonsmartapp.hello.activity.ActivityExamActivity;
 import com.suwonsmartapp.hello.activity.EditTextActivity;
 import com.suwonsmartapp.hello.activity.FirstActivity;
 import com.suwonsmartapp.hello.activity.FrameLayoutActivity;
+import com.suwonsmartapp.hello.activity.NavigationActivity;
 import com.suwonsmartapp.hello.activity.RelativeLayoutExamActivity;
 import com.suwonsmartapp.hello.activity.SecondActivity;
 import com.suwonsmartapp.hello.activity.TableLayoutActivity;
@@ -66,7 +67,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "RelativeLayout",
             "SecondActivity",
             "TableLayout",
-            "ViewPager"
+            "ViewPager",
+            "NavigationDrawer"
     };
     private static final Class[] ACTIVITY_CLASSES = {
             ActivityExamActivity.class,
@@ -76,7 +78,9 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             RelativeLayoutExamActivity.class,
             SecondActivity.class,
             TableLayoutActivity.class,
-            ViewPagerActivity.class
+            ViewPagerActivity.class,
+            NavigationActivity.class
+
     };
 
     private static final String[] CHALLENGE_ITEMS = {

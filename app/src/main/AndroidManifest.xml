@@ -267,6 +267,10 @@
             android:name=".activity.ViewPagerActivity"
             android:label="@string/title_activity_view_pager" >
         </activity>
+        <activity
+            android:name=".activity.NavigationActivity"
+            android:label="@string/title_activity_navigation" >
+        </activity>
     </application>
 
 </manifest>
