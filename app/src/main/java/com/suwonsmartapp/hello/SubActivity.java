@@ -68,7 +68,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "SecondActivity",
             "TableLayout",
             "ViewPager",
-            "NavigationDrawer"
+            "NavigationDrawer",
+            "Facebook Login"
     };
     private static final Class[] ACTIVITY_CLASSES = {
             ActivityExamActivity.class,
@@ -79,8 +80,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             SecondActivity.class,
             TableLayoutActivity.class,
             ViewPagerActivity.class,
-            NavigationActivity.class
-
+            NavigationActivity.class,
+            com.suwonsmartapp.hello.activity.LoginActivity.class
     };
 
     private static final String[] CHALLENGE_ITEMS = {

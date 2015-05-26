@@ -28,6 +28,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.google.android.gms:play-services:7.3.0'
 
+    compile 'com.facebook.android:facebook-android-sdk:4.1.0'
+
     compile project(':asyncbitmaploader')
     compile project(':mylibrary')
 
