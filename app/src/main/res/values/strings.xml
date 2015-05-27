@@ -72,4 +72,5 @@
 
     <!-- Facebook app id 여기 수정 할 부분 -->
     <string name="facebook_app_id">849457751800109</string>
+    <string name="title_activity_ball_game">BallGameActivity</string>
 </resources>

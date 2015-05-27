@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             "파일관리자",
             "위치",
             "Notification",
-            "Fragment"
+            "Fragment",
+            "Sensor"
     };
 
     private ListView mListView;

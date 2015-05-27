@@ -48,6 +48,7 @@ import com.suwonsmartapp.hello.save.db.DbActivity;
 import com.suwonsmartapp.hello.save.file.FileActivity;
 import com.suwonsmartapp.hello.save.preference.SettingsActivity;
 import com.suwonsmartapp.hello.save.preference.SharedPreferenceActivity;
+import com.suwonsmartapp.hello.sensor.BallGameActivity;
 import com.suwonsmartapp.hello.service.KitchenTimerActivity;
 import com.suwonsmartapp.hello.thread.AsyncTaskActivity;
 import com.suwonsmartapp.hello.thread.LoginActivity;
@@ -260,6 +261,14 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             FragmentMainActivity.class
     };
 
+    private static final String[] SENSOR_ITEMS = {
+            "BallGame"
+    };
+
+    private static final Class[] SENSOR_CLASSES = {
+            BallGameActivity.class
+    };
+
     private ListView mListView;
 
     @Override
@@ -337,6 +346,9 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
                 break;
             case "Fragment":
                 result = new Pair(FRAGMENT_ITEMS, FRAGMENT_CLASSES);
+                break;
+            case "Sensor":
+                result = new Pair(SENSOR_ITEMS, SENSOR_CLASSES);
                 break;
         }
         return result;
