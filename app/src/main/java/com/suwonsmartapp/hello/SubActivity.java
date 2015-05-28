@@ -40,6 +40,7 @@ import com.suwonsmartapp.hello.listview.ListViewExam01Activity;
 import com.suwonsmartapp.hello.listview.ListViewExam02Activity;
 import com.suwonsmartapp.hello.listview.SpinnerActivity;
 import com.suwonsmartapp.hello.location.LocationActivity;
+import com.suwonsmartapp.hello.location.SpeedActivity;
 import com.suwonsmartapp.hello.multimedia.MediaPlayerActivity;
 import com.suwonsmartapp.hello.notification.NotificationActivity;
 import com.suwonsmartapp.hello.parsing_json.ParsingActivity;
@@ -238,11 +239,13 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
     };
 
     private static final String[] LOCATION_ITEMS = {
-            "현재 위치 알아내기"
+            "현재 위치 알아내기",
+            "속도 구하기"
     };
 
     private static final Class[] LOCATION_CLASSES = {
-            LocationActivity.class
+            LocationActivity.class,
+            SpeedActivity.class
     };
 
     private static final String[] NOTIFICATION_ITEMS = {
