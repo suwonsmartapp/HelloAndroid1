@@ -1,39 +1,43 @@
 package com.suwonsmartapp.hello.graphic;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 
 import com.suwonsmartapp.hello.R;
 
-public class GraphicActivity extends ActionBarActivity {
+public class GraphicActivity extends ActionBarActivity implements MusicPlayerView.OnPlayerButtonClickListener {
+
+    private MusicPlayerView mMusicPlayerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphic);
+
+        mMusicPlayerView = (MusicPlayerView)findViewById(R.id.musicPlayer);
+        mMusicPlayerView.setOnPlayerButtonClickListener(this);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_graphic, menu);
-        return true;
+    public void onAudioPlayButtonClicked() {
+        // FileChooser 사용
+        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+        i.setType("audio/*");
+        startActivityForResult(Intent.createChooser(i, "파일선택..."), MusicPlayerView.REQUEST_CODE_AUDIO);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (requestCode == MusicPlayerView.REQUEST_CODE_AUDIO && resultCode == RESULT_OK) {
+            // Audio
+            Uri fileUri = data.getData();
+
+            //　음악 재생
+            mMusicPlayerView.startMusic(fileUri);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }
