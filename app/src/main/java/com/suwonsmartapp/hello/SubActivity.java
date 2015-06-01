@@ -73,7 +73,7 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "ViewPager",
             "NavigationDrawer",
             "Facebook Login",
-            "ToolBar"
+            "ToolBar + NavigationView"
     };
     private static final Class[] ACTIVITY_CLASSES = {
             ActivityExamActivity.class,
