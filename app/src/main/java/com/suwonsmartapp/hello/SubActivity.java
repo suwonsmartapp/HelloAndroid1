@@ -18,6 +18,7 @@ import com.suwonsmartapp.hello.activity.NavigationActivity;
 import com.suwonsmartapp.hello.activity.RelativeLayoutExamActivity;
 import com.suwonsmartapp.hello.activity.SecondActivity;
 import com.suwonsmartapp.hello.activity.TableLayoutActivity;
+import com.suwonsmartapp.hello.activity.ToolbarActivity;
 import com.suwonsmartapp.hello.activity.ViewPagerActivity;
 import com.suwonsmartapp.hello.bitmap.BitmapActivity;
 import com.suwonsmartapp.hello.broadcast.BroadcastActivity;
@@ -71,7 +72,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "TableLayout",
             "ViewPager",
             "NavigationDrawer",
-            "Facebook Login"
+            "Facebook Login",
+            "ToolBar"
     };
     private static final Class[] ACTIVITY_CLASSES = {
             ActivityExamActivity.class,
@@ -83,7 +85,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             TableLayoutActivity.class,
             ViewPagerActivity.class,
             NavigationActivity.class,
-            com.suwonsmartapp.hello.activity.LoginActivity.class
+            com.suwonsmartapp.hello.activity.LoginActivity.class,
+            ToolbarActivity.class
     };
 
     private static final String[] CHALLENGE_ITEMS = {

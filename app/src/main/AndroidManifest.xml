@@ -292,9 +292,15 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:screenOrientation="portrait"
             android:name=".location.SpeedActivity"
-            android:label="@string/title_activity_speed" >
+            android:label="@string/title_activity_speed"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:name=".activity.ToolbarActivity"
+            android:label="@string/title_activity_toolbar" >
         </activity>
     </application>
 
