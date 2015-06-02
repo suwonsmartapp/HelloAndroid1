@@ -24,6 +24,7 @@ import com.suwonsmartapp.hello.R;
  */
 public class ToolbarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    // Navigation Drawer
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private NavigationView mNavigationView;
@@ -33,9 +34,11 @@ public class ToolbarActivity extends AppCompatActivity implements NavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar);
 
+        // Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Navigation Drawer
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.app_name, R.string.app_name);
@@ -67,6 +70,7 @@ public class ToolbarActivity extends AppCompatActivity implements NavigationView
             return true;
         }
 
+        // 토글 터치 이벤트
         return mToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
@@ -74,6 +78,7 @@ public class ToolbarActivity extends AppCompatActivity implements NavigationView
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
+        // 토글 상태 동기
         mToggle.syncState();
     }
 
@@ -84,6 +89,7 @@ public class ToolbarActivity extends AppCompatActivity implements NavigationView
         mToggle.onConfigurationChanged(newConfig);
     }
 
+    // Navigation Drawer 선택시 이벤트 발생
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
