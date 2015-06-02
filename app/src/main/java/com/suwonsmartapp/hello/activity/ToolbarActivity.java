@@ -6,6 +6,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,12 +23,15 @@ import com.suwonsmartapp.hello.R;
  * 2. Theme.AppCompat.NoActionBar 테마를 사용
  * 3. onCreate 에서 setSupportActionBar() 에 Toolbar 설정
  */
-public class ToolbarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ToolbarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
 
     // Navigation Drawer
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private NavigationView mNavigationView;
+
+    // SearchView
+    private SearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,10 @@ public class ToolbarActivity extends AppCompatActivity implements NavigationView
         // Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // SearchView
+        mSearchView = (SearchView) toolbar.getMenu().findItem(R.id.menu_search).getActionView();
+        mSearchView.setOnQueryTextListener(this);
 
         // Navigation Drawer
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -100,6 +108,18 @@ public class ToolbarActivity extends AppCompatActivity implements NavigationView
                 Toast.makeText(getApplicationContext(), "menu 2", Toast.LENGTH_SHORT).show();
                 break;
         }
+        return false;
+    }
+
+    // SearchView 에 검색어 입력 완료시 호출
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    // SearchView 에 검색어 입력시 호출
+    @Override
+    public boolean onQueryTextChange(String newText) {
         return false;
     }
 }
