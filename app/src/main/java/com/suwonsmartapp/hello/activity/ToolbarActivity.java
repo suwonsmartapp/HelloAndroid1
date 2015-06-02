@@ -6,13 +6,13 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.suwonsmartapp.hello.R;
+import com.suwonsmartapp.hello.loader.CursorLoaderListFragment;
 
 /**
  * Toolbar 사용
@@ -23,15 +23,21 @@ import com.suwonsmartapp.hello.R;
  * 2. Theme.AppCompat.NoActionBar 테마를 사용
  * 3. onCreate 에서 setSupportActionBar() 에 Toolbar 설정
  */
-public class ToolbarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
+public class ToolbarActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener {
+    // Toolbar
+    private Toolbar mToolbar;
 
     // Navigation Drawer
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private NavigationView mNavigationView;
 
-    // SearchView
-    private SearchView mSearchView;
+//    // SearchView
+//    private SearchView mSearchView;
+
+    // Contact Fragment
+    private CursorLoaderListFragment mContactFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +45,8 @@ public class ToolbarActivity extends AppCompatActivity implements NavigationView
         setContentView(R.layout.activity_toolbar);
 
         // Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        // SearchView
-        mSearchView = (SearchView) toolbar.getMenu().findItem(R.id.menu_search).getActionView();
-        mSearchView.setOnQueryTextListener(this);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
 
         // Navigation Drawer
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -57,12 +59,30 @@ public class ToolbarActivity extends AppCompatActivity implements NavigationView
 
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mNavigationView.setNavigationItemSelectedListener(this);
+
+        // Contact
+        mContactFragment = (CursorLoaderListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_contact);
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+
+        // SearchView
+//        mSearchView = (SearchView) mToolbar.getMenu().findItem(R.id.menu_search).getActionView();
+//        mSearchView.setOnQueryTextListener(mContactFragment);
+
+        // SearchView를 열린 상태로 한다
+//        mSearchView.setIconified(true);
+
+        // 쿼리 힌트 표시
+//        mSearchView.setQueryHint("쿼리 입력");
+
+        // 포커스 해제 (소프트 키보드를 닫을 때)
+//        mSearchView.clearFocus();
+
         return true;
     }
 
@@ -111,15 +131,4 @@ public class ToolbarActivity extends AppCompatActivity implements NavigationView
         return false;
     }
 
-    // SearchView 에 검색어 입력 완료시 호출
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-    // SearchView 에 검색어 입력시 호출
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        return false;
-    }
 }

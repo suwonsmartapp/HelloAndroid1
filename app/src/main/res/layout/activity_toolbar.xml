@@ -21,6 +21,12 @@
             android:background="#ff0000"
             android:minHeight="?attr/actionBarSize" />
 
+        <fragment
+            android:id="@+id/fragment_contact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.suwonsmartapp.hello.loader.CursorLoaderListFragment" />
+
     </LinearLayout>
 
     <!-- Navigation Drawer -->
