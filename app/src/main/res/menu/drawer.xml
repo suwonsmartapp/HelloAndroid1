@@ -3,7 +3,6 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/navigation_item_1"
-            android:checked="true"
             android:icon="@mipmap/ic_launcher"
             android:title="메뉴 1"/>
         <item

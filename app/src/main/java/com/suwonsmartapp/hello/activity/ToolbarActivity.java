@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.suwonsmartapp.hello.R;
-import com.suwonsmartapp.hello.loader.CursorLoaderListFragment;
+import com.suwonsmartapp.hello.loader.ContactFragment;
 
 /**
  * Toolbar 사용
@@ -36,9 +36,6 @@ public class ToolbarActivity extends AppCompatActivity implements
 //    // SearchView
 //    private SearchView mSearchView;
 
-    // Contact Fragment
-    private CursorLoaderListFragment mContactFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +57,8 @@ public class ToolbarActivity extends AppCompatActivity implements
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mNavigationView.setNavigationItemSelectedListener(this);
 
-        // Contact
-        mContactFragment = (CursorLoaderListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_contact);
-
+        // 연락처 화면 표시
+        getSupportFragmentManager().beginTransaction().add(R.id.container, new ContactFragment()).commit();
     }
 
     @Override
