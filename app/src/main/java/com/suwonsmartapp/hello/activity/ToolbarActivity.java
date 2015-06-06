@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.suwonsmartapp.hello.R;
 import com.suwonsmartapp.hello.loader.ContactFragment;
@@ -118,13 +117,14 @@ public class ToolbarActivity extends AppCompatActivity implements
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.navigation_item_1:
-                Toast.makeText(getApplicationContext(), "menu 1", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new ContactFragment()).commit();
                 break;
             case R.id.navigation_item_2:
-                Toast.makeText(getApplicationContext(), "menu 2", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new DragAndDropSampleFragment()).commit();
                 break;
         }
-        return false;
+        mDrawerLayout.closeDrawers();
+        return true;
     }
 
 }
