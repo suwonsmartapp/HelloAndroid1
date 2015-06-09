@@ -122,6 +122,9 @@ public class ToolbarActivity extends AppCompatActivity implements
             case R.id.navigation_item_2:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new DragAndDropSampleFragment()).commit();
                 break;
+            case R.id.navigation_item_3:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new PullToRefreshFragment()).commit();
+                break;
         }
         mDrawerLayout.closeDrawers();
         return true;
