@@ -42,6 +42,12 @@ public class PullToRefreshFragment extends Fragment implements SwipeRefreshLayou
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
+        // Refresh 할 때 돌아가는 화살표의 색상 설정
+        mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_red_dark,
+                android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light);
+
         return rootView;
     }
 
