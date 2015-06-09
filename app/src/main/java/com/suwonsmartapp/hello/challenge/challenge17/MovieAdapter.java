@@ -42,7 +42,7 @@ public class MovieAdapter extends AsyncBitmapAdapter {
                 options.inSampleSize = 1;
 
                 Bitmap thumbnail = MediaStore.Video.Thumbnails.getThumbnail(
-                        mContext.getContentResolver(), id, MediaStore.Video.Thumbnails.MICRO_KIND,
+                        mContext.getContentResolver(), id, MediaStore.Video.Thumbnails.MINI_KIND,
                         options);
 
                 return thumbnail;

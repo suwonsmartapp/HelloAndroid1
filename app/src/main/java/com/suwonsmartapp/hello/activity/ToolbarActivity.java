@@ -57,7 +57,9 @@ public class ToolbarActivity extends AppCompatActivity implements
         mNavigationView.setNavigationItemSelectedListener(this);
 
         // 연락처 화면 표시
-        getSupportFragmentManager().beginTransaction().add(R.id.container, new ContactFragment()).commit();
+        if (savedInstanceState == null) {   // 화면 회전시 또 호출되는 것 방지
+            getSupportFragmentManager().beginTransaction().add(R.id.container, new ContactFragment()).commit();
+        }
     }
 
     @Override
