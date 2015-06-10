@@ -13,5 +13,10 @@
             android:id="@+id/navigation_item_3"
             android:icon="@mipmap/ic_launcher"
             android:title="Pull To Refresh"/>
+
+        <item
+            android:id="@+id/navigation_item_4"
+            android:icon="@mipmap/ic_launcher"
+            android:title="RecyclerView"/>
     </group>
 </menu>

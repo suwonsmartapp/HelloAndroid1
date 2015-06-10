@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.suwonsmartapp.hello.R;
+import com.suwonsmartapp.hello.challenge.challenge17.MovieListFragment;
 import com.suwonsmartapp.hello.loader.ContactFragment;
 
 /**
@@ -56,9 +57,13 @@ public class ToolbarActivity extends AppCompatActivity implements
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mNavigationView.setNavigationItemSelectedListener(this);
 
-        // 연락처 화면 표시
         if (savedInstanceState == null) {   // 화면 회전시 또 호출되는 것 방지
+            // 연락처 화면 표시
             getSupportFragmentManager().beginTransaction().add(R.id.container, new ContactFragment()).commit();
+        }
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
         }
     }
 
@@ -126,6 +131,9 @@ public class ToolbarActivity extends AppCompatActivity implements
                 break;
             case R.id.navigation_item_3:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new PullToRefreshFragment()).commit();
+                break;
+            case R.id.navigation_item_4:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new MovieListFragment()).commit();
                 break;
         }
         mDrawerLayout.closeDrawers();

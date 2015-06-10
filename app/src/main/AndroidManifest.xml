@@ -300,6 +300,7 @@
         <activity
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:name=".activity.ToolbarActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_toolbar" >
         </activity>
     </application>
