@@ -25,7 +25,6 @@ import android.widget.TextView;
 
 import com.suwonsmartapp.asyncbitmaploader.AsyncBitmapLoader;
 import com.suwonsmartapp.hello.R;
-import com.suwonsmartapp.hello.activity.ButtonClickEvent;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -54,27 +53,20 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
         View rootView = inflater.inflate(R.layout.fragment_movie, container, false);
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
-
-        // Linear 방향으로 RecyclerView를 사용
-        mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setHasFixedSize(true);
-        setRecyclerViewLayoutManager(LayoutManagerType.LINEAR_LAYOUT_MANAGER);
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // 가로
+            setRecyclerViewLayoutManager(LayoutManagerType.GRID_LAYOUT_MANAGER);
+        } else {
+            // 세로
+            setRecyclerViewLayoutManager(LayoutManagerType.LINEAR_LAYOUT_MANAGER);
+        }
 
         // 로더 초기화
         getActivity().getSupportLoaderManager().initLoader(0, null, this);
 
         return rootView;
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setRecyclerViewLayoutManager(LayoutManagerType.GRID_LAYOUT_MANAGER);
-        } else {
-            setRecyclerViewLayoutManager(LayoutManagerType.LINEAR_LAYOUT_MANAGER);
-        }
     }
 
     @Override
@@ -151,8 +143,8 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    EventBus.getDefault().post(new ButtonClickEvent(1));
-                    EventBus.getDefault().post(new MyCustomEvent());
+//                    EventBus.getDefault().post(new ButtonClickEvent(1));
+//                    EventBus.getDefault().post(new MyCustomEvent());
                     EventBus.getDefault().post(1000);
                 }
             });
