@@ -304,6 +304,7 @@
             android:label="@string/title_activity_toolbar" >
         </activity>
         <activity android:name=".activity.JNIActivity" />
+        <activity android:name=".activity.EventBusActivity" />
     </application>
 
 </manifest>

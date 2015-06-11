@@ -3,16 +3,22 @@ package com.suwonsmartapp.hello.activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.suwonsmartapp.hello.R;
 import com.suwonsmartapp.hello.challenge.challenge17.MovieListFragment;
+import com.suwonsmartapp.hello.challenge.challenge17.MyEvent;
 import com.suwonsmartapp.hello.loader.ContactFragment;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Toolbar 사용
@@ -25,6 +31,7 @@ import com.suwonsmartapp.hello.loader.ContactFragment;
  */
 public class ToolbarActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = ToolbarActivity.class.getSimpleName();
     // Toolbar
     private Toolbar mToolbar;
 
@@ -139,5 +146,33 @@ public class ToolbarActivity extends AppCompatActivity implements
         mDrawerLayout.closeDrawers();
         return true;
     }
+
+    public void onEvent(MyEvent event) {
+//        Log.d(TAG, "event : " + event.toString());
+        if (event instanceof ButtonClickEvent) {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+        } else {
+            Toast.makeText(getApplicationContext(), "커스텀 이벤트다", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+    public void onEvent(Integer number) {
+        Log.d(TAG, "event : " + number);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
 
 }

@@ -25,10 +25,13 @@ import android.widget.TextView;
 
 import com.suwonsmartapp.asyncbitmaploader.AsyncBitmapLoader;
 import com.suwonsmartapp.hello.R;
+import com.suwonsmartapp.hello.activity.ButtonClickEvent;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by junsuk on 15. 6. 3..
@@ -144,7 +147,16 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(mInflater.inflate(R.layout.listview_item_movie, parent, false));
+            View view = mInflater.inflate(R.layout.listview_item_movie, parent, false);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    EventBus.getDefault().post(new ButtonClickEvent(1));
+                    EventBus.getDefault().post(new MyCustomEvent());
+                    EventBus.getDefault().post(1000);
+                }
+            });
+            return new ViewHolder(view);
         }
 
         @Override

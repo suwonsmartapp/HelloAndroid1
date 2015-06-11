@@ -39,6 +39,8 @@ dependencies {
 
     compile 'com.facebook.android:facebook-android-sdk:4.1.0'
 
+    compile 'de.greenrobot:eventbus:2.4.0'
+
     compile project(':asyncbitmaploader')
     compile project(':mylibrary')
 

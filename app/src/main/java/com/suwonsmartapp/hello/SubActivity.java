@@ -14,6 +14,7 @@ import com.suwonsmartapp.hello.activity.ActivityExamActivity;
 import com.suwonsmartapp.hello.activity.EditTextActivity;
 import com.suwonsmartapp.hello.activity.FirstActivity;
 import com.suwonsmartapp.hello.activity.FrameLayoutActivity;
+import com.suwonsmartapp.hello.activity.EventBusActivity;
 import com.suwonsmartapp.hello.activity.JNIActivity;
 import com.suwonsmartapp.hello.activity.NavigationActivity;
 import com.suwonsmartapp.hello.activity.RelativeLayoutExamActivity;
@@ -75,7 +76,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             "NavigationDrawer",
             "Facebook Login",
             "ToolBar + NavigationView",
-            "JNI"
+            "JNI",
+            "EventBus"
     };
     private static final Class[] ACTIVITY_CLASSES = {
             ActivityExamActivity.class,
@@ -89,7 +91,8 @@ public class SubActivity extends ActionBarActivity implements AdapterView.OnItem
             NavigationActivity.class,
             com.suwonsmartapp.hello.activity.LoginActivity.class,
             ToolbarActivity.class,
-            JNIActivity.class
+            JNIActivity.class,
+            EventBusActivity.class
     };
 
     private static final String[] CHALLENGE_ITEMS = {
