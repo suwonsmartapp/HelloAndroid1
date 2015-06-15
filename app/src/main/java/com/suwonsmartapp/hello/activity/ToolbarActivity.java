@@ -142,6 +142,9 @@ public class ToolbarActivity extends AppCompatActivity implements
             case R.id.navigation_item_4:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new MovieListFragment()).commit();
                 break;
+            case R.id.navigation_item_5:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new FloatingActionButtonExamFragment()).commit();
+                break;
         }
         mDrawerLayout.closeDrawers();
         return true;
