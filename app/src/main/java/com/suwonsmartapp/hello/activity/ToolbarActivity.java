@@ -2,6 +2,7 @@ package com.suwonsmartapp.hello.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -151,6 +152,10 @@ public class ToolbarActivity extends AppCompatActivity implements
             case R.id.navigation_item_7:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new CoordinatorLayoutFragment()).commit();
                 break;
+            case R.id.navigation_item_8:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new CollapsingToolbarLayoutFragment()).commit();
+                break;
+
         }
         mDrawerLayout.closeDrawers();
         return true;

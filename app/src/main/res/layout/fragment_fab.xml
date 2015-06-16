@@ -5,19 +5,25 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.CoordinatorLayout
+
         android:id="@+id/fab_position"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <!-- CoordinatorLayout 과 FloatingActionButton 을 조합하면 Snackbar 가 올라올 때 FloatingActionButton 도 올라감 -->
         <!-- CoordinatorLayout.Behavior 를 FloatingActionButton 이 구현하고 있기 때문 -->
+        <!-- app:borderWidth="0dp" 는 롤리팝에서 그림자가 안 나오는 버그의 대응책 -->
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
+            app:layout_anchor="@id/fab_position"
+            app:layout_anchorGravity="bottom|right"
             android:layout_margin="12dp"
             android:src="@android:drawable/ic_input_add"
+            app:elevation="6dp"
+            app:pressedTranslationZ="12dp"
+            app:borderWidth="0dp"
             app:backgroundTint="#ff0000" />
 
 
