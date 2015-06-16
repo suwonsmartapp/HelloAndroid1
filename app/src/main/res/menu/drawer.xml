@@ -18,5 +18,15 @@
             android:id="@+id/navigation_item_4"
             android:icon="@mipmap/ic_launcher"
             android:title="RecyclerView"/>
+
+        <item
+            android:id="@+id/navigation_item_5"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Floating action button"/>
+
+        <item
+            android:id="@+id/navigation_item_6"
+            android:icon="@mipmap/ic_launcher"
+            android:title="TabLayout"/>
     </group>
 </menu>
