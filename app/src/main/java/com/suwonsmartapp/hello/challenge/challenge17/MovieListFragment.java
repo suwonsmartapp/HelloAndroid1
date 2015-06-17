@@ -30,8 +30,6 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import de.greenrobot.event.EventBus;
-
 /**
  * Created by junsuk on 15. 6. 3..
  */
@@ -115,7 +113,7 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
         mRecyclerView.scrollToPosition(scrollPosition);
     }
 
-    private static class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implements
+    private class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implements
             AsyncBitmapLoader.BitmapLoadListener {
         private final Context mContext;
 
@@ -140,19 +138,19 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = mInflater.inflate(R.layout.listview_item_movie, parent, false);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    EventBus.getDefault().post(new ButtonClickEvent(1));
-//                    EventBus.getDefault().post(new MyCustomEvent());
-                    EventBus.getDefault().post(1000);
-                }
-            });
+//            view.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+////                    EventBus.getDefault().post(new ButtonClickEvent(1));
+////                    EventBus.getDefault().post(new MyCustomEvent());
+//                    EventBus.getDefault().post(1000);
+//                }
+//            });
             return new ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, int position) {
             mData.moveToPosition(position);
             Cursor cursor = mData;
 
@@ -201,7 +199,7 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
             return getThumbnail(position);
         }
 
-        public static class ViewHolder extends RecyclerView.ViewHolder {
+        public class ViewHolder extends RecyclerView.ViewHolder {
             ImageView imageView;
             TextView title;
             TextView date;

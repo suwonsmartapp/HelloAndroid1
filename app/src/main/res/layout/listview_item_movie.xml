@@ -22,6 +22,7 @@
                 android:id="@+id/thumbnail"
                 android:scaleType="centerCrop"
                 android:layout_width="match_parent"
+                android:transitionName="sharedElement"
                 android:layout_height="200dp" />
 
             <TextView

@@ -1,5 +1,6 @@
 package com.suwonsmartapp.hello.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -33,6 +34,7 @@ public class CollapsingToolbarLayoutFragment extends Fragment {
 
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) rootView.findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("CollapsingToolbarLayout Title");
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
 
         return rootView;
     }

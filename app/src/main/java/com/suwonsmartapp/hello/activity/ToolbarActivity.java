@@ -1,16 +1,24 @@
 package com.suwonsmartapp.hello.activity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.ChangeImageTransform;
+import android.transition.TransitionSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.suwonsmartapp.hello.R;
@@ -45,8 +53,18 @@ public class ToolbarActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Transition 기능을 사용
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            TransitionSet set = new TransitionSet();
+            set.addTransition(new ChangeImageTransform());
+            getWindow().setExitTransition(set);
+            getWindow().setEnterTransition(set);
+        }
 
         // Toolbar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -154,6 +172,9 @@ public class ToolbarActivity extends AppCompatActivity implements
             case R.id.navigation_item_8:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new CollapsingToolbarLayoutFragment()).commit();
                 break;
+            case R.id.navigation_item_9:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new TransitionFromFragment()).commit();
+                break;
 
         }
         mDrawerLayout.closeDrawers();
@@ -188,4 +209,27 @@ public class ToolbarActivity extends AppCompatActivity implements
     }
 
 
+    public void onEvent(View v) {
+
+        // Fragment 는 Transition 이 잘 안 됨;;;
+//        TransitionSet set = new TransitionSet();
+//        set.addTransition(new ChangeImageTransform());
+//        set.addTransition(new Fade());
+//
+//        Fragment frag = new TransitionToFragment();
+//        frag.setEnterTransition(set);
+//        frag.setSharedElementEnterTransition(set);
+//
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.container, frag)
+//                .addToBackStack(null)
+//                .addSharedElement(v, "share")
+//                .commit();
+
+        // Activity Transition 은 롤리팝 전용
+        Intent intent = new Intent(this, NextActivity.class);
+        ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(this, v, "share");
+        ActivityCompat.startActivity(this, intent, option.toBundle());
+
+    }
 }

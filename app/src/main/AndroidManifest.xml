@@ -304,6 +304,7 @@
         </activity>
         <activity android:name=".activity.JNIActivity" />
         <activity android:name=".activity.EventBusActivity" />
+        <activity android:name=".activity.NextActivity" />
     </application>
 
 </manifest>
