@@ -4,6 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--
+    1. 머티리얼 디자인이 추가된 vertical LinearLayout
+    2. 자식은 app:layout_scrollFlags 를 사용해야 함
+    3. CoordinatorLayout 의 자식이어야 함
+    4. 다른 ViewGroup 과 같이 사용하면 잘 동작하지 않는다
+    5. AppbarLayout 과 스크롤을 연동할 View는 AppBarLayout.ScrollingViewBehavior
+    를 바인딩 해야하는데
+    app:layout_behavior 속성에 full class name 을 지정한다.
+    이것은 @string/appbar_scrolling_view_behavior 에 정의 되어 있다.
+     -->
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,10 +25,10 @@
             android:background="#ff0000"
             app:layout_scrollFlags="scroll|enterAlways" />
 
-        <android.support.design.widget.TabLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways" />
+        <!--<android.support.design.widget.TabLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:layout_scrollFlags="scroll|enterAlways" />-->
 
     </android.support.design.widget.AppBarLayout>
 
