@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <!--
+    AppbarLayout 제약
     1. 머티리얼 디자인이 추가된 vertical LinearLayout
     2. 자식은 app:layout_scrollFlags 를 사용해야 함
     3. CoordinatorLayout 의 자식이어야 함
@@ -18,12 +19,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ff0000"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            android:layout_height="200dp"
+            android:minHeight="?attr/actionBarSize"
+            android:src="@drawable/pic300_7"
+            android:scaleType="centerCrop"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"/>
+
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="#ff0000"-->
+            <!--app:title="툴바 타이틀"-->
+            <!--app:layout_scrollFlags="scroll|enterAlways" />-->
 
         <!--<android.support.design.widget.TabLayout-->
             <!--android:layout_width="match_parent"-->
@@ -32,6 +42,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <!-- RecyclerView 와 NestedScrollView 만 사용할 수 있다 -->
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,34 +51,10 @@
         <!-- Your scrolling content -->
 
         <LinearLayout
+            android:id="@+id/contents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:src="@drawable/dmyo_2jpg_"
-                android:scaleType="centerCrop"
-                android:layout_width="match_parent"
-                android:layout_height="500dp" />
-
-            <ImageView
-                android:src="@drawable/dmyo_2jpg_"
-                android:scaleType="centerCrop"
-                android:layout_width="match_parent"
-                android:layout_height="500dp" />
-
-            <ImageView
-                android:src="@drawable/dmyo_2jpg_"
-                android:scaleType="centerCrop"
-                android:layout_width="match_parent"
-                android:layout_height="500dp" />
-
-            <ImageView
-                android:src="@drawable/dmyo_2jpg_"
-                android:scaleType="centerCrop"
-                android:layout_width="match_parent"
-                android:layout_height="500dp" />
-        </LinearLayout>
+            android:orientation="vertical" />
 
     </android.support.v4.widget.NestedScrollView>
 
