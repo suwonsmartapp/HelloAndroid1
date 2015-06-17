@@ -32,7 +32,7 @@
         <item
             android:id="@+id/navigation_item_7"
             android:icon="@mipmap/ic_launcher"
-            android:title="CoordinatorLayout"/>
+            android:title="AppbarLayout"/>
 
         <item
             android:id="@+id/navigation_item_8"

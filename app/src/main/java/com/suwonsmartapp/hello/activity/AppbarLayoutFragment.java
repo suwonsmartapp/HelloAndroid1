@@ -13,7 +13,7 @@ import com.suwonsmartapp.hello.R;
 /**
  * Created by junsuk on 15. 6. 16..
  */
-public class CoordinatorLayoutFragment extends Fragment {
+public class AppbarLayoutFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
