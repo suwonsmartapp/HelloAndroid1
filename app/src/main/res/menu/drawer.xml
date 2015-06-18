@@ -39,6 +39,11 @@
             android:icon="@mipmap/ic_launcher"
             android:title="CollapsingToolbarLayout"/>
 
+        <item
+            android:id="@+id/navigation_item_10"
+            android:icon="@mipmap/ic_launcher"
+            android:title="MultiChoiceListView"/>
+
         <item android:title="롤리팝 전용">
             <menu>
                 <group android:checkableBehavior="single">
