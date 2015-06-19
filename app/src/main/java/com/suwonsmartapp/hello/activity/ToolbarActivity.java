@@ -22,6 +22,7 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.suwonsmartapp.hello.R;
+import com.suwonsmartapp.hello.activity.db.DbExamActivity;
 import com.suwonsmartapp.hello.activity.event.ButtonClickEvent;
 import com.suwonsmartapp.hello.activity.fragment.AppbarLayoutFragment;
 import com.suwonsmartapp.hello.activity.fragment.CollapsingToolbarLayoutFragment;
@@ -190,6 +191,10 @@ public class ToolbarActivity extends AppCompatActivity implements
                 break;
             case R.id.navigation_item_11:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new TextInputLayoutFragment()).commit();
+                break;
+            case R.id.navigation_item_12:
+                Intent intent = new Intent(this, DbExamActivity.class);
+                startActivity(intent);
                 break;
 
         }

@@ -1,6 +1,5 @@
-package com.suwonsmartapp.hello.save.db;
 
-import com.suwonsmartapp.hello.R;
+package com.suwonsmartapp.hello.save.db;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -16,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
+
+import com.suwonsmartapp.hello.R;
 
 public class DbActivity extends ActionBarActivity implements View.OnClickListener,
         AdapterView.OnItemLongClickListener {
@@ -49,11 +50,11 @@ public class DbActivity extends ActionBarActivity implements View.OnClickListene
         // ContentValues values = new ContentValues();
         // values.put("name", "오준석");
         // values.put("email", "a811219@gmail.com");
-        // long id = db.insert("Person", null, values);
+        // long id = db.추가("Person", null, values);
         //
 
-        // long id = mDbHelper.insert(new Person("손상문", "abc@gamil.com"));
-        // Toast.makeText(getApplicationContext(), "insert id : " + id,
+        // long id = mDbHelper.추가(new Person("손상문", "abc@gamil.com"));
+        // Toast.makeText(getApplicationContext(), "추가 id : " + id,
         // Toast.LENGTH_SHORT).show();
 
         mSubmitBtn.setOnClickListener(this);
@@ -100,14 +101,16 @@ public class DbActivity extends ActionBarActivity implements View.OnClickListene
     }
 
     int mSeletedPosition = -1;
+
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getApplicationContext(), "longclick : " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "longclick : " + position, Toast.LENGTH_SHORT)
+                .show();
 
         mSeletedPosition = position;
 
-        // return true;         ->> 여기서 이벤트 종료
-        return false;       // 처리가 안 된 것으로 알려주고, 이벤트를 흘려서 컨텍스트 메뉴가 동작 되도록
+        // return true; ->> 여기서 이벤트 종료
+        return false; // 처리가 안 된 것으로 알려주고, 이벤트를 흘려서 컨텍스트 메뉴가 동작 되도록
     }
 
     private void dbDelete(int position) {
@@ -144,7 +147,8 @@ public class DbActivity extends ActionBarActivity implements View.OnClickListene
     // 컨텍스트 메뉴 이벤트 처리
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item
+                .getMenuInfo();
         switch (item.getItemId()) {
             case R.id.action_update:
                 dbUpdate();

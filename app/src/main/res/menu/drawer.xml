@@ -49,6 +49,11 @@
             android:icon="@mipmap/ic_launcher"
             android:title="TextInputLayout"/>
 
+        <item
+            android:id="@+id/navigation_item_12"
+            android:icon="@mipmap/ic_launcher"
+            android:title="DB 연습"/>
+
         <item android:title="롤리팝 전용">
             <menu>
                 <group android:checkableBehavior="single">
