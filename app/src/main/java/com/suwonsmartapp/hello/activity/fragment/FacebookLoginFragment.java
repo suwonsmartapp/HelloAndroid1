@@ -1,4 +1,4 @@
-package com.suwonsmartapp.hello.activity;
+package com.suwonsmartapp.hello.activity.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;

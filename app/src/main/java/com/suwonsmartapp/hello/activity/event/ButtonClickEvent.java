@@ -1,5 +1,5 @@
 
-package com.suwonsmartapp.hello.activity;
+package com.suwonsmartapp.hello.activity.event;
 
 import android.view.View;
 

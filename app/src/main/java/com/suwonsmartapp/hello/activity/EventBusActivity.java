@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.suwonsmartapp.hello.activity.event.ButtonClickEvent;
+
 import de.greenrobot.event.EventBus;
 
 /**

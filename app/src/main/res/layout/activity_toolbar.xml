@@ -13,12 +13,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!-- 팝업 메뉴와 툴바의 테마 설정 -->
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ff0000"
-            android:minHeight="?attr/actionBarSize" />
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/ToolbarTheme"
+            app:popupTheme="@style/Theme.AppCompat.Light"/>
 
         <FrameLayout
             android:id="@+id/container"

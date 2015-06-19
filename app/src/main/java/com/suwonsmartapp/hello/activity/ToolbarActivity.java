@@ -22,6 +22,16 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.suwonsmartapp.hello.R;
+import com.suwonsmartapp.hello.activity.event.ButtonClickEvent;
+import com.suwonsmartapp.hello.activity.fragment.AppbarLayoutFragment;
+import com.suwonsmartapp.hello.activity.fragment.CollapsingToolbarLayoutFragment;
+import com.suwonsmartapp.hello.activity.fragment.DragAndDropSampleFragment;
+import com.suwonsmartapp.hello.activity.fragment.FloatingActionButtonExamFragment;
+import com.suwonsmartapp.hello.activity.fragment.MultiChoiceListFragment;
+import com.suwonsmartapp.hello.activity.fragment.PullToRefreshFragment;
+import com.suwonsmartapp.hello.activity.fragment.TabLayoutFragment;
+import com.suwonsmartapp.hello.activity.fragment.TextInputLayoutFragment;
+import com.suwonsmartapp.hello.activity.fragment.TransitionFromFragment;
 import com.suwonsmartapp.hello.challenge.challenge17.MovieListFragment;
 import com.suwonsmartapp.hello.challenge.challenge17.MyEvent;
 import com.suwonsmartapp.hello.loader.ContactFragment;
@@ -177,6 +187,9 @@ public class ToolbarActivity extends AppCompatActivity implements
                 break;
             case R.id.navigation_item_10:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new MultiChoiceListFragment()).commit();
+                break;
+            case R.id.navigation_item_11:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new TextInputLayoutFragment()).commit();
                 break;
 
         }

@@ -19,7 +19,7 @@
     <fragment android:id="@+id/navigation_drawer"
         android:layout_width="@dimen/navigation_drawer_width" android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:name="com.suwonsmartapp.hello.activity.NavigationDrawerFragment"
+        android:name="com.suwonsmartapp.hello.activity.fragment.NavigationDrawerFragment"
         tools:layout="@layout/fragment_navigation_drawer2" />
 
 </android.support.v4.widget.DrawerLayout>

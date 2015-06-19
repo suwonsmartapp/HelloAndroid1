@@ -1,4 +1,4 @@
-package com.suwonsmartapp.hello.activity;
+package com.suwonsmartapp.hello.activity.fragment;
 
 import android.app.Activity;
 import android.content.SharedPreferences;

@@ -25,7 +25,7 @@
             android:minHeight="?attr/actionBarSize"
             android:src="@drawable/pic300_7"
             android:scaleType="centerCrop"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"/>
+            app:layout_scrollFlags="scroll|enterAlways"/>
 
         <!--<android.support.v7.widget.Toolbar-->
             <!--android:id="@+id/toolbar"-->
@@ -35,10 +35,10 @@
             <!--app:title="툴바 타이틀"-->
             <!--app:layout_scrollFlags="scroll|enterAlways" />-->
 
-        <!--<android.support.design.widget.TabLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:layout_scrollFlags="scroll|enterAlways" />-->
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed" />
 
     </android.support.design.widget.AppBarLayout>
 

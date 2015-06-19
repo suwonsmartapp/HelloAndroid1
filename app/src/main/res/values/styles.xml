@@ -5,8 +5,22 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <!-- Toolbar의 타이틀 색 -->
+        <item name="android:textColorPrimary">#ffffff</item>
+        <!-- Toolbar의 옵션 메뉴의 Overflow 아이콘 색 -->
+        <item name="android:textColorSecondary">#ffffff</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+
+        <!-- SearchView 등의 테마 -->
+        <item name="android:actionBarWidgetTheme">@style/actionBarWidgetTheme</item>
+    </style>
+
+    <style name="actionBarWidgetTheme">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColorHint">#f5f5f5</item>
     </style>
 
     <!-- NoActionBar FullScreen Theme -->

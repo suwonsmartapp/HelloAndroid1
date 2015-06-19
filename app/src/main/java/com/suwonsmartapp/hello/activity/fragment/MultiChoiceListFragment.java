@@ -1,4 +1,4 @@
-package com.suwonsmartapp.hello.activity;
+package com.suwonsmartapp.hello.activity.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -43,7 +43,7 @@ public class MultiChoiceListFragment extends Fragment {
         mListView.setAdapter(adapter);
 
 
-        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.submit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SparseBooleanArray checked = mListView.getCheckedItemPositions();

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.suwonsmartapp.hello.R;
+import com.suwonsmartapp.hello.activity.fragment.NavigationDrawerFragment;
 
 public class NavigationActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
