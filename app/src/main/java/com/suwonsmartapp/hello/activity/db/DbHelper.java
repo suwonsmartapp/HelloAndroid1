@@ -48,11 +48,25 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     // 전체 데이터 반환
-    public ArrayList<String> getAllData() {
+    public ArrayList<String> 검색() {
+        return 검색(null);
+    }
+
+    /**
+     * 전체검색 또는 조건을 주어서 검색
+     * @param 검색할이름 null 이면 전체검색, null 이 아니면 조건 검색
+     * @return 검색 결과
+     */
+    public ArrayList<String> 검색(String 검색할이름) {
+
+        String 조건 = null;
+        if (검색할이름 != null) {
+            조건 = "name='" + 검색할이름 + "'";
+        }
 
         Cursor cursor = getReadableDatabase().query("Address",
                 new String[]{"name", "email", "phone"},
-                null,
+                조건,
                 null,
                 null,
                 null,
@@ -72,4 +86,11 @@ public class DbHelper extends SQLiteOpenHelper {
 
         return list;
     }
+
+//    public void 검색(String 검색할이름) {
+//        Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM Address WHERE name = '" + 검색할이름 + "'", null);
+//
+////        getReadableDatabase().query("Address", new String[] { "name", "email", "phone"},
+////                "name = ?", new String[] { 검색할이름 }, null, null, null);
+//    }
 }

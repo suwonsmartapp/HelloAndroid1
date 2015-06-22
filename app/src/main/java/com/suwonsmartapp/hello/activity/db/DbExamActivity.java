@@ -20,6 +20,7 @@ public class DbExamActivity extends Activity {
 
     DbHelper 디비헬퍼;
     private ListView 리스트뷰;
+    private Button 검색버튼;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,16 @@ public class DbExamActivity extends Activity {
 
         디비헬퍼 = new DbHelper(getApplicationContext());
         디비헬퍼.getWritableDatabase();
+
+        검색버튼 = (Button)findViewById(R.id.btn_search);
+        검색버튼.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String 검색할이름 = ((EditText)findViewById(R.id.search)).getText().toString();
+
+                조회결과리스트뷰에표시(디비헬퍼.검색(검색할이름));
+            }
+        });
 
         Button 등록버튼 = (Button)findViewById(R.id.btn_submit);
         등록버튼.setOnClickListener(new View.OnClickListener() {
@@ -59,15 +70,22 @@ public class DbExamActivity extends Activity {
 //                    데이터묶음.add("두번째 데이터");
 //                    데이터묶음.add("세번째 데이터");
                     // 진짜 데이터
-                    ArrayList<String> 데이터묶음 = 디비헬퍼.getAllData();
-
-                    // 어댑터
-                    ArrayAdapter<String> 어댑터 = new ArrayAdapter<String>(getApplicationContext(),
-                            android.R.layout.simple_list_item_1, 데이터묶음);
-
-                    리스트뷰.setAdapter(어댑터);
+                    조회결과리스트뷰에표시(디비헬퍼.검색());
                 }
             }
         });
+
+
+        조회결과리스트뷰에표시(디비헬퍼.검색());
+    }
+
+    private void 조회결과리스트뷰에표시(ArrayList<String> 데이터) {
+        ArrayList<String> 데이터묶음 = 데이터;
+
+        // 어댑터
+        ArrayAdapter<String> 어댑터 = new ArrayAdapter<String>(getApplicationContext(),
+                android.R.layout.simple_list_item_1, 데이터묶음);
+
+        리스트뷰.setAdapter(어댑터);
     }
 }
