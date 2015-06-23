@@ -4,21 +4,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.test.suitebuilder.annotation.SmallTest;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 /**
  * Created by junsuk on 15. 5. 19..
  */
-@RunWith(RobolectricTestRunner.class)
-@Config(manifest=Config.NONE)
+@SmallTest
 public class PersonHelperTest {
     PersonHelper mHelper;
     Context mContext;
@@ -27,7 +23,7 @@ public class PersonHelperTest {
     @Before
     public void setUp() throws Exception {
         // 가상 Context
-        mContext = Robolectric.application.getApplicationContext();
+//        mContext = Robolectric.application.getApplicationContext();
 
         // 가상 Context 사용으로 매 테스트시마다 새로운 DB를 생성한다
         mHelper = new PersonHelper(mContext);

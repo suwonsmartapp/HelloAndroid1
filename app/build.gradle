@@ -2,15 +2,24 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.suwonsmartapp.hello"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
+
+        // AndroidTest 에서 JUnit4 를 사용하기 위한 설정
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
+
+    // test 라이브러리 빌드 에러 방지
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -44,7 +53,10 @@ dependencies {
     compile project(':asyncbitmaploader')
     compile project(':mylibrary')
 
+    // https://github.com/googlesamples/android-testing 참고
     testCompile 'junit:junit:4.12'
-    testCompile "org.mockito:mockito-core:1.9.5"
-    testCompile "org.robolectric:robolectric:2.4"
+//    testCompile "org.mockito:mockito-core:1.9.5"
+//    testCompile "org.robolectric:robolectric:2.4"
+    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
+    androidTestCompile 'org.hamcrest:hamcrest-core:1.3'
 }
