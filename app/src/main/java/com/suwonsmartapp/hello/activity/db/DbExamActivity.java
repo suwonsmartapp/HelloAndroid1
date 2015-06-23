@@ -55,6 +55,14 @@ public class DbExamActivity extends Activity {
                 // 성공하면 추가된 값의 ID, 실패하면 -1
                 long 결과값 = 디비헬퍼.추가(이름, 이메일, 전화번호);
 
+                // Content Provider 경유
+//                ContentValues values = new ContentValues();
+//                values.put("name", 이름);
+//                values.put("email", 이메일);
+//                values.put("phone", 전화번호);
+//                Uri uri = getContentResolver().insert(MyContentProvider.CONTENT_URI, values);
+//                long 결과값 = ContentUris.parseId(uri);
+
                 if (결과값 == -1) {
                     Toast.makeText(getApplicationContext(), "삽입 에러", Toast.LENGTH_SHORT).show();
                 } else {

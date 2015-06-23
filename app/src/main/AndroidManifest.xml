@@ -298,14 +298,21 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:name=".activity.ToolbarActivity"
-            android:label="@string/title_activity_toolbar" >
+            android:label="@string/title_activity_toolbar"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity android:name=".activity.JNIActivity" />
         <activity android:name=".activity.EventBusActivity" />
         <activity android:name=".activity.NextActivity" />
         <activity android:name=".activity.db.DbExamActivity" />
+
+        <provider
+            android:name=".provider.MyContentProvider"
+            android:authorities="com.suwonsmartapp.hello.provider"
+            android:enabled="true"
+            android:exported="true" >
+        </provider>
     </application>
 
 </manifest>
