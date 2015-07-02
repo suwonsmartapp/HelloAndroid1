@@ -23,7 +23,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.suwonsmartapp.asyncbitmaploader.AsyncBitmapLoader;
+import com.suwonsmartapp.abl.AsyncBitmapLoader;
 import com.suwonsmartapp.hello.R;
 
 import java.sql.Date;

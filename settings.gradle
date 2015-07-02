@@ -1,1 +1,1 @@
-include ':app', ':asyncbitmaploader', ':mylibrary'
+include ':app', ':mylibrary', ':volley'
