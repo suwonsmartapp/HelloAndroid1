@@ -39,7 +39,7 @@ public class FileManagerActivity extends AppCompatActivity implements
     public static final String sPathPicture = Environment.getExternalStoragePublicDirectory(
             Environment.DIRECTORY_PICTURES).getAbsolutePath();
     public static final String sPathDownload = Environment.getExternalStoragePublicDirectory(
-            Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();;
+            Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
     public static final String sPathRoot = "/";
 
     private ListView mListView;

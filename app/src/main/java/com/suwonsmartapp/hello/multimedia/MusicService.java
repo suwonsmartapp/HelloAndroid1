@@ -16,6 +16,7 @@ public class MusicService extends Service {
     public static final String ACTION_PAUSE = "action_pause";
     public static final String ACTION_RESUME = "action_resume";
     public static final String ACTION_START = "action_start";
+    public static final String ACTION_STOP_SERVICE = "action_stop_service";
 
     // 플레이어
     private MediaPlayer mMediaPlayer;
@@ -54,6 +55,10 @@ public class MusicService extends Service {
                 break;
             case ACTION_RESUME:
                 resumeMusic();
+                break;
+            case ACTION_STOP_SERVICE:
+                pauseMusic();
+                stopSelf();
                 break;
         }
 

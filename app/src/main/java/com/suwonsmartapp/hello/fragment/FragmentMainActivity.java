@@ -29,12 +29,8 @@ public class FragmentMainActivity extends ActionBarActivity implements UpFragmen
         mFragmentUp = (UpFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_up);
         mFragmentDown = (DownFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_down);
 
-        if (getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_LANDSCAPE) {
-            mDualPane = true;
-        } else {
-            mDualPane = false;
-        }
+        mDualPane = getResources().getConfiguration().orientation
+                == Configuration.ORIENTATION_LANDSCAPE;
 
         mFragmentUp.setOnImageChangeListener(this);
 

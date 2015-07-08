@@ -1,10 +1,12 @@
 package com.suwonsmartapp.hello.multimedia;
 
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
@@ -13,13 +15,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.SystemClock;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
+import android.widget.RemoteViews;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,9 +72,6 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         // 레이아웃 초기화, 이벤트 연결
         init();
 
-        // 서비스에서 정보를 가져오기 위해 바인드
-        Intent intent = new Intent(getApplicationContext(), MusicService.class);
-        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
 
         // 다른 앱에서 호출 될 때의 처리
         if (getIntent() != null) {
@@ -77,6 +79,38 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
             if (uri != null) {
                 startMusic(uri);
             }
+        }
+
+        if (savedInstanceState != null) {
+            mLastUri = savedInstanceState.getParcelable("uri");
+            Log.d(TAG, "onCreate : " + mLastUri);
+        }
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putParcelable("uri", mLastUri);
+        Log.d(TAG, "onSaveInstanceState : " + mLastUri);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // 서비스에서 정보를 가져오기 위해 바인드
+        Intent intent = new Intent(getApplicationContext(), MusicService.class);
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mLastUri != null) {
+            setMetaInfo(mLastUri);
         }
     }
 
@@ -147,6 +181,8 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         return intent;
     }
 
+    private Uri mLastUri;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -154,6 +190,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         if (requestCode == REQUEST_CODE_AUDIO && resultCode == RESULT_OK) {
             // Audio
             Uri fileUri = data.getData();
+            mLastUri = fileUri;
 
             // 정보 셋팅
             setMetaInfo(fileUri);
@@ -191,13 +228,43 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         // SeekBar 갱신
         mHandler.post(mUpdateSeekBarRunnable);
 
+        // Notification 에 표시할 RemoteView
+        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.custom_notification);
+        contentView.setTextViewText(R.id.notification_album, mTvAlbum.getText());
+        contentView.setTextViewText(R.id.notification_title, mTvTitle.getText());
+        contentView.setTextViewText(R.id.notification_artist, mTvArtist.getText());
+
         // 앨범 사진
         byte data[] = retriever.getEmbeddedPicture();
         if (null != data) {
             mVideoView.setVisibility(View.INVISIBLE);
             mIvAlbumArt.setVisibility(View.VISIBLE);
-            mIvAlbumArt.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+            Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+            mIvAlbumArt.setImageBitmap(bitmap);
+
+            contentView.setImageViewBitmap(R.id.notification_image, bitmap);
         }
+
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                | Intent.FLAG_ACTIVITY_CLEAR_TOP
+//                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplication());
+
+        Intent intent = new Intent(getApplicationContext(), MediaPlayerActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),
+                0, intent, PendingIntent.FLAG_NO_CREATE);
+
+//        PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(),
+//                0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        builder.setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
+                .setAutoCancel(false)
+                .setContentIntent(pendingIntent)
+                .setContent(contentView);
+        NotificationManagerCompat.from(getApplicationContext()).notify(0, builder.build());
     }
 
     private void startMusic(Uri fileUri) {
@@ -252,12 +319,14 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
             MusicService.MusicServiceBinder binder = (MusicService.MusicServiceBinder) service;
             mService = binder.getService();
             mBound = true;
-            Log.d(TAG, "MusinService connected");
+            Log.d(TAG, "MusicService connected");
         }
 
         @Override
         public void onServiceDisconnected(ComponentName arg0) {
             mBound = false;
+            // Service 가 의도된 상황이 아닌데 종료 될 경우에만 호출 됨
+            Log.d(TAG, "MusicService disconnected");
         }
     };
 

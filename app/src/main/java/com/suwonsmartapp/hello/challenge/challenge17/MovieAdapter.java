@@ -13,7 +13,6 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
 import com.suwonsmartapp.abl.AsyncBitmapLoader;
 import com.suwonsmartapp.hello.R;
 
@@ -38,7 +37,7 @@ public class MovieAdapter extends CursorAdapter {
         TextView date;
     }
 
-    public MovieAdapter(Context context, Cursor c, boolean autoRequery, RequestQueue mQueue) {
+    public MovieAdapter(Context context, Cursor c, boolean autoRequery) {
         super(context, c, autoRequery);
 
         mContext = context;

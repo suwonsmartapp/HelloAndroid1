@@ -120,7 +120,7 @@ public class MusicPlayerView extends LinearLayout implements View.OnClickListene
     }
 
     public interface OnPlayerButtonClickListener {
-        public void onAudioPlayButtonClicked();     // call back
+        void onAudioPlayButtonClicked();     // call back
     }
 
     // ViewGroup 의 위치 결정
